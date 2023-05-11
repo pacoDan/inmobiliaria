@@ -16,14 +16,14 @@ public class InmobiliariaApplication {
         System.out.println("Hola Mundo");
         PublicacionEjemplo ejemploPost = new PublicacionEjemplo("Casa de lujo en el lago","Casa en el lago con excelente vista, acabados de lujo a un excelente precio",1000);
         System.out.println(ejemploPost.getTitulo());
-        repositorioDePosteos.crear(ejemploPost);
+//        repositorioDePosteos.crear(ejemploPost);
 
-        repositorioDePosteos.borrar(ejemploPost);
-        repositorioDePosteos.editar(ejemploPost);
-        List<PublicacionEjemplo> posts=  repositorioDePosteos.obtenerPorTitulo("Casa de lujo en el lago");
-
-       List<PublicacionEjemplo> posts2=  repositorioDePosteos.obtenerporPrecio(12000); // precio
-        PublicacionEjemplo post=  repositorioDePosteos.obtenerPorId(12); // precio
+//        repositorioDePosteos.borrar(ejemploPost);
+//        repositorioDePosteos.editar(ejemploPost);
+//        List<PublicacionEjemplo> posts=  repositorioDePosteos.obtenerPorTitulo("Casa de lujo en el lago");
+//
+//       List<PublicacionEjemplo> posts2=  repositorioDePosteos.obtenerporPrecio(12000); // precio
+//        PublicacionEjemplo post=  repositorioDePosteos.obtenerPorId(12); // precio
 
 
 
