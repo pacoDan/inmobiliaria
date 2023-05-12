@@ -33,10 +33,7 @@ public class Pago implements Serializable {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = "Id")
     private String id;
-    
-    @Column(name = "Propiedad_Id")
-    private String propiedad;   
-    
+        
     @Basic(optional = false)
     @Column(name = "Monto")
     private double monto;
@@ -64,6 +61,10 @@ public class Pago implements Serializable {
     @JoinColumn(name = "Receptor_Id", referencedColumnName = "Id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Cliente receptor;
+    
+    @JoinColumn(name = "Id_Propiedad", referencedColumnName = "Id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Propiedad propiedad;
 
 
 }

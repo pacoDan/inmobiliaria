@@ -58,6 +58,6 @@ public class Reclamo implements Serializable {
     
     @JoinColumn(name = "Propiedad_Id", referencedColumnName = "Id")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Propiedad propiedadId;
+    private Propiedad propiedad;
 
 }

@@ -51,5 +51,9 @@ public class Consulta implements Serializable {
     @JoinColumn(name = "Id_Receptor", referencedColumnName = "Id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Ente receptor;
+    
+    @JoinColumn(name = "Id_Propiedad", referencedColumnName = "Id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Propiedad propiedad;
 
 }
