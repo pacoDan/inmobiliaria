@@ -1,0 +1,50 @@
+header{
+    padding: 5%;
+  background-color: #1E385B;  
+  color: #FFFFFF;
+ 
+}
+
+.divLogo p{
+    color: rgb(253, 253, 253);
+    text-decoration: dashed;
+    text-decoration: underline;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    margin-top: 0.3em;
+}
+
+.text-body-secondary {
+    --bs-text-opacity: 0;
+    color: #FFFFFF var(--bs-secondary-color)!important;
+}
+
+
+
+.link-secondary{
+    color: #FFFFFF; 
+}
+
+.nav-link{
+    color: #FFFFFF; 
+}
+
+footer{
+
+    background-color: #333333;
+    color: #FFFFFF;
+    text-decoration: none;
+
+padding: 1%;
+}
+
+.logo{
+color: #FFFFFF;
+}
+
+.anuncio{
+    color: #333333;
+}
+
+.precio{
+    color: #FFA500;
+}
