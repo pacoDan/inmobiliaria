@@ -5,6 +5,33 @@ header{
  
 }
 
+.iconos-caracts{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1;
+    max-width: 500px;
+}
+
+.iconos-caracts li{
+    display: flex;
+}
+.iconos-caracts li img{
+    margin-right: 2rem;
+}
+
+
+ 
+.material-symbols-outlined {
+ font-size: 2.5em;
+}
+
+.iconos-caracts p{
+    font-size: 1.5em;
+}
+
+
 .btn{
    background-color: #1E385B;
    color: #FFFFFF;
