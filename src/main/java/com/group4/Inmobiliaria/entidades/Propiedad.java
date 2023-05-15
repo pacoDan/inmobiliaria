@@ -54,6 +54,14 @@ public class Propiedad implements Serializable {
     @Basic(optional = false)
     @Column(name = "Caracteristicas")
     private String caracteristicas;
+    
+    @Basic(optional = false)
+    @Column(name = "Propietario")
+    private String propietario;
+    
+    @Basic(optional = false)
+    @Column(name = "Inquilino")
+    private double inquilino;
      
     @Basic(optional = false)
     @Column(name = "Precio_venta")
