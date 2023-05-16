@@ -1,0 +1,153 @@
+.container-anuncios{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.anuncio{
+    flex: 0 0 calc(33.3% - 1rem);
+    border: 1px solid #B5B5B5;
+    background-color: #F5F5F5;
+    margin-bottom: 2rem;
+    color: #333333;
+
+}
+
+
+.anuncio img{
+    width: 100%;
+}
+
+.contenido-anuncio{
+    padding: 1rem;
+}
+
+.precio{
+    color: #FFA500;
+    font-weight: 700;
+}
+
+
+.iconos-caracts{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1;
+    max-width: 500px;
+}
+
+.iconos-caracts li{
+    display: flex;
+}
+.iconos-caracts li img{
+    margin-right: 2rem;
+}
+
+
+ 
+.material-symbols-outlined {
+ font-size: 2.5em;
+}
+
+.iconos-caracts p{
+    font-size: 1.5em;
+}
+
+.banner{
+    
+    background-image: url(../../static/img/banner.jpg);
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+    min-width: 60rem;
+    
+}
+
+.publicaciones{
+    margin: 4%;
+}
+
+.mb-4{
+    margin-bottom: 0!important;
+}
+
+.border-bottom{
+    border-bottom: 0!important;
+}
+
+.search-bar {
+    width: 50%;
+    background-color: #F8F8F8;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 50%;
+    left: 25%;
+    
+ 
+  }
+  
+  .search-bar form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .search-bar input[type="text"] {
+    border: none;
+    background-color: transparent;
+    width: 80%;
+    font-size: 16px;
+    padding: 1.5%;
+    margin-right: 10px;
+  }
+  
+  .search-bar button[type="submit"] {
+    background-color: #1E385B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .search-bar button[type="submit"]:hover {
+    background-color: #2C517F;
+  }
+  
+  .fraseBanner{
+    text-align: center;
+    width: 50%;
+    color: #FFFFFF;
+
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 50%; /* Coloca la parte superior del elemento en el centro vertical del div */
+    left: 50%; /* Coloca la parte izquierda del elemento en el centro horizontal del div */
+    transform: translate(-50%, -50%);
+     }
+
+.ver-todas{
+    float: right;
+}
+
+.botonVerTodo{
+   background-color: #FFA500;
+   border: #FF8C00;
+
+ }
+
+.botonVerTodo:hover{
+    background-color: #FF8C00;
+    border: #FF8C00;
+ 
+}
+
