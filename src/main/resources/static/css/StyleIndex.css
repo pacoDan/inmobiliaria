@@ -15,7 +15,12 @@
 
 
 .anuncio img{
-    width: 100%;
+
+       max-width: 23em;
+       min-width: 23em;
+       min-height: 20em;
+       max-height: 20em;
+
 }
 
 .contenido-anuncio{
@@ -56,7 +61,7 @@
 
 .banner{
     
-    background-image: url(../../static/img/banner.jpg);
+    background-image: url(/img/banner.jpg);
     background-position: center center;
     background-size: cover;
     height: 100vh;
@@ -150,4 +155,5 @@
     border: #FF8C00;
  
 }
+
 
