@@ -5,10 +5,13 @@
  */
 package com.group4.Inmobiliaria.repository;
 
+import com.group4.Inmobiliaria.entidades.Propiedad;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 /**
  *
  * @author PC - Escritorio
  */
-public interface PropiedadRepository {
+public interface PropiedadRepository extends JpaRepository<Propiedad,String> {
     
 }

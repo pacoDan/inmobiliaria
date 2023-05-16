@@ -78,5 +78,5 @@ public class Propiedad implements Serializable {
     @Basic(optional = false)
     @Column(name = "Disponible")
     private boolean disponible;
-        
+
 }
