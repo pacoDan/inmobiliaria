@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,6 +32,21 @@ public class PropiedadService {
         if (propiedad.isPresent()) {
             propiedadRepository.delete(propiedad.get());
         }
+    }
+
+    @Transactional(readOnly = true)
+    public Propiedad encontrarById(Propiedad propiedad){
+        return propiedadRepository.findById(propiedad.getId()).orElse(null);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Propiedad> listarPropiedades(){
+        return propiedadRepository.findAll();
+    }
+
+    @Transactional
+    public void eliminar(Propiedad propiedad){
+        propiedadRepository.delete(propiedad);
     }
 
 }

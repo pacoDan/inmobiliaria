@@ -33,7 +33,7 @@ public class Propiedad implements Serializable {
     @Basic(optional = false)
     @Column(name = "Tipo_propiedad")
     @Enumerated(EnumType.STRING)
-    private TipoPropiedad tipopropiedad;
+    private TipoPropiedad tipoPropiedad;
     
     @Basic(optional = false)
     @Column(name = "Ciudad")
@@ -55,17 +55,17 @@ public class Propiedad implements Serializable {
     @Column(name = "Caracteristicas")
     private String caracteristicas;
     
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "Propietario")
     private String propietario;
     
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "Inquilino")
     private double inquilino;
      
     @Basic(optional = false)
     @Column(name = "Precio_venta")
-    private double precioventa;
+    private double precioVenta;
     
     @Basic(optional = false)
     @Column(name = "Precio_Alquiler")

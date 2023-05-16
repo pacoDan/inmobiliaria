@@ -36,35 +36,45 @@
         <!-- Contenido de la página aquí -->
 
         <div class="cargaPropiedad">
-        <form>
+        <form th:action="@{/guardar}" method="post" th:object="${propiedad}">
+            <input type="hidden" name="id" th:field="*{id}">
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Nombre De La Propiedad</label>
-            <input  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="ciudad" class="form-label">Ciudad</label>
+            <input  class="form-control" id="ciudad" aria-describedby="emailHelp" th:field="*{ciudad}">
           </div>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Direccion</label>
-            <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="provincia" class="form-label">Provincia</label>
+            <input class="form-control" id="provincia" aria-describedby="emailHelp" th:field="*{provincia}">
+          </div>
+            <div class="mb-3">
+                <label for="pais" class="form-label">Pais</label>
+                <input class="form-control" id="pais" aria-describedby="emailHelp" th:field="*{pais}">
+            </div>
+          <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripcion</label>
+            <textarea  class="form-control" id="descripcion" aria-describedby="emailHelp" th:field="*{descripcion}"> </textarea>
+          </div>
+            <div class="mb-3">
+                <label for="caracteristicas" class="form-label">Caracteristicas</label>
+                <textarea  class="form-control" id="caracteristicas" aria-describedby="emailHelp" th:field="*{caracteristicas}"> </textarea>
+            </div>
+          <div class="mb-3">
+            <label for="tipoPropiedad" class="form-label">Tipo De Propiedad</label>
+            <input class="form-control" id="tipoPropiedad" aria-describedby="emailHelp" th:field="*{tipoPropiedad}">
           </div>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Descripcion</label>
-            <textarea  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"> </textarea>
+            <label for="precioVenta" class="form-label">Precio Venta</label>
+            <input type="number" class="form-control" id="precioVenta" aria-describedby="emailHelp" th:field="*{precioVenta}">
           </div>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Ciudad</label>
-            <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="precioAlquiler" class="form-label">Precio Alquiler</label>
+            <input type="number" class="form-control" id="precioAlquiler" aria-describedby="emailHelp" th:field="*{precioAlquiler}">
           </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Tipo De Propiedad</label>
-            <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Precio Venta</label>
-            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Precio Alquiler</label>
-            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          </div>
+            <div class="mb-3">
+                <label for="imagenes" class="form-label">Imagenes</label>
+                <input class="form-control" id="imagenes" aria-describedby="emailHelp" th:field="*{imagenes}">
+            </div>
+
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 

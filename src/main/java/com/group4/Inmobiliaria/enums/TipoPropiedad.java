@@ -10,5 +10,13 @@ package com.group4.Inmobiliaria.enums;
  * @author PC - Escritorio
  */
 public enum TipoPropiedad {
+
+    DEPARTAMENTO,
+
+    CASA,
+
+    MONOAMBIENTE,
+
+    OTRO
     
 }
