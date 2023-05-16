@@ -56,7 +56,7 @@
 
 .banner{
     
-    background-image: url(../imagenes/banner.jpg);
+    background-image: url(../../static/img/banner.jpg);
     background-position: center center;
     background-size: cover;
     height: 100vh;
