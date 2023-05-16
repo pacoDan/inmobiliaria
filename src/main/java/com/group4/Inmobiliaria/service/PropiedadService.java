@@ -15,15 +15,10 @@ public class PropiedadService {
     PropiedadRepository propiedadRepository;
     
     
-    public void editar(String id){
-        Optional<Propiedad> propiedadActual = propiedadRepository.findById(id);
-        if (propiedadActual.isPresent()) {
-           
-            Propiedad nuevaPropiedad = new Propiedad();
-            
-            //nuevaPropiedad.s
-        }
+    public void editar(Propiedad nuevaPropiedad){
+        guardar(nuevaPropiedad);
     }
+    
 
     @Transactional
     public void guardar(Propiedad propiedad){
