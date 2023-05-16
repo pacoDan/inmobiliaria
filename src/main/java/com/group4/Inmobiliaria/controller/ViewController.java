@@ -13,5 +13,8 @@ public class ViewController {
         return "index";
     }
     
-    
+    @GetMapping("/propiedad/carga")
+    public String cargarPropiedad(){
+        return "carga";
+    }
 }
