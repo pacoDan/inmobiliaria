@@ -25,22 +25,28 @@
             <span class="material-symbols-outlined logo"> real_estate_agent </span>  
       </div></a>
         <h2>Registrar</h2>
-        <form th:action="@{/registerInmobiliaria}" method="post" th:object="">
-            <input type="hidden" name="id" th:field="*{id}">
+        <form th:action="@{/registerInmobiliaria}" method="post" th:object="${ente}">
+          <input type="hidden" name="id" th:field="*{id}" th:value="${id}">
           <div class="mb-3">
             <p>Usuario</p>
-            <input  class="form-control" id="email" placeholder="Email" aria-describedby="emailHelp" th:field="*{email}" required>
+            <input  class="form-control" id="email" placeholder="Email" aria-describedby="emailHelp" th:field="*{email}" th:value="${email}" required>
           </div>
           <div class="mb-3">
-            <input  class="form-control" id="contraseña" placeholder="Contraseña" aria-describedby="emailHelp" th:field="*{password}" required>
+            <input  class="form-control" id="contraseña" placeholder="Contraseña" aria-describedby="emailHelp" th:field="*{password}" th:value="${password}" required>
           </div>
 
           <p>Datos</p>
           <div class="mb-3">
-            <input  class="form-control" id="nombre" placeholder="Nombre" aria-describedby="emailHelp" th:field="*{nombre}" required>
+            <input  class="form-control" id="nombre" placeholder="Nombre" aria-describedby="emailHelp" th:field="*{nombre}" th:value="${nombre}" required>
           </div>
           <div class="mb-3">
-            <input type="tel" class="form-control" id="telefono" placeholder="Telefono" aria-describedby="emailHelp" th:field="*{telefono}" required>
+            <input  class="form-control" id="apellido" placeholder="Apellido" aria-describedby="emailHelp" th:field="*{apellido}" th:value="${apellido}" required>
+          </div>
+          <div class="mb-3">
+            <input type="number" class="form-control" id="dni" placeholder="DNI" aria-describedby="emailHelp" th:field="*{dni}" th:value="${dni}" required>
+          </div>
+          <div class="mb-3">
+            <input type="tel" class="form-control" id="telefono" placeholder="Telefono" aria-describedby="emailHelp" th:field="*{telefono}" th:value="${telefono}" required>
           </div>
 
           <button type="submit" class="btn btn-primary">Registrarse</button>
