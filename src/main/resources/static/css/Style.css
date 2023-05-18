@@ -86,11 +86,7 @@ padding: 1%;
 color: #FFFFFF;
 }
 
-
-
-
-
-
-
-
-
+.my-4 {
+    margin-top: 1.5rem!important;
+    margin-bottom: 0rem!important; 
+}

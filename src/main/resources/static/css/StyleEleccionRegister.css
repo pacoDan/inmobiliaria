@@ -1,0 +1,42 @@
+main{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+}
+
+p{
+    margin-bottom: 2%;
+}
+
+.contenedorEleccion{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.tarjetas{
+
+border: 1px dotted black;
+width: 180px;
+height: 180px;
+background-color: #f1f1f1;
+border-radius: 10px;
+margin-bottom: 20px;
+transition: transform 0.3s;
+
+
+}
+
+.tarjetas:hover {
+    transform: scale(1.1);
+  }
+
+.opcion{
+color:black;
+ }
+    
+    
+    
