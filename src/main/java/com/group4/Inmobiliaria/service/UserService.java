@@ -4,7 +4,6 @@ import com.group4.Inmobiliaria.entidades.Cliente;
 import com.group4.Inmobiliaria.entidades.Ente;
 import com.group4.Inmobiliaria.entidades.UserEntity;
 import com.group4.Inmobiliaria.enums.Rol;
-import com.group4.Inmobiliaria.enums.TipoCliente;
 import com.group4.Inmobiliaria.repository.ClienteRepository;
 import com.group4.Inmobiliaria.repository.EnteRepository;
 import java.util.ArrayList;
@@ -21,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+@Service
 public class UserService implements UserDetailsService {
 
     @Autowired

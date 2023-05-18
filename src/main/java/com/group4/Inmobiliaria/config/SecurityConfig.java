@@ -17,7 +17,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     UserService userService;
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService)
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
@@ -26,24 +26,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("").hasRole("ADMIN")
-                    .antMatchers("").permitAll()
+                .antMatchers("").hasRole("ADMIN")
+                .antMatchers("").permitAll()
                 .and().formLogin()
-                    .loginPage("/login")
-                    .loginProcessingUrl("/logincheck")
-                    .usernameParameter("email")
-                    .passwordParameter("password")
-                    .defaultSuccessUrl("/")
-                    .permitAll()
+                .loginPage("/login")
+                .loginProcessingUrl("/logincheck")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/")
+                .permitAll()
                 .and().logout()
-                    .logoutUrl("/logout")
-                    .logoutSuccessUrl("/")
-                    .permitAll()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .permitAll()
                 .and().csrf()
-                    .disable();
-
+                .disable();
 
     }
-
 
 }
