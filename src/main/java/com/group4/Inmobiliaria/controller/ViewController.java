@@ -72,17 +72,17 @@ public class ViewController {
         return "registerPropietario";
     }
 
-     @GetMapping("/registrar/inmobiliaria")
+    @GetMapping("/registrar/inmobiliaria")
     public String registrarInmobiliaria(Model model){
         return "registerInmobiliaria";
     }
 
-     @GetMapping("/registrar/comprador")
+    @GetMapping("/registrar/comprador")
     public String registrarComprador(Model model){
         return "registerComprador";
     }
 
-     @GetMapping("/registrar/inquilino")
+    @GetMapping("/registrar/inquilino")
     public String registrarInquilino(Model model){
         return "registerInquilino";
     }
