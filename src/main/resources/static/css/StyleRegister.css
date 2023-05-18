@@ -1,0 +1,36 @@
+
+
+h2{
+    text-align: center;
+}
+
+.formularioRegister{
+    width: 25%;
+    margin:7.5% auto auto auto;
+
+    border-radius: 5%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: #333333  ;
+    text-align: center;
+    padding: 2%;
+box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+form{
+margin: auto;
+}
+
+.logo{
+   margin: auto;
+}
+
+.nav-link{
+    width: 15%;
+    margin: auto;
+}
+
+    
+    
+    
