@@ -87,4 +87,9 @@ public class ViewController {
     public String registrarInquilino(Model model){
         return "registerInquilino";
     }
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
 }
