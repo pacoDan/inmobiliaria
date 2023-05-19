@@ -2,6 +2,7 @@ package com.group4.Inmobiliaria.controller;
 
 
 import com.group4.Inmobiliaria.entidades.Propiedad;
+import com.group4.Inmobiliaria.entidades.UserEntity;
 import com.group4.Inmobiliaria.service.PropiedadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import javax.servlet.http.HttpSession;
 
 
 @Controller
@@ -19,9 +21,13 @@ public class ViewController {
     PropiedadService propiedadService;
     
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, HttpSession session){
         List<Propiedad> propiedades = propiedadService.listarPropiedades();
         model.addAttribute("propiedades", propiedades);
+                
+        UserEntity user = (UserEntity) session.getAttribute("UserSession");
+        System.out.println(user);
+        
         return "index";
     }
     
@@ -36,14 +42,14 @@ public class ViewController {
         return "redirect:/";
     }
 
-    @GetMapping("/editar/{id}")
+    @GetMapping("/editar")
     public String editar(Propiedad propiedad, Model model){
         propiedad =propiedadService.encontrarById(propiedad);
         model.addAttribute("propiedad", propiedad);
         return "carga";
     }
 
-    @GetMapping("/eliminar/{id}")
+    @GetMapping("/eliminar")
     public String eliminar(Propiedad propiedad){
         propiedadService.eliminar(propiedad);
         return "redirect:/";
