@@ -24,28 +24,28 @@
             <span class="material-symbols-outlined logo"> real_estate_agent </span>  
       </div></a>
         <h2>Registrar</h2>
-        <form th:action="@{/registerPropietario}" method="post" th:object="${ente}">
-          <input type="hidden" name="id" th:field="*{id}" th:value="${id}">
+        <form th:action="@{/guardar/ente}" method="post" th:object="${ente}">
+          <input type="hidden" name="id" th:field="*{id}">
+          <input type="hidden" name="tipoEnte" th:field="*{tipoEnte}">
+
           <div class="mb-3">
             <p>Usuario</p>
-            <input  class="form-control" name="email" id="email" placeholder="Email" aria-describedby="emailHelp" th:field="*{email}" th:value="${email}" required>
+            <input  class="form-control" name="email" id="email" placeholder="Email" aria-describedby="emailHelp" th:field="*{email}" required>
           </div>
           <div class="mb-3">
-            <input  class="form-control" name="password" id="contraseña" placeholder="Contraseña" aria-describedby="emailHelp" th:field="*{password}" th:value="${password}" required>
+            <input  class="form-control" type="password" name="password" id="contraseña" placeholder="Contraseña" aria-describedby="emailHelp" th:field="*{password}" required>
           </div>
 
           <p>Datos</p>
           <div class="mb-3">
-            <input  class="form-control" name="nombre" id="nombre" placeholder="Nombre" aria-describedby="emailHelp" th:field="*{nombre}" th:value="${nombre}" required>
+            <input  class="form-control" name="nombre" id="nombre" placeholder="Nombre" aria-describedby="emailHelp" th:field="*{nombre}" required>
           </div>
           <div class="mb-3">
-            <input  class="form-control" name="apellido" id="apellido" placeholder="Apellido" aria-describedby="emailHelp" th:field="*{apellido}" th:value="${apellido}" required>
+            <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="Telefono" aria-describedby="emailHelp" th:field="*{telefono}" required>
           </div>
+
           <div class="mb-3">
-            <input type="number" class="form-control" name="dni" id="dni" placeholder="DNI" aria-describedby="emailHelp" th:field="*{dni}" th:value="${dni}" required>
-          </div>
-          <div class="mb-3">
-            <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="Telefono" aria-describedby="emailHelp" th:field="*{telefono}" th:value="${telefono}" required>
+            <input  class="form-control" name="imagenPerfil" id="imagenPerfil" placeholder="imagen de perfil" aria-describedby="emailHelp" th:field="*{imagenPerfil}" required>
           </div>
 
           <button type="submit" class="btn btn-primary">Registrarse</button>

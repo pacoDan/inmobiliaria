@@ -46,6 +46,6 @@ public class Ente extends UserEntity implements Serializable {
     @Basic(optional = false)
     @Column(name = "Tipo_Ente")
     @Enumerated(EnumType.STRING)
-    private TipoEnte tipoCliente;        
+    private TipoEnte tipoEnte;
     
 }
