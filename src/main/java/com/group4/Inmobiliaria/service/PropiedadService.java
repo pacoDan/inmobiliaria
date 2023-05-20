@@ -35,18 +35,13 @@ public class PropiedadService {
     }
 
     @Transactional(readOnly = true)
-    public Propiedad encontrarById(Propiedad propiedad){
-        return propiedadRepository.findById(propiedad.getId()).orElse(null);
+    public Propiedad encontrarById(String id){
+        return propiedadRepository.findById(id).orElse(null);
     }
 
     @Transactional(readOnly = true)
     public List<Propiedad> listarPropiedades(){
         return propiedadRepository.findAll();
     }
-
-    @Transactional
-    public void eliminar(Propiedad propiedad){
-        propiedadRepository.delete(propiedad);
-    }
-
+    
 }
