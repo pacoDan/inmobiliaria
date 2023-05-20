@@ -35,7 +35,7 @@ public class PropiedadController {
         return "carga";
     }
 
-    @GetMapping("/eliminar/")
+    @GetMapping("/eliminar/{id}")
     public String eliminar(Propiedad propiedad) {
         propiedadService.eliminar(propiedad);
         return "redirect:/";
