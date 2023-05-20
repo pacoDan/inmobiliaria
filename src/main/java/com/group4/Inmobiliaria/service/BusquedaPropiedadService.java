@@ -28,4 +28,9 @@ public class BusquedaPropiedadService {
 	public void imprimirContenidoDeBuscador() {
 		System.out.println("imprimirContenidoDeBuscador()");
 	}
+
+    public List<Propiedad> buscarPropiedades(String tipoPropiedad, String query) {
+        //TODO: luego implementar la busqueda
+        return repo.obtenerTodas();
+    }
 }

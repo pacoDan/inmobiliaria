@@ -7,10 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -26,7 +28,7 @@ public class BusquedaPropiedadController {
         return "index";
     }
 
-//    @PostMapping("/buscar")
+    //    @PostMapping("/buscar")
 //    public ResponseEntity<?> buscar(@RequestParam("query") String query) {
 //        // Procesa la búsqueda y devuelve una respuesta adecuada
 //        System.out.println("Valor de búsqueda: " + query);
@@ -35,14 +37,31 @@ public class BusquedaPropiedadController {
 //        // Devuelve una respuesta adecuada según tus necesidades
 //        return ResponseEntity.ok().build();
 //    }
+//    @PostMapping("/buscar")
+//    public String buscar(@RequestParam("query") String query, Model model ) {
+//        // Procesa la búsqueda y realiza la lógica necesaria
+//    	System.out.println("/BUSCAR!!!!!");
+//        System.out.println("Valor de búsqueda: " + query);
+//        // Otra lógica de procesamiento de búsqueda
+//
+//        // Redirige de vuelta al index.html
+//        return "redirect:/";
+//    }
     @PostMapping("/buscar")
-    public String buscar(@RequestParam("query") String query, Model model ) {
-        // Procesa la búsqueda y realiza la lógica necesaria
-    	System.out.println("/BUSCAR!!!!!");
-        System.out.println("Valor de búsqueda: " + query);
-        // Otra lógica de procesamiento de búsqueda
-        
-        // Redirige de vuelta al index.html
-        return "redirect:/";
+    public String buscar(@RequestParam(value = "tipoPropiedad", required = false) String tipoPropiedad,
+                         @RequestParam("query") String query,
+                         Model model) {
+        // Procesa la búsqueda con los criterios seleccionados
+        List<Propiedad> propiedades = propiedadService.buscarPropiedades(tipoPropiedad, query);
+
+        List<String> tiposPropiedad = Arrays.asList("Casa", "Departamento", "Terreno", "Local comercial");
+        model.addAttribute("propiedades", propiedades);
+        model.addAttribute("tiposPropiedad", tiposPropiedad);
+        model.addAttribute("query", query);
+        model.addAttribute("tipoPropiedad", tipoPropiedad);
+
+        return "index";
     }
+
+
 }
