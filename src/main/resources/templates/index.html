@@ -48,16 +48,17 @@
 <!--                  <input type="text" placeholder="Buscar...">-->
 <!--                  <button type="submit"><i class="fas fa-search"></i>Buscar</button>-->
 <!--                </form>-->
-<!--				<form th:action="@{/buscar}" method="GET">-->
-<!--				  <input type="text" name="query" placeholder="Buscar...">-->
+<!--				<form id="searchForm">-->
+<!--				  <input type="text" id="searchQuery" placeholder="Buscar...">-->
 <!--				  <button type="submit"><i class="fas fa-search"></i>Buscar</button>-->
 <!--				</form>-->
-				<form id="searchForm">
-				  <input type="text" id="searchQuery" placeholder="Buscar...">
-				  <button type="submit"><i class="fas fa-search"></i>Buscar</button>
+				<form id="searchForm" action="/buscar" method="POST">
+				    <input type="text" name="query" id="searchQuery" placeholder="Buscar...">
+				    <button type="submit">Buscar</button>
 				</form>
+				
 				<script th:inline="javascript">
-				    $(document).ready(function() {
+				   /* $(document).ready(function() {
 				        $("#searchForm").submit(function(e) {
 				            e.preventDefault(); // Evita el envío del formulario por defecto
 				            var query = $("#searchQuery").val(); // Obtiene el valor del campo de búsqueda
@@ -77,8 +78,32 @@
 				                }
 				            });
 				        });
+				    });*/
+				    $(document).ready(function() {
+				        $("#searchForm").submit(function(e) {
+				            e.preventDefault();
+
+				            var query = $("#searchQuery").val();
+
+				            $.ajax({
+				                type: "POST",
+				                url: "/buscar",
+				                data: { query: query },
+				                success: function(response) {
+				                    // Maneja la respuesta del servidor
+				                    console.log("Respuesta del servidor:", response);
+				                    // Realiza cualquier acción necesaria después de la redirección
+				                },
+				                error: function(xhr, status, error) {
+				                    // Maneja el error en la solicitud AJAX
+				                    console.error("Error en la solicitud AJAX:", error);
+				                }
+				            });
+				        });
 				    });
+
 				</script>
+				
               </div>
           </div>
 

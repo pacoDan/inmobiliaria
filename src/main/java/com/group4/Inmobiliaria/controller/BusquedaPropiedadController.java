@@ -36,8 +36,9 @@ public class BusquedaPropiedadController {
 //        return ResponseEntity.ok().build();
 //    }
     @PostMapping("/buscar")
-    public String buscar(@RequestParam("query") String query) {
+    public String buscar(@RequestParam("query") String query, Model model ) {
         // Procesa la búsqueda y realiza la lógica necesaria
+    	System.out.println("/BUSCAR!!!!!");
         System.out.println("Valor de búsqueda: " + query);
         // Otra lógica de procesamiento de búsqueda
         
