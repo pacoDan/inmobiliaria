@@ -25,7 +25,7 @@
         
               <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li><a th:href="@{/}" class="nav-link px-2 link-secondary">Inicio</a></li>
-                <li><a th:href="@{/propiedades}" class="nav-link px-2">Propiedades</a></li>
+                <li><a th:href="@{/propiedad/all}" class="nav-link px-2">Propiedades</a></li>
                 <li><a href="#" class="nav-link px-2">Blog</a></li>
 
                   <li><a th:href="@{/nosotros}" class="nav-link px-2">Contacto</a></li>
@@ -33,7 +33,7 @@
         
               <div class="col-md-3 text-end">
                 <button type="button" class="btn btn-outline-primary me-2"><a th:href="@{/registro}">Registrar</a></button>
-                <button type="button" class="btn btn-primary">Iniciar Sesion</button>
+                <button type="button" class="btn btn-primary"><a th:href="@{/login}">Iniciar Sesion</a></button>
 
               </div>
             </header>
@@ -82,18 +82,18 @@
                                 <p>4</p>
                             </li>
                         </ul>
-                        <button type="button" href="/" class="btn btn-outline-primary">Ver Propiedades</button>
+                        <button type="button" href="/" class="btn btn-outline-primary">Ver Propiedad</button>
 
                         <!-- Estos botones solo deberian estar disponibles si la persona logeada es la propietaria -->
-                        <a type="button"  th:href="@{/editar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Editar"></a>
-                        <a type="button"  th:href="@{/eliminar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Eliminar"></a>
+                        <a type="button"  th:href="@{propiedad/editar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Editar"></a>
+                        <a type="button"  th:href="@{propiedad/eliminar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Eliminar"></a>
                     </div>
                 </div>
             </div>
 
 
             <div class="ver-todas">
-                <a th:href="@{/propiedades}"><button type="button" class="botonVerTodo btn btn-outline-primary ">Ver Todas</button>
+                <a th:href="@{/propiedad/all}"><button type="button" class="botonVerTodo btn btn-outline-primary ">Ver Todas</button>
                 </a>
                 </div>
         </div>
@@ -110,7 +110,7 @@
             
                 <ul class="nav col-md-4 justify-content-end">
                   <li class="nav-item"><a th:href="@{/}" class="nav-link px-2 text-body-secondary">Inicio</a></li>
-                  <li class="nav-item"><a th:href="@{/propiedades}" class="nav-link px-2 text-body-secondary">Propiedades</a></li>
+                  <li class="nav-item"><a th:href="@{/propiedad/all}" class="nav-link px-2 text-body-secondary">Propiedades</a></li>
                   <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Blog</a></li>
                   <li class="nav-item"><a th:href="@{/nosotros}" class="nav-link px-2 text-body-secondary">Contacto</a></li>
                 </ul>
