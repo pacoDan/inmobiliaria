@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #EAEBEF;
+    background: red;
+}
+body{
+    background: #EAEBEF;
+}
+
+asside .nav__vent{
+    width: 20%; /*Ancho de nav*/
+    overflow: hidden;
+}
+/*Esto afecta al nav*/
+.nav__link{
+    color: red; /*color de letras del nav*/
+    display: block;
+    padding: 15px 0;
+    text-decoration: none;
+
+}
+/*para que al desplegar el menu de cada uno no este tanseparado de la linea desplegable*/
+.nav__link--inside{
+    border-radius: 6px ;
+    padding-left: 20px;
+    text-align: left;
+}
+/*le da color al menu desplegable, como una caja ej amarrilla, depende el color elegido*/
+.nav__link--inside:hover{
+    background: #F6F8FA;
+}
+/*Es el box de la lista*/
+.list{
+    width: 100%; /*indica que debe ocupar el todo el espacio a la izquierda, esta encerrado en el nav 20%*/
+    height: 100vh;/*Ocupe el ancho de la pantalla visible*/
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: #fff; /*Color de fondo*/
+    overflow: hidden;
+    /*overflow-y: scroll;*/
+    borde-rigth: 15px solid #fff;
+}
+/*ocultar scroll
+.menu.side{/*nave__vent
+    displey:none;
+}
+
+*/
+
+/* evita que se sobre ponga cuando se despliega el menu desplegable*/
+.list__item{
+    list-style: none;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+/*no hace nada relevante, solo el cursor*/
+.list__item--click{
+    cursor: pointer;
+}
+/*Para que los iconos esten al lado de la palabra, y no uno arriba de otrocon fila*/
+.list__button{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    width: 70%;
+    margin: 0 auto;
+}
+/*Cuando se haga click soble delplegar la lista el icono> rote 90 grados*/
+.arrow .list__arrow{
+    transform: rotate(90deg);
+}
+/*No hace algo muy importantes*/
+.list__arrow{
+    margin-left: auto;
+    transition: transform .3s;
+}
+/* Oculta el contenido del menu deplegable, sin esto empieza mostrado el menu, y despues al hacer click en los iconos, oculta el menu*/
+.list__show{
+    width: 80%;
+    margin-left: auto;
+    border-left: 2px solid #303440;
+    list-style: none;
+    transition: height .4s;
+    height: 0;
+}
+.element{
+    display: none;
+}
+main{
+    padding: 10px;
+}
+
+.wrapper{
+    display: grid;
+     grid-template-columns:20% 80%;
+}

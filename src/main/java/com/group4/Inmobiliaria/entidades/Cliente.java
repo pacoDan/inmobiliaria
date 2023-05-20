@@ -1,6 +1,7 @@
 package com.group4.Inmobiliaria.entidades;
 
 import com.group4.Inmobiliaria.enums.Rol;
+import com.group4.Inmobiliaria.enums.TipoCliente;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -22,7 +23,7 @@ import org.hibernate.annotations.GenericGenerator;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Cliente implements Serializable {
+public class Cliente extends UserEntity implements Serializable {
 
     @Id
     @GeneratedValue(generator="system-uuid")
@@ -40,30 +41,19 @@ public class Cliente implements Serializable {
     
     @Basic(optional = false)
     @Column(name = "DNI")
-    private String dni;
-    
-    @Basic(optional = false)
-    @Column(name = "Email")
-    private String email;
+    private String dni;  
     
     @Basic(optional = false)
     @Column(name = "Telefono")
     private String telefono;
     
     @Basic(optional = false)
-    @Column(name = "Password")
-    private String password;
-    
-    @Basic(optional = false)
     @Column(name = "Imagen_Perfil")
     private String imagenPerfil;
     
     @Basic(optional = false)
-    @Column(name = "Rol")
+    @Column(name = "Tipo_Cliente")
     @Enumerated(EnumType.STRING)
-    private Rol rol;
+    private TipoCliente tipoCliente;
     
-   
-
-
 }
