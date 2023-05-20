@@ -7,7 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class InmobiliariaApplication implements CommandLineRunner {
+public class InmobiliariaApplication {//implements CommandLineRunner {
     @Autowired
     private BusquedaPropiedadController myController;
     public static void main(String[] args) {
@@ -16,9 +16,9 @@ public class InmobiliariaApplication implements CommandLineRunner {
         System.out.println("2Holassss----------------------------------------------------------------------------");
     }
 
-    @Override
-    public void run(String... args) {
-        myController.someMethod();
-    }
+//    @Override
+//    public void run(String... args) {
+//        myController.someMethod();
+//    }
 
 }
