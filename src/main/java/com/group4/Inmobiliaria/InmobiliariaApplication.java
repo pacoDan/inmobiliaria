@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class InmobiliariaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(InmobiliariaApplication.class, args);
+        SpringApplication.run(InmobiliariaApplication.class, args);                
     }
 
 }

@@ -6,9 +6,9 @@ import com.group4.Inmobiliaria.entidades.UserEntity;
 import com.group4.Inmobiliaria.enums.Rol;
 import com.group4.Inmobiliaria.repository.ClienteRepository;
 import com.group4.Inmobiliaria.repository.EnteRepository;
+import com.group4.Inmobiliaria.utils.Session;
 import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,8 +19,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -66,13 +64,11 @@ public class UserService implements UserDetailsService {
         return null;
     }
 
-    private User securitySession(UserEntity user) {
+    private User user(UserEntity user) {
         List<GrantedAuthority> permisos = new ArrayList();
         GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + user.getRol());
         permisos.add(p);
-        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-        HttpSession session = attr.getRequest().getSession(true);
-        session.setAttribute("UserSession", user);
+        Session.setUserSession(user);
         return new User(user.getEmail(), user.getPassword(), permisos);
     }
 
@@ -85,12 +81,12 @@ public class UserService implements UserDetailsService {
 
             if (userEntity instanceof Ente) {
                 Ente ente = (Ente) userEntity;
-                return securitySession(ente);
+                return user(ente);
             }
 
             if (userEntity instanceof Cliente) {
                 Cliente cliente = (Cliente) userEntity;
-                return securitySession(cliente);
+                return user(cliente);
             }
         }
         return null;
