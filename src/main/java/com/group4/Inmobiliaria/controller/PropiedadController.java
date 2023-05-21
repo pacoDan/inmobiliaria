@@ -1,9 +1,14 @@
 package com.group4.Inmobiliaria.controller;
 
 import com.group4.Inmobiliaria.entidades.Propiedad;
+import com.group4.Inmobiliaria.entidades.UserEntity;
 import com.group4.Inmobiliaria.service.PropiedadService;
 import java.util.List;
+
+import com.group4.Inmobiliaria.utils.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +26,12 @@ public class PropiedadController {
     
     
     @GetMapping("/carga")
-    public String cargarPropiedad(Propiedad propiedad) {
+    public String cargarPropiedad(Propiedad propiedad, Model model) {
+
+        String user = ((UserEntity)Session.getUserSession()).getEmail();
+
+        propiedad.setPropietario(user);
+        model.addAttribute("propiedad", propiedad);
         return "carga";
     }
       
