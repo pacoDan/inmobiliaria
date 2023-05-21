@@ -22,7 +22,7 @@ asside .nav__vent{
 }
 /*Esto afecta al nav*/
 .nav__link{
-    color: red; /*color de letras del nav*/
+    color: black; /*color de letras del nav*/
     display: block;
     padding: 15px 0;
     text-decoration: none;
