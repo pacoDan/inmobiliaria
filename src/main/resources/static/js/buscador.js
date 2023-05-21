@@ -1,3 +1,21 @@
+function mostrarElements() {
+  // Ocultar todos los botones y títulos del wrapper
+  var contenidos = document.getElementById('wrapper');
+  contenidos.style.display = 'none';
+  
+  // Mostrar el contenido deseado
+  var contenidoMostrado = document.getElementsByClassName('query__elements');
+  for (var i = 0; i < contenidoMostrado.length; i++) {
+    contenidoMostrado[i].style.display = 'block';
+  }
+}
+
+//Alerta
+//document.getElementById("myButton").addEventListener("click", function() {
+//  alert("¡Hola!");
+//});
+
+
 //				    $(document).ready(function() {
 //				        $("#searchForm").submit(function(e) {
 //				            e.preventDefault();

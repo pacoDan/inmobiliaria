@@ -48,8 +48,6 @@ color:#FFFFFF;
     border: 2px solid  #2C517F;
 }
 
-
-
 .divLogo p{
     color: rgb(253, 253, 253);
     text-decoration: dashed;
@@ -62,10 +60,44 @@ color:#FFFFFF;
     --bs-text-opacity: 0;
     color: #FFFFFF var(--bs-secondary-color)!important;
 }
+/*Prueba para el query*/
+.centrar-texto{
+    text-align: center;
+}
+#wrapper{
+    display: box;
+}
+.wrapper__cont{
+    padding: 2.5rem;
+    width: 100%;
+    height: 9rem;
+    display: flex;
+    justify-content: space-between;
+}
 
+.opcionesDisp{
+    border-radius: 1rem;
+    background: #1E385B;
+    display: flex;
+    height: 4.5rem;
+    justify-content: center;
+    width: 12rem;
+    align-items: center;
+}
+p{
+   color:white; 
+   text-align: center;
+   font-size: 1.5rem;
+}
 
+.query__elements{
+    
+    display: none;
+}
 
-.link-secondary{
+/*Prueba para el query*/
+
+.link-secundary{
     color: #FFFFFF; 
 }
 
