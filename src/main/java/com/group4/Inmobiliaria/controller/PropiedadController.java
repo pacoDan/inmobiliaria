@@ -1,7 +1,7 @@
 package com.group4.Inmobiliaria.controller;
 
 import com.group4.Inmobiliaria.entidades.Propiedad;
-import com.group4.Inmobiliaria.entidades.UserEntity;
+import com.group4.Inmobiliaria.entidades.Usuario;
 import com.group4.Inmobiliaria.service.PropiedadService;
 import java.util.List;
 
@@ -20,26 +20,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/propiedad")
 @Controller
 public class PropiedadController {
-    
+
     @Autowired
     PropiedadService propiedadService;
-    
-    
+
     @GetMapping("/carga")
     public String cargarPropiedad(Propiedad propiedad, Model model) {
 
-        String user = ((UserEntity)Session.getUserSession()).getEmail();
+        Usuario propietario = ((Usuario) Session.getUserSession());
 
-        propiedad.setPropietario(user);
+        propiedad.setPropietario(propietario);
+
         model.addAttribute("propiedad", propiedad);
         return "carga";
     }
-      
+
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute Propiedad propiedad) {
         propiedadService.guardar(propiedad);
         return "redirect:/";
-    }    
+    }
 
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable("id") String id, Model model) {

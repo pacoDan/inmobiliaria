@@ -21,22 +21,11 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class Ente extends UserEntity implements Serializable {
-    
-    @Basic(optional = false)
-    @Column(name = "Nombre")
-    private String nombre;       
-    
-    @Basic(optional = false)
-    @Column(name = "Telefono")
-    private String telefono;       
-    
-    @Column(name = "Imagen_Perfil")
-    private String imagenPerfil;
-    
+public class Ente extends Usuario implements Serializable {
+
     @Basic(optional = false)
     @Column(name = "Tipo_Ente")
     @Enumerated(EnumType.STRING)
     private TipoEnte tipoEnte;
-    
+
 }

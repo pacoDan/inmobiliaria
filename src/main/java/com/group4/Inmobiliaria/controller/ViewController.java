@@ -1,5 +1,7 @@
 package com.group4.Inmobiliaria.controller;
 
+import com.group4.Inmobiliaria.entidades.Cliente;
+import com.group4.Inmobiliaria.entidades.Ente;
 import com.group4.Inmobiliaria.entidades.Propiedad;
 import com.group4.Inmobiliaria.service.PropiedadService;
 import com.group4.Inmobiliaria.utils.Session;
