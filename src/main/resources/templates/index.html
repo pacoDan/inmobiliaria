@@ -65,8 +65,8 @@
                         <button type="button" href="/" class="btn btn-outline-primary">Ver Propiedad</button>
 
                         <!-- Estos botones solo deberian estar disponibles si la persona logeada es la propietaria -->
-                        <a th:if="${#authentication.name == propiedad.propietario}" type="button"  th:href="@{propiedad/editar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Editar"></a>
-                        <a th:if="${#authentication.name == propiedad.propietario}" type="button"  th:href="@{propiedad/eliminar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Eliminar"></a>
+                        <a th:if="${#authentication.name == propiedad.propietario.email}" type="button"  th:href="@{propiedad/editar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Editar"></a>
+                        <a th:if="${#authentication.name == propiedad.propietario.email}" type="button"  th:href="@{propiedad/eliminar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Eliminar"></a>
                     </div>
                 </div>
             </div>
