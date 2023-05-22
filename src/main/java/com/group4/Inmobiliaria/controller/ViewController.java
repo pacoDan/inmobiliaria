@@ -49,7 +49,7 @@ public class ViewController {
     public String admin(Model model) {
         List<Usuario> usuarios = usuarioService.getAllUsers();
         
-        model.addAttribute("Usuarios", usuarios);
+        model.addAttribute("usuarios", usuarios);
         
         return "administrador";
     }
