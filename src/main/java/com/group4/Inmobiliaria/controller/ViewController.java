@@ -27,6 +27,8 @@ public class ViewController {
         
         Usuario logged = Session.getUserSession();
         
+        System.out.println(logged);
+        
         if (logged != null && logged.getRol().toString().equals("ADMIN")) {
             return "redirect:/admin";
         }
