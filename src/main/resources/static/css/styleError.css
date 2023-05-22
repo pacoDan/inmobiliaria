@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background:#ede1d5;
+}
+.cont{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.text__princ{
+    color: #1e385b;
+    font-size: 15rem;
+    text-align: center;
+}
+.sub-text__princ{
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 3rem;
+    
+}
+button{
+    cursor: pointer;
+    border: none;
+    height: 4rem;
+    width: 25rem;
+    border-radius: 1rem;
+    background: #1e385b;
+}
+p{
+    color:#ede1d5;
+    font-size: 2rem;
+}
+a{
+    text-decoration: none;
+}
