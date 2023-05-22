@@ -1,0 +1,62 @@
+
+/*Estilos para inquilino*/
+
+#element__reclamo{
+    padding: 23px;
+}
+
+#from__formReclamo{
+    box-shadow: 0 0 20px rgb(0,0,0,0.2);
+    border-radius: 20px;
+    text-align: center;
+    width:500px;
+   /* background: pink; color para el fondo del formulario elegir otro*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    margin: auto;
+}
+
+.input__group{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+     /*largo del formulario*/
+    
+}
+#h2__formReclamo{
+    color:black;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+    
+}
+input, textarea, select, select:focus{
+    padding: 20px 25px;
+    border-radius:25px;
+    margin-bottom:20px;
+    background-color: #ede1d5;
+    border: none;
+    color: black;
+    outline: none;
+    
+}
+.btn__reclamo{
+    font-size:20px;
+    color: #fff;
+    border:0;
+    border-radius:25px;
+    background-color: #1e385b;
+    cursor:pointer;
+}
+
+
+/*Fin estilos para inquilino*/
+
+/*Estilos para vendedor*/
+/*Estilos para vendedor*/
+
+/*Estilos para administrador*/
+/*Fin estilos para administrador*/

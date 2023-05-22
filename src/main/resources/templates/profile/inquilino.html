@@ -11,6 +11,7 @@
     <link rel="stylesheet" th:href="@{/css/StyleIndex.css}">
 
     <link rel="stylesheet" th:href="@{/css/styleSeller.css}">
+    <link rel="stylesheet" th:href="@{/css/styleProfile.css}">
 
 </head>
 
@@ -42,7 +43,6 @@
         <aside>  
           <nav id="nav__Vent"> 
             <ul class="list">
-
                 <li class="list__item">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-calendar-days" style="color: #1e385b;"></i>
@@ -60,46 +60,23 @@
                         </li>
                     </ul>
                 </li>
-
                 <li class="list__item">
                     <div class="list__button">
                         <i class="fa-solid fa-house-chimney" style="color: #1e385b;"></i>
-                        <a href="#" class="nav__link" onclick="mostrarContMenu('propiedades')">Propiedades</a>
+                        <a href="#" class="nav__link" onclick="mostrarContMenu('reclamo')">Generar reclamo</a>
                     </div>
                 </li>
-                <li class="list__item">
-                    <div class="list__button">
-                        <i class="fa-solid fa-user-group" style="color: #1e385b;"></i>
-                        <a href="#" class="nav__link" onclick="mostrarContMenu('inquilinos')">Mis inquilinos</a>
-                    </div>
-                </li>
-
                 <li class="list__item list__item--click">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-gear list__img" style="color: #1e385b;"></i>                       
-                        <a href="#" class="nav__link" onclick="mostrarContMenu('configuracion')">Configuraci&oacute;n</a>
-                        <i class="fa-solid fa-greater-than list__arrow" style="color: #1e385b;"></i>
+                        <a href="#" class="nav__link" onclick="mostrarContMenu('facturacion')">Facturacion</a>
                     </div>
-
-                    <ul class="list__show">
-                        <li class="list__inside">
-                            <a href="#" class="nav__link nav__link--inside" onclick="mostrarContMenu('confDatos')">Mis datos</a>
-                        </li>
-
-                        <li class="list__inside">
-                            <a href="#" class="nav__link nav__link--inside" onclick="mostrarContMenu('confHorarios')">Mis horarios</a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
           </nav>
         </aside>
 
         <main>  <!-- class="list__elemet list__item--click" >-->
-            <div class="element" id="element__confirmadas">
-                <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet massa vitae magna scelerisque luctus eu ac odio. In ac nunc in augue dignissim mattis. Vestibulum feugiat, purus eu euismod pharetra, erat enim imperdiet dolor, vitae consectetur leo diam in arcu. Nunc vel nisi diam. Vestibulum sagittis est vel turpis luctus, vitae porttitor ligula bibendum. Phasellus sit amet consectetur sem. Cras consectetur, nisi vitae sagittis pharetra, mauris orci pharetra elit, a auctor elit lorem ut tellus. Integer venenatis dictum condimentum. Ut fermentum diam vel convallis viverra. Sed sit amet nisi lacus. Phasellus gravida justo a risus pellentesque, quis aliquet lorem ornare. Mauris est sem, malesuada ut consequat ut, facilisis vitae neque. Morbi rhoncus quam non consectetur varius. In hac habitasse platea dictumst. Phasellus non nulla eleifend, gravida metus ultricies, eleifend augue. Fusce pulvinar mi at purus aliquam, vel efficitur mi hendrerit.</p>
-            </div>
             <div class="element" id="element__porConfirmar">
                 <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet massa vitae magna scelerisque luctus eu ac odio. In ac nunc in augue dignissim mattis. Vestibulum feugiat, purus eu euismod pharetra, erat enim imperdiet dolor, vitae consectetur leo diam in arcu. Nunc vel nisi diam. Vestibulum sagittis est vel turpis luctus, vitae porttitor ligula bibendum. Phasellus sit amet consectetur sem. Cras consectetur, nisi vitae sagittis pharetra, mauris orci pharetra elit, a auctor elit lorem ut tellus. Integer venenatis dictum condimentum. Ut fermentum diam vel convallis viverra. Sed sit amet nisi lacus. Phasellus gravida justo a risus pellentesque, quis aliquet lorem ornare. Mauris est sem, malesuada ut consequat ut, facilisis vitae neque. Morbi rhoncus quam non consectetur varius. In hac habitasse platea dictumst. Phasellus non nulla eleifend, gravida metus ultricies, eleifend augue. Fusce pulvinar mi at purus aliquam, vel efficitur mi hendrerit.</p>
@@ -108,18 +85,30 @@
                 <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet massa vitae magna scelerisque luctus eu ac odio. In ac nunc in augue dignissim mattis. Vestibulum feugiat, purus eu euismod pharetra, erat enim imperdiet dolor, vitae consectetur leo diam in arcu. Nunc vel nisi diam. Vestibulum sagittis est vel turpis luctus, vitae porttitor ligula bibendum. Phasellus sit amet consectetur sem. Cras consectetur, nisi vitae sagittis pharetra, mauris orci pharetra elit, a auctor elit lorem ut tellus. Integer venenatis dictum condimentum. Ut fermentum diam vel convallis viverra. Sed sit amet nisi lacus. Phasellus gravida justo a risus pellentesque, quis aliquet lorem ornare. Mauris est sem, malesuada ut consequat ut, facilisis vitae neque. Morbi rhoncus quam non consectetur varius. In hac habitasse platea dictumst. Phasellus non nulla eleifend, gravida metus ultricies, eleifend augue. Fusce pulvinar mi at purus aliquam, vel efficitur mi hendrerit.</p>
             </div>
-            <div class="element" id="element__inquilinos">
-                <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet massa vitae magna scelerisque luctus eu ac odio. In ac nunc in augue dignissim mattis. Vestibulum feugiat, purus eu euismod pharetra, erat enim imperdiet dolor, vitae consectetur leo diam in arcu. Nunc vel nisi diam. Vestibulum sagittis est vel turpis luctus, vitae porttitor ligula bibendum. Phasellus sit amet consectetur sem. Cras consectetur, nisi vitae sagittis pharetra, mauris orci pharetra elit, a auctor elit lorem ut tellus. Integer venenatis dictum condimentum. Ut fermentum diam vel convallis viverra. Sed sit amet nisi lacus. Phasellus gravida justo a risus pellentesque, quis aliquet lorem ornare. Mauris est sem, malesuada ut consequat ut, facilisis vitae neque. Morbi rhoncus quam non consectetur varius. In hac habitasse platea dictumst. Phasellus non nulla eleifend, gravida metus ultricies, eleifend augue. Fusce pulvinar mi at purus aliquam, vel efficitur mi hendrerit.</p>
-                <p th:text="@{#}"> hola </p>
+            <div class="element" id="element__reclamo">
+                <!--Mformulario de reclamo-->
+                <from id="from__formReclamo">
+                    <div class="input__group">
+                        <h2 id="h2__formReclamo">Formulario de reclamo</h2>
+                    
+                        <label for="motivo">Motivo</label>
+                        <select name="motivo" id="motivo">
+                          <option value="plomeria">Plomeria</option>
+                          <option value="filtraciones">Filtraciones</option>
+                          <option value="humedad">Humedad</option>
+                          <option value="seguridad">Seguridad</option>
+                          <option value="otro">Otro</option>
+                        </select>
+
+                        <label for="reclamo">Reclamo</label>
+                        <textarea name="reclamo" id="reclamo" cols="30" rows="5" placeholder="Ingrese una descripcion de su reclamo..."></textarea>
+
+                        <input class="btn__reclamo" type="submit" value="Enviar">
+                    </div>
+                </from>
             </div>
-            <div class="element" id="element__confDatos">
-                <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet massa vitae magna scelerisque luctus eu ac odio. In ac nunc in augue dignissim mattis. Vestibulum feugiat, purus eu euismod pharetra, erat enim imperdiet dolor, vitae consectetur leo diam in arcu. Nunc vel nisi diam. Vestibulum sagittis est vel turpis luctus, vitae porttitor ligula bibendum. Phasellus sit amet consectetur sem. Cras consectetur, nisi vitae sagittis pharetra, mauris orci pharetra elit, a auctor elit lorem ut tellus. Integer venenatis dictum condimentum. Ut fermentum diam vel convallis viverra. Sed sit amet nisi lacus. Phasellus gravida justo a risus pellentesque, quis aliquet lorem ornare. Mauris est sem, malesuada ut consequat ut, facilisis vitae neque. Morbi rhoncus quam non consectetur varius. In hac habitasse platea dictumst. Phasellus non nulla eleifend, gravida metus ultricies, eleifend augue. Fusce pulvinar mi at purus aliquam, vel efficitur mi hendrerit.</p>
-            </div>
-            <div class="element" id="element__confHorarios">
-                <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet massa vitae magna scelerisque luctus eu ac odio. In ac nunc in augue dignissim mattis. Vestibulum feugiat, purus eu euismod pharetra, erat enim imperdiet dolor, vitae consectetur leo diam in arcu. Nunc vel nisi diam. Vestibulum sagittis est vel turpis luctus, vitae porttitor ligula bibendum. Phasellus sit amet consectetur sem. Cras consectetur, nisi vitae sagittis pharetra, mauris orci pharetra elit, a auctor elit lorem ut tellus. Integer venenatis dictum condimentum. Ut fermentum diam vel convallis viverra. Sed sit amet nisi lacus. Phasellus gravida justo a risus pellentesque, quis aliquet lorem ornare. Mauris est sem, malesuada ut consequat ut, facilisis vitae neque. Morbi rhoncus quam non consectetur varius. In hac habitasse platea dictumst. Phasellus non nulla eleifend, gravida metus ultricies, eleifend augue. Fusce pulvinar mi at purus aliquam, vel efficitur mi hendrerit.</p>
+            <div class="element" id="element__facturacion">
+                <p>Aun no tienes facturaciones disponibles.</p>
             </div>
         </main>
     </div>

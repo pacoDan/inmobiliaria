@@ -11,6 +11,7 @@
     <link rel="stylesheet" th:href="@{/css/StyleIndex.css}">
 
     <link rel="stylesheet" th:href="@{/css/styleSeller.css}">
+    <link rel="stylesheet" th:href="@{/css/styleProfile.css}">
 
 </head>
 
@@ -111,13 +112,40 @@
             <div class="element" id="element__inquilinos">
                 <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet massa vitae magna scelerisque luctus eu ac odio. In ac nunc in augue dignissim mattis. Vestibulum feugiat, purus eu euismod pharetra, erat enim imperdiet dolor, vitae consectetur leo diam in arcu. Nunc vel nisi diam. Vestibulum sagittis est vel turpis luctus, vitae porttitor ligula bibendum. Phasellus sit amet consectetur sem. Cras consectetur, nisi vitae sagittis pharetra, mauris orci pharetra elit, a auctor elit lorem ut tellus. Integer venenatis dictum condimentum. Ut fermentum diam vel convallis viverra. Sed sit amet nisi lacus. Phasellus gravida justo a risus pellentesque, quis aliquet lorem ornare. Mauris est sem, malesuada ut consequat ut, facilisis vitae neque. Morbi rhoncus quam non consectetur varius. In hac habitasse platea dictumst. Phasellus non nulla eleifend, gravida metus ultricies, eleifend augue. Fusce pulvinar mi at purus aliquam, vel efficitur mi hendrerit.</p>
-                <p th:text="@{#}"> hola </p>
             </div>
             <div class="element" id="element__confDatos">
-                <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
+                <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO--
+                
+                    Nombre, apellido, dni(ese no), correoelect, contraseña,
+                
+                -->
+                <form>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre">
+                    <!--<input type="text" id="nombre" name="nombre" required>-->
+                    
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido">
+
+                    <label for="mail">E-mail:</label>
+                    <input type="text" id="email" name="email">
+                    
+                    <label for="dni">DNI:</label>
+                    <input type="text" id="dni" name="dni">
+
+                    <input type="submit" value="Enviar">
+                </form>
+
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet massa vitae magna scelerisque luctus eu ac odio. In ac nunc in augue dignissim mattis. Vestibulum feugiat, purus eu euismod pharetra, erat enim imperdiet dolor, vitae consectetur leo diam in arcu. Nunc vel nisi diam. Vestibulum sagittis est vel turpis luctus, vitae porttitor ligula bibendum. Phasellus sit amet consectetur sem. Cras consectetur, nisi vitae sagittis pharetra, mauris orci pharetra elit, a auctor elit lorem ut tellus. Integer venenatis dictum condimentum. Ut fermentum diam vel convallis viverra. Sed sit amet nisi lacus. Phasellus gravida justo a risus pellentesque, quis aliquet lorem ornare. Mauris est sem, malesuada ut consequat ut, facilisis vitae neque. Morbi rhoncus quam non consectetur varius. In hac habitasse platea dictumst. Phasellus non nulla eleifend, gravida metus ultricies, eleifend augue. Fusce pulvinar mi at purus aliquam, vel efficitur mi hendrerit.</p>
             </div>
             <div class="element" id="element__confHorarios">
+                <!--
+                    cosas que el usuario debe poder hacer en este boton
+                    configuracion de susu horarios:
+                        ue dias quiere/puede recibir visitas
+                        horarios en  los que puede/quiere recibir visitas
+                        
+                -->
                 <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet massa vitae magna scelerisque luctus eu ac odio. In ac nunc in augue dignissim mattis. Vestibulum feugiat, purus eu euismod pharetra, erat enim imperdiet dolor, vitae consectetur leo diam in arcu. Nunc vel nisi diam. Vestibulum sagittis est vel turpis luctus, vitae porttitor ligula bibendum. Phasellus sit amet consectetur sem. Cras consectetur, nisi vitae sagittis pharetra, mauris orci pharetra elit, a auctor elit lorem ut tellus. Integer venenatis dictum condimentum. Ut fermentum diam vel convallis viverra. Sed sit amet nisi lacus. Phasellus gravida justo a risus pellentesque, quis aliquet lorem ornare. Mauris est sem, malesuada ut consequat ut, facilisis vitae neque. Morbi rhoncus quam non consectetur varius. In hac habitasse platea dictumst. Phasellus non nulla eleifend, gravida metus ultricies, eleifend augue. Fusce pulvinar mi at purus aliquam, vel efficitur mi hendrerit.</p>
             </div>

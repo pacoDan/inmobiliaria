@@ -9,11 +9,7 @@
 
 body{
     font-family: 'Poppins', sans-serif;
-    background: #EAEBEF;
-    background: red;
-}
-body{
-    background: #EAEBEF;
+    background: #fff;
 }
 
 asside .nav__vent{
@@ -98,10 +94,10 @@ asside .nav__vent{
     display: none;
 }
 main{
-    padding: 10px;
+    padding: 20px;
 }
 
-.wrapper{
+.wrapper{ /*hace referencia al cont del menu izq y der*/
     display: grid;
      grid-template-columns:20% 80%;
 }

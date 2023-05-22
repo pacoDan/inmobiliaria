@@ -67,9 +67,17 @@ public class ViewController {
         return "login";
     }
    //cambiar de archivo 
+    @GetMapping("/administrador")
+    public String admin(Model model){
+        return "profile/administrador";
+    }
     @GetMapping("/vendedor")
-    public String blog(Model model){
+    public String vendedor(Model model){
         return "profile/vendedor";
+    }
+    @GetMapping("/inquilino")
+    public String inquilino(Model model){
+        return "profile/inquilino";
     }
     
     @RequestMapping("/404")
