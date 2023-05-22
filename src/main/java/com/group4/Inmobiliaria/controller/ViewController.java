@@ -3,6 +3,7 @@ package com.group4.Inmobiliaria.controller;
 import com.group4.Inmobiliaria.entidades.Cliente;
 import com.group4.Inmobiliaria.entidades.Ente;
 import com.group4.Inmobiliaria.entidades.Propiedad;
+import com.group4.Inmobiliaria.entidades.Usuario;
 import com.group4.Inmobiliaria.service.PropiedadService;
 import com.group4.Inmobiliaria.utils.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,14 @@ public class ViewController {
     @GetMapping("/")
     public String index(Model model) {
         List<Propiedad> propiedades = propiedadService.listarPropiedades();
-        model.addAttribute("propiedades", propiedades);     
+        model.addAttribute("propiedades", propiedades);        
         
-        System.out.println(Session.getUserSession());
+        Usuario logged = Session.getUserSession();
         
+        if (logged != null && logged.getRol().toString().equals("ADMIN")) {
+            return "redirect:/admin";
+        }
+
         return "index";
     }
 
@@ -36,5 +41,10 @@ public class ViewController {
     @GetMapping("/login")
     public String login() {
         return "login";
+    }
+
+    @GetMapping("/admin")
+    public String admin() {
+        return "administrador";
     }
 }
