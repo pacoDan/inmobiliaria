@@ -1,10 +1,9 @@
 package com.group4.Inmobiliaria.controller;
 
-import com.group4.Inmobiliaria.entidades.Cliente;
-import com.group4.Inmobiliaria.entidades.Ente;
 import com.group4.Inmobiliaria.entidades.Propiedad;
 import com.group4.Inmobiliaria.entidades.Usuario;
 import com.group4.Inmobiliaria.service.PropiedadService;
+import com.group4.Inmobiliaria.service.UsuarioService;
 import com.group4.Inmobiliaria.utils.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +16,9 @@ public class ViewController {
 
     @Autowired
     PropiedadService propiedadService;
+    
+    @Autowired
+    UsuarioService usuarioService;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -44,7 +46,11 @@ public class ViewController {
     }
 
     @GetMapping("/admin")
-    public String admin() {
+    public String admin(Model model) {
+        List<Usuario> usuarios = usuarioService.getAllUsers();
+        
+        model.addAttribute("Usuarios", usuarios);
+        
         return "administrador";
     }
 }
