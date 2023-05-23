@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.Getter;
@@ -46,7 +47,8 @@ public abstract class Usuario implements Serializable{
 
     @Basic(optional = false)
     @Column(name = "Imagen_Perfil")
-    private String imagenPerfil;
+    @OneToOne
+    private Imagen imagenPerfil;
 
     @Basic(optional = false)
     @Column(name = "Telefono")

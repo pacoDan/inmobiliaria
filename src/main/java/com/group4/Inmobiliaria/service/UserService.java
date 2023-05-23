@@ -33,6 +33,9 @@ public class UserService implements UserDetailsService {
     
     @Autowired
     UsuarioRepository usuarioRepository;
+    
+    @Autowired
+    ImagenService imagenService;
 
     @Transactional
     public void registrarCliente(Cliente cliente) {
@@ -41,7 +44,7 @@ public class UserService implements UserDetailsService {
         
         cliente.setFechaRegistro(new Date());
 
-        cliente.setPassword(new BCryptPasswordEncoder().encode(cliente.getPassword()));
+        cliente.setPassword(new BCryptPasswordEncoder().encode(cliente.getPassword()));             
 
         clienteRepository.save(cliente);
     }
