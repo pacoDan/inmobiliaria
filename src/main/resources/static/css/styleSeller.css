@@ -28,7 +28,7 @@ aside .nav__vent{
     display: block;
     padding: 15px 0;
     text-decoration: none;
-
+margin:auto;
 }
 /*para que al desplegar el menu de cada uno no este tanseparado de la linea desplegable*/
 .nav__link--inside{
@@ -67,10 +67,7 @@ aside .nav__vent{
 /*Para que los iconos esten al lado de la palabra, y no uno arriba de otrocon fila*/
 .list__button{
     display: flex;
-    align-items: center;
-    gap: 1em;
-    width: 70%;
-    margin: 0 auto;
+    flex-wrap: wrap;
 }
 /*Cuando se haga click soble delplegar la lista el icono> rote 90 grados*/
 .arrow .list__arrow{
@@ -99,5 +96,9 @@ i{
 }
 main{
     padding: 20px;
+}
+
+ol, ul {
+    padding-left: 1rem;
 }
 
