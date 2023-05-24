@@ -20,7 +20,7 @@
             <span class="material-symbols-outlined logo"> real_estate_agent </span>  
       </div></a>
         <h2>Registrar</h2>
-      <form th:action="@{/guardar/cliente}" method="post" th:object="${cliente}">
+        <form th:action="@{/guardar/cliente}" method="post" th:object="${cliente}" enctype="multipart/form-data">
         <input type="hidden" name="id" th:field="*{id}" th:value="${id}">
         <input type="hidden" name="tipoCliente" th:field="*{tipoCliente}">
 
@@ -46,7 +46,7 @@
               <input type="number" class="form-control" name="dni" id="DNI" placeholder="DNI" aria-describedby="emailHelp" th:field="*{DNI}" required>
           </div>
         <div class="mb-3">
-          <input  class="form-control" name="imagenPerfil" id="imagenPerfil" placeholder="imagen de perfil" aria-describedby="emailHelp" th:field="*{imagenPerfil}" required>
+            <input type="file" class="form-control" name="archivoImagen" id="archivoImagen" placeholder="Seleccionar archivo" aria-describedby="emailHelp" th:field="*{archivoImagen}" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Registrarse</button>

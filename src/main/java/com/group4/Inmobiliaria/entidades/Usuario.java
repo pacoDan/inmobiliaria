@@ -12,20 +12,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity(name = "Usuario")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Getter
 @Setter
 @ToString
-public abstract class Usuario implements Serializable{
+public abstract class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(generator = "system-uuid")
@@ -45,9 +48,9 @@ public abstract class Usuario implements Serializable{
     @Column(name = "Password")
     private String password;
 
-    @Basic(optional = false)
-    @Column(name = "Imagen_Perfil")
-    @OneToOne
+    @Basic(optional = false)  
+    @OneToOne()
+    @JoinColumn(name = "imagen_perfil_id")
     private Imagen imagenPerfil;
 
     @Basic(optional = false)
@@ -63,4 +66,7 @@ public abstract class Usuario implements Serializable{
     @Column(name = "Fecha_Registro")
     @Temporal(TemporalType.DATE)
     private Date fechaRegistro;
+
+    @Transient
+    private MultipartFile archivoImagen;
 }

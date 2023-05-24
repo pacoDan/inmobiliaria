@@ -26,7 +26,7 @@ public class ImagenService {
                 imagen.setNombre(archivo.getName());
                 
                 imagen.setTipoImagen(tipo);
-
+                
                 return imagenRepository.save(imagen);
 
             } catch (Exception e) {

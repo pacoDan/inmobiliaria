@@ -51,13 +51,13 @@ public class UserController {
     }
 
     @PostMapping("/guardar/cliente")
-    public String guardarCliente(Cliente cliente){
+    public String guardarCliente(Cliente cliente) throws Exception{
         userService.registrarCliente(cliente);
         return "redirect:/";
     }
 
     @PostMapping("/guardar/ente")
-    public String guardarEnte(Ente ente){
+    public String guardarEnte(Ente ente) throws Exception{
         userService.registrarEnte(ente);
         return "redirect:/";
     }
