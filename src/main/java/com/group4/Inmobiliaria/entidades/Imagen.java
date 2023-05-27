@@ -1,57 +1,43 @@
 package com.group4.Inmobiliaria.entidades;
 
-import com.group4.Inmobiliaria.enums.TipoImagen;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.MappedSuperclass;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-@Entity
-@Table(name = "Imagenes")
+@MappedSuperclass
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Imagen implements Serializable{
+public abstract class Imagen implements Serializable {
 
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     @Column(name = "Id", nullable = false)
     private String id;
-    
+
     @Basic(optional = false)
-    @Column(name = "Mime")   
+    @Column(name = "Mime")
     private String mime;
 
     @Basic(optional = false)
-    @Column(name = "Tipo_Imagen")
-    @Enumerated(EnumType.STRING)
-    private TipoImagen tipoImagen;
-    
-    @Basic(optional = false)
-    @Column(name = "Nombre")   
+    @Column(name = "Nombre")
     private String nombre;
-    
+
     @Basic(optional = false, fetch = FetchType.LAZY)
-    @Column(name = "Contenido")    
+    @Column(name = "Contenido")
     @Lob
     private byte[] contenido;
-        
-    @OneToOne(mappedBy = "imagenPerfil")
-    private Usuario usuario;
-            
+
 }

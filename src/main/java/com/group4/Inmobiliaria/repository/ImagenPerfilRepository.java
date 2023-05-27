@@ -5,7 +5,7 @@
  */
 package com.group4.Inmobiliaria.repository;
 
-import com.group4.Inmobiliaria.entidades.Imagen;
+import com.group4.Inmobiliaria.entidades.ImagenPerfil;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author PC - Escritorio
  */
 @Repository
-public interface ImagenRepository extends JpaRepository<Imagen, String>{
+public interface ImagenPerfilRepository extends JpaRepository<ImagenPerfil, String>{
     
 }

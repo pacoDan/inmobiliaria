@@ -28,7 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Getter
 @Setter
 @ToString
-public abstract class Usuario implements Serializable {
+public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(generator = "system-uuid")
@@ -48,10 +48,10 @@ public abstract class Usuario implements Serializable {
     @Column(name = "Password")
     private String password;
 
-    @Basic(optional = false)  
-    @OneToOne()
-    @JoinColumn(name = "imagen_perfil_id")
-    private Imagen imagenPerfil;
+    @Basic(optional = false)
+    @OneToOne
+    @JoinColumn(name = "imagen_perfil")
+    private ImagenPerfil imagenPerfil;
 
     @Basic(optional = false)
     @Column(name = "Telefono")

@@ -1,33 +1,31 @@
 package com.group4.Inmobiliaria.service;
 
-import com.group4.Inmobiliaria.entidades.Imagen;
-import com.group4.Inmobiliaria.enums.TipoImagen;
-import com.group4.Inmobiliaria.repository.ImagenRepository;
+import com.group4.Inmobiliaria.entidades.ImagenPerfil;
+import com.group4.Inmobiliaria.entidades.Usuario;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import com.group4.Inmobiliaria.repository.ImagenPerfilRepository;
 
 @Service
-public class ImagenService {
+public class ImagenPerfilService {
 
     @Autowired
-    ImagenRepository imagenRepository;
+    ImagenPerfilRepository imagenPerfilRepository;
 
-    public Imagen guardarImagen(MultipartFile archivo, TipoImagen tipo) throws Exception {
+    public ImagenPerfil guardarImagenPerfil(MultipartFile archivo) throws Exception {
         if (archivo != null) {
             try {
-                Imagen imagen = new Imagen();
+                ImagenPerfil imagen = new ImagenPerfil();
                 
                 imagen.setMime(archivo.getContentType());
 
                 imagen.setContenido(archivo.getBytes());
 
-                imagen.setNombre(archivo.getName());
-                
-                imagen.setTipoImagen(tipo);
-                
-                return imagenRepository.save(imagen);
+                imagen.setNombre(archivo.getName());                    
+                                
+                return imagenPerfilRepository.save(imagen);
 
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -36,12 +34,12 @@ public class ImagenService {
         return null;
     }
 
-    public Imagen actualizarImagen(MultipartFile archivo, String id) throws Exception {
+    public ImagenPerfil actualizarImagen(MultipartFile archivo, String id) throws Exception {
         if (archivo != null) {
             try {
-                Imagen imagen = null;
+                ImagenPerfil imagen = null;
 
-                Optional<Imagen> response = imagenRepository.findById(id);
+                Optional<ImagenPerfil> response = imagenPerfilRepository.findById(id);
 
                 if (response.isPresent()) {
                     imagen = response.get();
@@ -52,7 +50,7 @@ public class ImagenService {
 
                     imagen.setNombre(archivo.getName());
 
-                    return imagenRepository.save(imagen);
+                    return imagenPerfilRepository.save(imagen);
                 }
 
             } catch (Exception e) {

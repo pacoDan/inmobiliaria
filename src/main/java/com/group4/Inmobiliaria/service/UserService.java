@@ -3,9 +3,9 @@ package com.group4.Inmobiliaria.service;
 import com.group4.Inmobiliaria.entidades.Cliente;
 import com.group4.Inmobiliaria.entidades.Ente;
 import com.group4.Inmobiliaria.entidades.Imagen;
+import com.group4.Inmobiliaria.entidades.ImagenPerfil;
 import com.group4.Inmobiliaria.entidades.Usuario;
 import com.group4.Inmobiliaria.enums.Rol;
-import com.group4.Inmobiliaria.enums.TipoImagen;
 import com.group4.Inmobiliaria.repository.ClienteRepository;
 import com.group4.Inmobiliaria.repository.EnteRepository;
 import com.group4.Inmobiliaria.repository.UsuarioRepository;
@@ -37,7 +37,7 @@ public class UserService implements UserDetailsService {
     UsuarioRepository usuarioRepository;
     
     @Autowired
-    ImagenService imagenService;
+    ImagenPerfilService imagenPerfilService;
 
     @Transactional
     public void registrarCliente(Cliente cliente) throws Exception {
@@ -48,11 +48,11 @@ public class UserService implements UserDetailsService {
 
         cliente.setPassword(new BCryptPasswordEncoder().encode(cliente.getPassword()));  
         
-        Imagen imagen = imagenService.guardarImagen(cliente.getArchivoImagen(), TipoImagen.PERFIL);
+        ImagenPerfil imagen = imagenPerfilService.guardarImagenPerfil(cliente.getArchivoImagen());
         
         cliente.setImagenPerfil(imagen);
 
-        clienteRepository.save(cliente);
+        clienteRepository.save(cliente);                
     }
 
     @Transactional
@@ -64,7 +64,7 @@ public class UserService implements UserDetailsService {
 
         ente.setPassword(new BCryptPasswordEncoder().encode(ente.getPassword()));
         
-        Imagen imagen = imagenService.guardarImagen(ente.getArchivoImagen(), TipoImagen.PERFIL);
+        ImagenPerfil imagen = imagenPerfilService.guardarImagenPerfil(ente.getArchivoImagen());
         
         ente.setImagenPerfil(imagen);
 
