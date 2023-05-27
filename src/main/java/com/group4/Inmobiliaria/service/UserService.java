@@ -1,11 +1,13 @@
 package com.group4.Inmobiliaria.service;
 
+import com.group4.Inmobiliaria.entidades.Admin;
 import com.group4.Inmobiliaria.entidades.Cliente;
 import com.group4.Inmobiliaria.entidades.Ente;
 import com.group4.Inmobiliaria.entidades.Imagen;
 import com.group4.Inmobiliaria.entidades.ImagenPerfil;
 import com.group4.Inmobiliaria.entidades.Usuario;
 import com.group4.Inmobiliaria.enums.Rol;
+import com.group4.Inmobiliaria.repository.AdminRepository;
 import com.group4.Inmobiliaria.repository.ClienteRepository;
 import com.group4.Inmobiliaria.repository.EnteRepository;
 import com.group4.Inmobiliaria.repository.UsuarioRepository;
@@ -26,10 +28,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService implements UserDetailsService {
-
+    
     @Autowired
     ClienteRepository clienteRepository;
-
+    
     @Autowired
     EnteRepository enteRepository;
     
@@ -38,41 +40,50 @@ public class UserService implements UserDetailsService {
     
     @Autowired
     ImagenPerfilService imagenPerfilService;
-
+    
+    @Autowired
+    AdminRepository adminRepository;
+    
     @Transactional
     public void registrarCliente(Cliente cliente) throws Exception {
         
         cliente.setRol(Rol.CLIENTE);
         
         cliente.setFechaRegistro(new Date());
-
-        cliente.setPassword(new BCryptPasswordEncoder().encode(cliente.getPassword()));  
+        
+        cliente.setPassword(new BCryptPasswordEncoder().encode(cliente.getPassword()));        
         
         ImagenPerfil imagen = imagenPerfilService.guardarImagenPerfil(cliente.getArchivoImagen());
         
         cliente.setImagenPerfil(imagen);
-
-        clienteRepository.save(cliente);                
+        
+        clienteRepository.save(cliente);        
     }
-
+    
     @Transactional
     public void registrarEnte(Ente ente) throws Exception {
-
+        
         ente.setRol(Rol.ENTE);
         
         ente.setFechaRegistro(new Date());
-
+        
         ente.setPassword(new BCryptPasswordEncoder().encode(ente.getPassword()));
         
         ImagenPerfil imagen = imagenPerfilService.guardarImagenPerfil(ente.getArchivoImagen());
         
         ente.setImagenPerfil(imagen);
-
+        
         enteRepository.save(ente);
-
+        
     }
-
-
+    
+    public void registrarAdmin(Admin admin) {
+        admin.setFechaRegistro(new Date());
+        admin.setRol(Rol.ADMIN);
+        admin.setPassword(new BCryptPasswordEncoder().encode(admin.getPassword()));
+        adminRepository.save(admin);
+    }
+    
     private User newSecurityUser(Usuario usuario) {
         List<GrantedAuthority> permisos = new ArrayList();
         GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + usuario.getRol());
@@ -80,16 +91,16 @@ public class UserService implements UserDetailsService {
         Session.setUserSession(usuario);
         return new User(usuario.getEmail(), usuario.getPassword(), permisos);
     }
-
+    
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-
+        
         Usuario usuario = usuarioRepository.findByEmail(email);
-
-        if (usuario != null) {           
+        
+        if (usuario != null) {            
             return newSecurityUser(usuario);
         }
         return null;
     }
-
+    
 }

@@ -2,6 +2,7 @@ package com.group4.Inmobiliaria.entidades;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,5 +12,8 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ImagenPerfil extends Imagen implements Serializable {
+
+    @OneToOne(mappedBy = "imagenPerfil")
+    private Usuario usuario;
 
 }
