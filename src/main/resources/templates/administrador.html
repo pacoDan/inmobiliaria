@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es"  xmlns="http://www.w3.org/2000/svg" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,26 +17,9 @@
 
     <body>
 
-        <header th:fragment="header" class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-            <div class="col-md-3 mb-2 mb-md-0 divLogo">
-                <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-                    <span class="material-symbols-outlined logo"> real_estate_agent </span>
-                    <p>Mr. House</p>
-                </a>
-            </div>
-
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a th:href="@{/}" class="nav-link px-2 link-secondary">Inicio</a></li>
-                <li><a th:href="@{/propiedad/all}" class="nav-link px-2">Propiedades</a></li>
-
-                <li><a th:href="@{/nosotros}" class="nav-link px-2">Contacto</a></li>
-            </ul>
-
-            <div sec:authorize="isAuthenticated()" class="col-md-3 text-end">              
-                <button  sec:authentication="name" type="button" class="btn btn-primary"><a></a></button>
-                <button type="button" class="btn btn-primary"><a th:href="@{/logout}">Cerrar Sesion</a></button>
-            </div>
-        </header>
+    <div class="header">
+        <header th:replace="layout/layout :: header"></header>
+    </div>
 
         <div class="wrapper">
             <aside>  

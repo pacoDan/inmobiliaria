@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/css/StyleIndex.css}">
+  <link rel="stylesheet" th:href="@{/css/Style.css}">
 </head>
 <body>
 
@@ -30,10 +31,23 @@
 
     </div>
     <div sec:authorize="isAuthenticated()" class="col-md-3 text-end">
-      <button sec:authorize="hasRole('ROLE_ENTE')" type="button" class="btn btn-primary"><a th:href="@{/propiedad/carga}">Cargar Propiedad</a></button>
-      <button  sec:authentication="name" type="button" class="btn btn-primary"><a></a></button>
-      <button type="button" class="btn btn-primary"><a th:href="@{/logout}">Cerrar Sesion</a></button>
-    </div>
+
+
+      <div class="menuDesplegable">
+      <button  sec:authentication="name" type="button" class="btn btn-primary" id="botonMenu"><a>
+      </a></button>
+        <ul id="ulMenu">
+          <li class="opcionSubmenu"><button sec:authorize="hasRole('ROLE_ENTE')" type="button" class="btn btn-primary"><a th:href="@{/propiedad/carga}">Cargar Propiedad</a></button>
+          </li>
+          <li class="opcionSubmenu"><button type="button" class="btn btn-primary"><a th:href="@{/logout}">Cerrar Sesion</a></button></li>
+        </ul>
+
+      </div>
+
+
+
+
+        </div>
   </header>
 
 
