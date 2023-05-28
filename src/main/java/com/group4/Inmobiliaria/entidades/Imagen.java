@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
 @MappedSuperclass
@@ -19,6 +20,7 @@ import org.hibernate.annotations.GenericGenerator;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public abstract class Imagen implements Serializable {
 
     @Id
@@ -38,6 +40,7 @@ public abstract class Imagen implements Serializable {
     @Basic(optional = false, fetch = FetchType.LAZY)
     @Column(name = "Contenido")
     @Lob
+    @ToString.Exclude
     private byte[] contenido;
 
 }
