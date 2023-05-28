@@ -10,10 +10,11 @@ import lombok.ToString;
 @Entity(name = "Imagen_Perfil")
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 public class ImagenPerfil extends Imagen implements Serializable {
 
     @OneToOne(mappedBy = "imagenPerfil")
+    @ToString.Exclude
     private Usuario usuario;
 
 }
