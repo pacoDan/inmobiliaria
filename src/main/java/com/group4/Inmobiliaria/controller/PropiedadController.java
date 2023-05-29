@@ -53,7 +53,7 @@ public class PropiedadController {
         propiedadService.eliminarById(id);
         return "redirect:/";
     }
-
+              
     @GetMapping("/all")
     public String listar(Model model) {
         List<Propiedad> propiedades = propiedadService.listarPropiedades();
