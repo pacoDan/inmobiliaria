@@ -1,5 +1,6 @@
 package com.group4.Inmobiliaria.controller;
 
+import com.group4.Inmobiliaria.entidades.Admin;
 import com.group4.Inmobiliaria.entidades.Cliente;
 import com.group4.Inmobiliaria.entidades.Ente;
 import com.group4.Inmobiliaria.enums.TipoCliente;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class UserController {
@@ -51,15 +53,19 @@ public class UserController {
     }
 
     @PostMapping("/guardar/cliente")
-    public String guardarCliente(Cliente cliente){
+    public String guardarCliente(Cliente cliente) throws Exception{
         userService.registrarCliente(cliente);
         return "redirect:/";
     }
 
     @PostMapping("/guardar/ente")
-    public String guardarEnte(Ente ente){
+    public String guardarEnte(Ente ente) throws Exception{
         userService.registrarEnte(ente);
         return "redirect:/";
     }
-
+    
+    @PostMapping("/newAdmin")
+    public void newAdmin(@RequestBody Admin admin){
+        userService.registrarAdmin(admin);
+    }
 }

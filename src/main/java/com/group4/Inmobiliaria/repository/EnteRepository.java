@@ -5,19 +5,20 @@
  */
 package com.group4.Inmobiliaria.repository;
 
-
 import com.group4.Inmobiliaria.entidades.Ente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author PC - Escritorio
  */
-public interface EnteRepository extends JpaRepository<Ente, String>{
-    
+@Repository
+public interface EnteRepository extends JpaRepository<Ente, String> {
+
     @Query("SELECT e FROM Ente e WHERE e.email = :email")
-     public Ente findByEmail(@Param("email")String email);
-    
+    public Ente findByEmail(@Param("email") String email);
+
 }

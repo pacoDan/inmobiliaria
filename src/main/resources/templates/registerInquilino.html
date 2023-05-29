@@ -8,19 +8,14 @@
   <link rel="stylesheet" th:href="@{/css/Style.css}">
   <link rel="stylesheet" th:href="@{/css/StyleRegister.css}">
 
-
-
 </head>
 
 <body>
 
-   
-
 <!-- Contenido de la página aquí -->
 <main>
 
-
-    <div class="formularioRegister">
+    <div class="formularioRegister compradorEInquilino">
         <a th:href="@{/}" class="nav-link px-2 link-secondary"><div class="col-md-3 mb-2 mb-md-0 divLogo">
             <span class="material-symbols-outlined logo"> real_estate_agent </span>  
       </div></a>
@@ -36,7 +31,6 @@
           <div class="mb-3">
             <input  class="form-control" name="password" type="password" id="contraseña" placeholder="Contraseña" aria-describedby="emailHelp" th:field="*{password}" required>
           </div>
-
           <p>Datos</p>
           <div class="mb-3">
             <input  class="form-control" name="nombre" id="nombre" placeholder="Nombre" aria-describedby="emailHelp" th:field="*{nombre}" required>
@@ -44,12 +38,13 @@
           <div class="mb-3">
             <input  class="form-control" name="apellido" id="apellido" placeholder="Apellido" aria-describedby="emailHelp" th:field="*{apellido}" required>
           </div>
-          <div class="mb-3">
-            <input type="number" class="form-control" name="dni" id="dni" placeholder="DNI" aria-describedby="emailHelp" th:field="*{dni}" required>
-          </div>
-          <div class="mb-3">
+          <div class="mb-3">          
             <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="Telefono" aria-describedby="emailHelp" th:field="*{telefono}" required>
           </div>
+          <div class="mb-3">
+              <input type="number" class="form-control" name="dni" id="DNI" placeholder="DNI" aria-describedby="emailHelp" th:field="*{DNI}" required>
+          </div>
+          
           <div class="mb-3">
             <input  class="form-control" name="imagenPerfil" id="imagenPerfil" placeholder="imagen de perfil" aria-describedby="emailHelp" th:field="*{imagenPerfil}" required>
           </div>

@@ -8,17 +8,11 @@
   <link rel="stylesheet" th:href="@{/css/Style.css}">
   <link rel="stylesheet" th:href="@{/css/StyleRegister.css}">
 
-
-
 </head>
-
-<body>
-
-   
+<body> 
 
 <!-- Contenido de la página aquí -->
 <main>
-
 
     <div class="formularioRegister">
         <a th:href="@{/}" class="nav-link px-2 link-secondary"><div class="col-md-3 mb-2 mb-md-0 divLogo">
@@ -36,7 +30,6 @@
           <div class="mb-3">
             <input  class="form-control" type="password" name="password" id="contraseña" placeholder="Contraseña" aria-describedby="emailHelp" th:field="*{password}" required>
           </div>
-
           <p>Datos</p>
           <div class="mb-3">
             <input  class="form-control" name="nombre" id="nombre" placeholder="Nombre" aria-describedby="emailHelp" th:field="*{nombre}" required>
@@ -44,11 +37,9 @@
           <div class="mb-3">
             <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="Telefono" aria-describedby="emailHelp" th:field="*{telefono}" required>
           </div>
-
           <div class="mb-3">
             <input  class="form-control" name="imagenPerfil" id="imagenPerfil" placeholder="imagen de perfil" aria-describedby="emailHelp" th:field="*{imagenPerfil}" required>
-          </div>
-
+          </div> 
           <button type="submit" class="btn btn-primary">Registrarse</button>
         </form>
     </div>

@@ -1,14 +1,20 @@
 package com.group4.Inmobiliaria.service;
 
+import com.group4.Inmobiliaria.entidades.Admin;
 import com.group4.Inmobiliaria.entidades.Cliente;
 import com.group4.Inmobiliaria.entidades.Ente;
-import com.group4.Inmobiliaria.entidades.UserEntity;
+import com.group4.Inmobiliaria.entidades.Imagen;
+import com.group4.Inmobiliaria.entidades.ImagenPerfil;
+import com.group4.Inmobiliaria.entidades.Usuario;
 import com.group4.Inmobiliaria.enums.Rol;
+import com.group4.Inmobiliaria.repository.AdminRepository;
 import com.group4.Inmobiliaria.repository.ClienteRepository;
 import com.group4.Inmobiliaria.repository.EnteRepository;
+import com.group4.Inmobiliaria.repository.UsuarioRepository;
+import com.group4.Inmobiliaria.utils.Session;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,81 +25,82 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
 public class UserService implements UserDetailsService {
-
+    
     @Autowired
     ClienteRepository clienteRepository;
-
+    
     @Autowired
     EnteRepository enteRepository;
-
+    
+    @Autowired
+    UsuarioRepository usuarioRepository;
+    
+    @Autowired
+    ImagenPerfilService imagenPerfilService;
+    
+    @Autowired
+    AdminRepository adminRepository;
+    
     @Transactional
-    public void registrarCliente(Cliente cliente) {
-
+    public void registrarCliente(Cliente cliente) throws Exception {
+        
         cliente.setRol(Rol.CLIENTE);
         
-        cliente.setPassword(new BCryptPasswordEncoder().encode(cliente.getPassword()));
-
-        clienteRepository.save(cliente);
+        cliente.setFechaRegistro(new Date());
+        
+        cliente.setPassword(new BCryptPasswordEncoder().encode(cliente.getPassword()));        
+        
+        ImagenPerfil imagen = imagenPerfilService.guardarImagenPerfil(cliente.getArchivoImagen());
+        
+        cliente.setImagenPerfil(imagen);
+        
+        clienteRepository.save(cliente);        
     }
-
+    
     @Transactional
-    public void registrarEnte(Ente ente) {
-
+    public void registrarEnte(Ente ente) throws Exception {
+        
         ente.setRol(Rol.ENTE);
         
+        ente.setFechaRegistro(new Date());
+        
         ente.setPassword(new BCryptPasswordEncoder().encode(ente.getPassword()));
-
+        
+        ImagenPerfil imagen = imagenPerfilService.guardarImagenPerfil(ente.getArchivoImagen());
+        
+        ente.setImagenPerfil(imagen);
+        
         enteRepository.save(ente);
-
+        
     }
-
-    private UserEntity findByEmail(String email) {
-        Cliente cliente = clienteRepository.findByEmail(email);
-        if (cliente != null) {
-            return cliente;
-        }
-
-        Ente ente = enteRepository.findByEmail(email);
-        if (ente != null) {
-            return ente;
-        }
-
-        return null;
+    
+    public void registrarAdmin(Admin admin) {
+        admin.setFechaRegistro(new Date());
+        admin.setRol(Rol.ADMIN);
+        admin.setPassword(new BCryptPasswordEncoder().encode(admin.getPassword()));
+        adminRepository.save(admin);
     }
-
-    private User securitySession(UserEntity user) {
+    
+    private User newSecurityUser(Usuario usuario) {
         List<GrantedAuthority> permisos = new ArrayList();
-        GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + user.getRol());
+        GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + usuario.getRol());
         permisos.add(p);
-        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-        HttpSession session = attr.getRequest().getSession(true);
-        session.setAttribute("UserSession", user);
-        return new User(user.getEmail(), user.getPassword(), permisos);
+        Session.setUserSession(usuario);
+        return new User(usuario.getEmail(), usuario.getPassword(), permisos);
     }
-
+    
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-
-        UserEntity userEntity = findByEmail(email);
-
-        if (userEntity != null) {
-
-            if (userEntity instanceof Ente) {
-                Ente ente = (Ente) userEntity;
-                return securitySession(ente);
-            }
-
-            if (userEntity instanceof Cliente) {
-                Cliente cliente = (Cliente) userEntity;
-                return securitySession(cliente);
-            }
+        
+        Usuario usuario = usuarioRepository.findByEmail(email);
+        
+        if (usuario != null) {            
+            return newSecurityUser(usuario);
         }
         return null;
     }
-
+    
 }

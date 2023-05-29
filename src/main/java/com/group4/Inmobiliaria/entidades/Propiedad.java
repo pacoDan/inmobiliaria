@@ -7,14 +7,18 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.lang.Nullable;
 
 @Entity
 @Table(name = "Propiedad")
@@ -55,13 +59,13 @@ public class Propiedad implements Serializable {
     @Column(name = "Caracteristicas")
     private String caracteristicas;
     
-    @Basic(optional = true)
-    @Column(name = "Propietario")
-    private String propietario;
+    @JoinColumn(name = "Id_Propietario", referencedColumnName = "Id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Usuario propietario;
     
-    @Basic(optional = true)
-    @Column(name = "Inquilino")
-    private double inquilino;
+    @JoinColumn(name = "Id_Inquilino", referencedColumnName = "Id", nullable = true)
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
+    private Usuario inquilino;
      
     @Basic(optional = false)
     @Column(name = "Precio_venta")

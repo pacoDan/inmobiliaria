@@ -1,3 +1,11 @@
+@media (min-width: 768px){
+.col-md-3 {
+    flex: 0 0 auto;
+}
+}
+
+
+
 header{
     padding: 5%;
   background-color: #1E385B;  
@@ -89,4 +97,47 @@ color: #FFFFFF;
 .my-4 {
     margin-top: 1.5rem!important;
     margin-bottom: 0rem!important; 
+}
+
+
+#ulMenu{
+display:none;
+opacity:0;
+  transition: opacity 1s;
+  position:absolute;
+      right: 5.1%;
+}
+
+#ulMenu li{
+text-decoration:none;
+list-style:none;
+}
+
+#ulMenu button{
+min-width:132px;
+}
+
+#botonMenu:hover + #ulMenu, #ulMenu:hover {
+display:block;
+opacity:1;
+}
+
+#ulMenu:hover {
+pointer-events:auto;
+}
+
+@media (max-width:767px) {
+
+
+#ulMenu{
+display:none;
+opacity:0;
+  transition: opacity 1s;
+  position:absolute;
+      right: 41.3%;
+}
+
+#ulMenu button {
+    min-width: 132px;
+}
 }
