@@ -1,16 +1,15 @@
 package com.group4.Inmobiliaria.controller;
 
-
 import com.group4.Inmobiliaria.entidades.Propiedad;
+import com.group4.Inmobiliaria.entidades.Usuario;
 import com.group4.Inmobiliaria.service.PropiedadService;
+import com.group4.Inmobiliaria.service.UsuarioService;
+import com.group4.Inmobiliaria.utils.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-
 import java.util.List;
-
 
 @Controller
 public class ViewController {
@@ -18,41 +17,42 @@ public class ViewController {
     @Autowired
     PropiedadService propiedadService;
     
+    @Autowired
+    UsuarioService usuarioService;
+
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model) {
         List<Propiedad> propiedades = propiedadService.listarPropiedades();
-        model.addAttribute("propiedades", propiedades);
+        model.addAttribute("propiedades", propiedades);        
+        
+        Usuario logged = Session.getUserSession();
+        
+        System.out.println(logged);
+        
+        if (logged != null && logged.getRol().toString().equals("ADMIN")) {
+            return "redirect:/admin";
+        }
+
         return "index";
     }
-    
-    @GetMapping("/propiedad/carga")
-    public String cargarPropiedad(Propiedad propiedad){
-        return "carga";
+
+    @GetMapping("/nosotros")
+    public String contacto(Model model) {
+
+        return "nosotros";
     }
 
-    @PostMapping("/guardar")
-    public String guardar(Propiedad propiedad){
-        propiedadService.guardar(propiedad);
-        return "redirect:/";
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 
-    @GetMapping("/editar/{id}")
-    public String editar(Propiedad propiedad, Model model){
-        propiedad =propiedadService.encontrarById(propiedad);
-        model.addAttribute("propiedad", propiedad);
-        return "carga";
-    }
-
-    @GetMapping("/eliminar/{id}")
-    public String eliminar(Propiedad propiedad){
-        propiedadService.eliminar(propiedad);
-        return "redirect:/";
-    }
-
-    @GetMapping("/propiedades")
-    public String listar(Model model){
-        List<Propiedad> propiedades = propiedadService.listarPropiedades();
-        model.addAttribute("propiedades", propiedades);
-        return "propiedades";
+    @GetMapping("/admin")
+    public String admin(Model model) {
+        List<Usuario> usuarios = usuarioService.getAllUsers();
+        
+        model.addAttribute("usuarios", usuarios);
+        
+        return "administrador";
     }
 }
