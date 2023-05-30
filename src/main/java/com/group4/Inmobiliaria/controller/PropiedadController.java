@@ -53,6 +53,12 @@ public class PropiedadController {
         propiedadService.eliminarById(id);
         return "redirect:/";
     }
+
+    @PostMapping("/eliminar/{id}")
+    public String eliminarPost(@PathVariable("id") String id) {
+        propiedadService.eliminarById(id);
+        return "redirect:/";
+    }
               
     @GetMapping("/all")
     public String listar(Model model) {

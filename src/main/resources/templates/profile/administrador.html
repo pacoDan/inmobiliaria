@@ -64,8 +64,7 @@
                             <tr>
                                 <td>ID</td>
                                 <td>Nombre</td>
-                                <td>Apellido</td>
-                                <td>Correo</td>
+                                <td>Email</td>
                                 <td>Acciones</td>
                             </tr>
 
@@ -91,9 +90,9 @@
                         <thead>
                             <tr>
                                 <td>ID</td>
-                                <td>Nombre</td>
-                                <td>Apellido</td>
-                                <td>Correo</td>
+                                <td>Pais</td>
+                                <td>Provincia</td>
+                                <td>Disponible</td>
                                 <td>Acciones</td>
                             </tr>
 
@@ -107,9 +106,13 @@
                                 <td th:text="${propiedad.Disponible}"></td>
                                 <td>
                                     <a th:href="@{editar/{id}(id=${propiedad.id})}" class="btn btn__editar">Editar</a>
-                                    <!--<a th:href="@{eliminar/{id}(id=${propiedad.id})}" class="btn btn-eliminar">Eliminar</a>-->
+                                    <!--<a th:href="@{eliminar/{id}(id=${propiedad.id})}" class="btn btn-eliminar">Eliminar</a>
+                                    <a href="#attr-href">
+                                        Descripción de enlaces de la misma página
+                                    </a>
+                                    -->
                                     <form th:action="@{eliminar/{id}(id=${propiedad.id})}" method="post">
-                                        <button type="submit" class="btn btn-eliminar" onclick="mostrarContMenu('propiedades')">Eliminar</button>
+                                        <button type="submit" <!--class="btn btn-eliminar" onclick="mostrarContMenu('propiedades')"-->>Eliminar</button>
                                     </form>
 
                                 </td>
