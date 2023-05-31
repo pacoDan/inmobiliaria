@@ -88,6 +88,3 @@ atlassian-ide-plugin.xml
 
 cached-antora-playbook.yml
 
-/src/main/resources/application.properties
-
-src/main/resources/application.properties
