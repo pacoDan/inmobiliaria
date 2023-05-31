@@ -1,7 +1,12 @@
-sprint 3 de 4 hasta el momento (75% de avance aprox)
+# Mr House
+## Sprint 3 de 4 hasta el momento (75% de avance aprox)
+
+[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
+
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 # Requerimientos Minimos
-## OBLIGATORIOS
+### OBLIGATORIOS
 • Registro y Login con Spring Security
 • Crear al menos DOS roles distintos para los usuarios
 • Incluir tabla html en alguna vista
@@ -11,7 +16,7 @@ sprint 3 de 4 hasta el momento (75% de avance aprox)
 • Que haya al menos un formulario
 • Crear al menos 3 vistas distintas
 • Excepciones y validaciones
-## ADICIONALES
+### ADICIONALES
 • Motor de búsqueda
 • Tabla con opciones de agregar / modificar y eliminar registros
 • Utilizar atributos booleanos de alta y baja de usuarios ( y poder modificarlos ) .
@@ -22,6 +27,5 @@ sprint 3 de 4 hasta el momento (75% de avance aprox)
 • Aplicar principios de código limpio y buenas prácticas .
 • Añadir diagrama de clases y casos de uso en UML
 
-
-# inmobiliaria
+# Deploy
 -> https://inmobiliaria-production.up.railway.app/
