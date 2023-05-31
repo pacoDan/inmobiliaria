@@ -7,11 +7,13 @@ package com.group4.Inmobiliaria.repository;
 
 import com.group4.Inmobiliaria.entidades.Propiedad;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author PC - Escritorio
  */
+@Repository
 public interface PropiedadRepository extends JpaRepository<Propiedad,String> {
     
 }

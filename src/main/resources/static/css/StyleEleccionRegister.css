@@ -1,0 +1,52 @@
+main{
+
+    margin: 5%;
+    text-align: center;
+    justify-content: center;
+}
+
+p{
+    margin-bottom: 2%;
+}
+
+.contenedorEleccion{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.tarjetas{
+display: flex;
+border: 1px dotted black;
+width: 180px;
+height: 180px;
+background-color: #f1f1f1;
+border-radius: 10px;
+margin-bottom: 20px;
+transition: transform 0.3s;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+ color:#0f1c2e;
+}
+
+.tarjetas:hover {
+    transform: scale(1.1);
+     color:#0f1c2e;
+  }
+
+.opcion{
+    color:#0f1c2e;
+    font-size: 24px;
+    margin-bottom: 5px;
+    height: 32px;
+    font-weight: 600;
+text-align: center;
+ }
+
+a{
+margin: auto;
+}
+
