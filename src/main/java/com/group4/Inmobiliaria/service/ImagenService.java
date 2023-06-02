@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.group4.Inmobiliaria.repository.ImagenPerfilRepository;
 
 @Service
-public class ImagenPerfilService {
+public class ImagenService {
 
     @Autowired
     ImagenPerfilRepository imagenPerfilRepository;
