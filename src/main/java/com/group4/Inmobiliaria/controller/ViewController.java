@@ -30,7 +30,7 @@ public class ViewController {
         System.out.println(logged);
         
         if (logged != null && logged.getRol().toString().equals("ADMIN")) {
-            return "redirect:/admin";
+            return "redirect:/administrador";
         }
 
         return "index";
@@ -63,6 +63,17 @@ public class ViewController {
         
         List<Propiedad> propiedades = propiedadService.listarPropiedades();
         model.addAttribute("propiedades", propiedades);
+        
         return "profile/administrador";
+    }
+    @GetMapping("/vendedor")
+    public String vendedor(Model model){
+        
+        return "profile/vendedor";
+    }
+    @GetMapping("/inquilino")
+    public String inquilino(Model model){
+
+        return "profile/inquilino";
     }
 }

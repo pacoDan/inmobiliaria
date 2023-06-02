@@ -55,78 +55,98 @@
 
         <main> 
             <div class="element" id="element__grafica">
-                    <h2>Grafica</h2><br/>
+                <h2>Grafica</h2><br/>
             </div>
             <div class="element" id="element__usuarios">
-                    <h2>Usuarios</h2><br/>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <td>ID</td>
-                                <td>Nombre</td>
-                                <td>Email</td>
-                                <td>Acciones</td>
-                            </tr>
+                <h2>Usuarios</h2><br/><!--
+                <select id="cantFilas" onchange="actualizarTabla()">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+                </select>-->
+                <table class="table table-striped" id="miTable">
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Nombre</td>
+                            <td>Email</td>
+                            <td>Acciones</td>
+                        </tr>
 
-                        </thead>
-                        <tbody>
-                            <tr th:each="usuario: ${usuarios}">
-                                <td th:text="${usuario.id}"></td>
-                                <td th:text="${usuario.nombre}"></td>
-                                <!--<td th:text="${usuario.Apellido}"></td>-->
-                                <td th:text="${usuario.email}"></td>
-                                <td>
-                                    <a th:href="@{editar/{id}(id=${usuario.id})}" class="btn btn-editar">Editar</a>
-                                    <a th:href="@{eliminar/{id}(id=${usuario.id})}" class="btn btn-eliminar">Eliminar</a>                    
-                                </td>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr th:each="usuario : ${usuarios}">
+                            <td th:text="${usuario.id}"></td>
+                            <td th:text="${usuario.nombre}"></td>
+                            <td th:text="${usuario.email}"></td>
+                        </tr>
+                        <!--
+                        <tr th:each="usuario: ${usuarios}">
+                            <td th:text="${usuario.id}"></td>
+                            <td th:text="${usuario.nombre}"></td>
+                            <!--<td th:text="${usuario.Apellido}"></td>
+                            <td th:text="${usuario.email}"></td>
+                            <td>
+                                <a th:href="@{editar/{id}(id=${usuario.id})}" class="btn btn-editar">Editar</a>
+                                <a th:href="@{eliminar/{id}(id=${usuario.id})}" class="btn btn-eliminar">Eliminar</a>                    
+                            </td>
 
-                            </tr>
-                        </tbody>
-                    </table>
+                        </tr>-->
+                    </tbody>
+                </table>
+                <!--<div class="pagination" id="pagination"></div>
+                <button onclick="funcC()">hola</button>-->
             </div>
             <div class="element" id="element__propiedades">
-                    <h2>Propiedades</h2><br/>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <td>ID</td>
-                                <td>Pais</td>
-                                <td>Provincia</td>
-                                <td>Disponible</td>
-                                <td>Acciones</td>
-                            </tr>
+                <h2>Propiedades</h2><br/>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Pais</td>
+                            <td>Provincia</td>
+                            <td>Disponible</td>
+                            <td>Acciones</td>
+                        </tr>
 
-                        </thead>
-                        <!--th:if="${propiedades != null and !propiedades.empty}"-->
-                        <tbody>
-                            <tr th:each="propiedad : ${propiedades}">
-                                <td th:text="${propiedad.id}"></td>
-                                <td th:text="${propiedad.Pais}"></td>
-                                <td th:text="${propiedad.Provincia}"></td>
-                                <td th:text="${propiedad.Disponible}"></td>
-                                <td>
-                                    <a th:href="@{editar/{id}(id=${propiedad.id})}" class="btn btn__editar">Editar</a>
-                                    <!--<a th:href="@{eliminar/{id}(id=${propiedad.id})}" class="btn btn-eliminar">Eliminar</a>
-                                    <a href="#attr-href">
-                                        Descripción de enlaces de la misma página
-                                    </a>
-                                    -->
-                                    <form th:action="@{eliminar/{id}(id=${propiedad.id})}" method="post">
-                                        <button type="submit" <!--class="btn btn-eliminar" onclick="mostrarContMenu('propiedades')"-->>Eliminar</button>
-                                    </form>
+                    </thead>
+                    <!--th:if="${propiedades != null and !propiedades.empty}"-->
+                    <tbody>
+                        <tr th:each="propiedad : ${propiedades}">
+                            <td th:text="${propiedad.id}"></td>
+                            <td th:text="${propiedad.Pais}"></td>
+                            <td th:text="${propiedad.Provincia}"></td>
+                            <td th:text="${propiedad.Disponible}"></td>
+                            <td>
+                                <a th:href="@{editar/{id}(id=${propiedad.id})}" class="btn btn__editar">Editar</a>
+                                <!--<a th:href="@{eliminar/{id}(id=${propiedad.id})}" class="btn btn-eliminar">Eliminar</a>
+                                <a href="#attr-href">
+                                    Descripción de enlaces de la misma página
+                                </a>
+                                -->
+                                <form th:action="@{eliminar/{id}(id=${propiedad.id})}" method="post">
+                                    <button type="submit" <!--class="btn btn-eliminar" onclick="mostrarContMenu('propiedades')"-->>Eliminar</button>
+                                </form>
 
-                                </td>
+                            </td>
 
-                            </tr>
-                        </tbody>
+                        </tr>
+                    </tbody>
 
-                    </table>
+                </table>
             </div>
         </main>
     </div>
 
-
     <script th:src="@{/js/main.js}" type="text/javascript"></script>
+    
+    <!--<script th:src="@{/js/table.js}" type="text/javascript"></script><!--
+    <script th:inline="javascript">
+    var usuarios = /*[[${usuarios}]]*/ [];
+    });
+</script>
+    <script th:src="@{/js/table.js}" type="text/javascript"></script>
+    -->
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 </body>
 </html>
