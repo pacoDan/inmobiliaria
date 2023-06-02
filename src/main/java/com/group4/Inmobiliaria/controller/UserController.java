@@ -3,15 +3,19 @@ package com.group4.Inmobiliaria.controller;
 import com.group4.Inmobiliaria.entidades.Admin;
 import com.group4.Inmobiliaria.entidades.Cliente;
 import com.group4.Inmobiliaria.entidades.Ente;
+import com.group4.Inmobiliaria.entidades.Usuario;
 import com.group4.Inmobiliaria.enums.TipoCliente;
 import com.group4.Inmobiliaria.enums.TipoEnte;
 import com.group4.Inmobiliaria.service.UserService;
+import com.group4.Inmobiliaria.utils.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.Base64;
 
 @Controller
 public class UserController {
@@ -67,6 +71,25 @@ public class UserController {
     @PostMapping("/newAdmin")
     public void newAdmin(@RequestBody Admin admin) {
         userService.registrarAdmin(admin);
+    }
+
+    @GetMapping("/perfil")
+    public String perfil(Model model){
+        Usuario usuario = Session.getUserSession();
+
+        try {
+            byte[] imagen = usuario.getImagenPerfil().getContenido();
+            String imagen64 = Base64.getEncoder().encodeToString(imagen);
+            model.addAttribute("imagen64", imagen64);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        finally {
+            model.addAttribute("usuario", usuario);
+        }
+
+        return "perfil";
     }
 }
 
