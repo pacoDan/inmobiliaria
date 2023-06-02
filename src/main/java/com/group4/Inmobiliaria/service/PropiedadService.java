@@ -22,8 +22,8 @@ public class PropiedadService {
     
 
     @Transactional
-    public void guardar(Propiedad propiedad){
-        propiedadRepository.save(propiedad);
+    public Propiedad guardar(Propiedad propiedad){
+        return propiedadRepository.save(propiedad);
     }
 
     @Transactional

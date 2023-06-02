@@ -2,6 +2,8 @@ package com.group4.Inmobiliaria.service;
 
 import com.group4.Inmobiliaria.entidades.ImagenPerfil;
 import com.group4.Inmobiliaria.entidades.ImagenPropiedad;
+import com.group4.Inmobiliaria.entidades.Propiedad;
+import com.group4.Inmobiliaria.enums.TipoImagenPropiedad;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,7 +67,7 @@ public class ImagenService {
         return null;
     }
     
-    public void guardarImagenesPropiedad(List<MultipartFile>imagenes){
+    public void guardarImagenesPropiedad(List<MultipartFile>imagenes, Propiedad propiedad){
         for (MultipartFile imagen : imagenes) {
             if(imagen != null){
                 try {
@@ -76,6 +78,10 @@ public class ImagenService {
                     imagenPropiedad.setContenido(imagen.getBytes());
                     
                     imagenPropiedad.setNombre(imagen.getName());
+                    
+                    imagenPropiedad.setPropiedad(propiedad);
+                    
+                    imagenPropiedad.setTipoImagenPropiedad(TipoImagenPropiedad.PRINCIPAL);
                     
                     imagenPropiedadRepository.save(imagenPropiedad);
                     

@@ -52,24 +52,14 @@
                                                 <label for="precioAlquiler" class="form-label">Precio Alquiler</label>
                                                 <input type="number" class="form-control" id="precioAlquiler" aria-describedby="emailHelp" th:field="*{precioAlquiler}" required>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="imagenesFiles" class="form-label">Imagen Principal</label>
-                                                <input type="file" class="form-control imagenInput" name="imagenFile1" id="imagenInput" onchange="mostrarVistaPrevia(event)" aria-describedby="emailHelp" th:field="*{imagenesFiles}" required>
+                                            
+                                            
+                                            <div class="mb-3" th:each="index : ${#numbers.sequence(1, 4)}">
+                                                <label for="'imagenesFiles' + ${index}" class="form-label">Imagen [[${index}]]</label>
+                                                <input type="file" class="form-control imagenInput" name="imagenesFiles" th:name="'imagenesFiles[' + ${index} + ']'" id="'imagen' + ${index}" onchange="mostrarVistaPrevia(event)" aria-describedby="emailHelp" required>
                                                 <img class="vistaPrevia" src="#" alt="Vista previa">
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="imagenesFiles" class="form-label">Imagenes Secundarias</label>
-                                                <input type="file" class="form-control imagenInput" name="imagenFile2" id="imagenInput" onchange="mostrarVistaPrevia(event)" aria-describedby="emailHelp" th:field="*{imagenesFiles}" multiple required>
-                                                <img  class="vistaPrevia" src="#" alt="Vista previa">
-                                            </div>
-                                            <div class="mb-3">                                                
-                                                <input type="file" class="form-control imagenInput" name="imagenFile3" id="imagenInput" onchange="mostrarVistaPrevia(event)" aria-describedby="emailHelp" th:field="*{imagenesFiles}" required>
-                                                <img  class="vistaPrevia" src="#" alt="Vista previa">
-                                            </div>
-                                            <div class="mb-3">                                                
-                                                <input type="file" class="form-control imagenInput" name="imagenFile4" id="imagenInput" onchange="mostrarVistaPrevia(event)" aria-describedby="emailHelp" th:field="*{imagenesFiles}" required>
-                                                <img  class="vistaPrevia" src="#" alt="Vista previa">
-                                            </div>
+                                           
 
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                             </form>

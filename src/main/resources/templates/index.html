@@ -42,7 +42,7 @@
             
             <div class="container-anuncios">
                 <div class="anuncio" th:each="propiedad : ${propiedades}" th:limit="3">
-                    <img class="imagenAnuncio" th:src="${propiedad.imagenes}" alt="anuncio casa en el lago">
+                    
                     <div class="contenido-anuncio">
                         <h3 th:text="${propiedad.descripcion}"></h3>
                         <p th:text="${propiedad.caracteristicas}"></p>
