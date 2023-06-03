@@ -25,10 +25,11 @@
 <main class="">
 
   <div class="profile">
-    <img src="imagen-perfil.jpg" alt="Imagen de perfil">
-    <h1>Nombre de Usuario</h1>
-    <p>Correo electrónico: usuario@example.com</p>
-</div>
+    <img th:src="@{|data:image/jpeg;base64,${imagen64}|}" alt="Imagen de perfil">
+    <h1 th:text="${usuario.nombre}"></h1>
+    <h1 sec:authorize="hasRole('ROLE_CLIENTE')" th:text="${usuario.apellido}"></h1>
+    <p th:text="${usuario.email}"></p>
+  </div>
 </main>
 
 
