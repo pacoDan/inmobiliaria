@@ -39,7 +39,7 @@ public class ViewController {
     @GetMapping("/nosotros")
     public String contacto(Model model) {
 
-        return "nosotros";
+        return "contacto";
     }
 
     @GetMapping("/login")
@@ -54,5 +54,10 @@ public class ViewController {
         model.addAttribute("usuarios", usuarios);
         
         return "administrador";
+    }
+
+    @GetMapping("/propiedad")
+    public String propiedad() {
+        return "propiedad";
     }
 }

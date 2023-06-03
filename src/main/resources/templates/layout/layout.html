@@ -37,6 +37,8 @@
       <button  sec:authentication="name" type="button" class="btn btn-primary" id="botonMenu"><a>
       </a></button>
         <ul id="ulMenu">
+          <li class="opcionSubmenu"><button  type="button" class="btn btn-primary"><a th:href="@{/perfil}">Perfil</a></button>
+          </li>
           <li class="opcionSubmenu"><button sec:authorize="hasRole('ROLE_ENTE')" type="button" class="btn btn-primary"><a th:href="@{/propiedad/carga}">Cargar Propiedad</a></button>
           </li>
           <li class="opcionSubmenu"><button type="button" class="btn btn-primary"><a th:href="@{/logout}">Cerrar Sesion</a></button></li>

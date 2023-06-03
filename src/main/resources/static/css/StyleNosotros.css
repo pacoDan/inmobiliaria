@@ -1,11 +1,12 @@
 .contenedorInfo{
+margin-top: 5%;
     display: flex;
-    margin: auto;
 
 }
 
 .info{
-    margin-left: 5%;
+    margin: auto;
+        width: 50%;
 
 }
 

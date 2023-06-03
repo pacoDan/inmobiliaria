@@ -13,7 +13,7 @@
 
 
 </head>
-<body>
+<body class="Fondo">
 
 <div class="header">
   <header th:replace="layout/layout :: header"></header>
@@ -22,13 +22,14 @@
 
 <!-- Contenido de la página aquí -->
 
-<main class="">
+<main >
 
   <div class="profile">
     <img th:src="@{|data:image/jpeg;base64,${imagen64}|}" alt="Imagen de perfil">
     <h1 th:text="${usuario.nombre}"></h1>
     <h1 sec:authorize="hasRole('ROLE_CLIENTE')" th:text="${usuario.apellido}"></h1>
     <p th:text="${usuario.email}"></p>
+    <a class="btn btn-outline-primary" th:text="Editar"></a>
   </div>
 </main>
 
