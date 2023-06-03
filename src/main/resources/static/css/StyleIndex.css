@@ -1,6 +1,6 @@
 .container-anuncios{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 
@@ -10,22 +10,31 @@
     background-color: #F5F5F5;
     color: #333333;
     width: 100%;
-
+margin-bottom: 2%;
 }
 
-h3{
-width: 200px; /* Ancho máximo del contenedor */
+.tituloTruncado h3{
+width: 11em; /* Ancho máximo del contenedor */
   white-space: nowrap; /* Evita que el texto se divida en varias líneas */
   overflow: hidden; /* Oculta el contenido que excede el ancho del contenedor */
   text-overflow: ellipsis; /* Muestra los puntos suspensivos */
+  height: 1.5em
 }
-
+.descripcionTruncada{
+display: -webkit-box;
+  -webkit-line-clamp: 3; /* Muestra solo tres líneas de texto */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 4.5em;}
 
 .anuncio img{
 
        max-width: 100%;
            min-width: 100%;
            height: auto;
+           min-height: 14em;
+               max-height: 14em;
 
 }
 
@@ -36,6 +45,7 @@ width: 200px; /* Ancho máximo del contenedor */
 .precio{
     color: #FFA500;
     font-weight: 700;
+    margin: 3% auto 3% auto;
 }
 
 
@@ -164,7 +174,7 @@ width: 200px; /* Ancho máximo del contenedor */
 }
 
 
-@media (max-width: 819px) {
+@media (max-width: 687px) {
     .container-anuncios {
          display: block;
         justify-content: space-between;
@@ -182,6 +192,12 @@ width: 200px; /* Ancho máximo del contenedor */
         min-width: 100%;
         height: auto;
     }
-
+.tituloTruncado h3{
+width:23em;
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  overflow: hidden; /* Oculta el contenido que excede el ancho del contenedor */
+  text-overflow: ellipsis; /* Muestra los puntos suspensivos */
+  height: 1.5em
+}
 
   }
