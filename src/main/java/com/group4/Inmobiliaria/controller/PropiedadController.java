@@ -39,7 +39,7 @@ public class PropiedadController {
     }
 
     @PostMapping("/guardar")
-    public String guardar(@ModelAttribute Propiedad propiedad) {
+    public String guardar(@ModelAttribute Propiedad propiedad) throws Exception {
         
         List<MultipartFile> imagenesFiles = propiedad.getImagenesFiles();
         

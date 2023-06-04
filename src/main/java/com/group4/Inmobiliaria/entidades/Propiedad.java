@@ -1,5 +1,6 @@
 package com.group4.Inmobiliaria.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.group4.Inmobiliaria.enums.TipoPropiedad;
 import java.io.Serializable;
 import java.util.List;
@@ -33,7 +34,7 @@ public class Propiedad implements Serializable {
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false)    
     private String id;
 
     @Basic(optional = false)
@@ -63,10 +64,12 @@ public class Propiedad implements Serializable {
 
     @JoinColumn(name = "Id_Propietario", referencedColumnName = "Id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonIgnore
     private Usuario propietario;
 
     @JoinColumn(name = "Id_Inquilino", referencedColumnName = "Id", nullable = true)
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
+    @JsonIgnore
     private Usuario inquilino;
 
     @Basic(optional = false)
@@ -75,7 +78,7 @@ public class Propiedad implements Serializable {
 
     @Basic(optional = false)
     @Column(name = "Precio_Alquiler")
-    private double precioAlquiler; 
+    private double precioAlquiler;
 
     @Basic(optional = false)
     @Column(name = "Disponible")

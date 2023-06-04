@@ -1,5 +1,6 @@
 package com.group4.Inmobiliaria.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.group4.Inmobiliaria.enums.TipoImagenPropiedad;
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -21,6 +22,7 @@ public class ImagenPropiedad extends Imagen implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "Propiedad_Id")
+    @JsonIgnore
     private Propiedad propiedad;
 
     @Basic(optional = false)

@@ -17,7 +17,7 @@ public class ImagenService {
 
     @Autowired
     ImagenPerfilRepository imagenPerfilRepository;
-    
+
     @Autowired
     ImagenPropiedadRepository imagenPropiedadRepository;
 
@@ -25,13 +25,13 @@ public class ImagenService {
         if (archivo != null) {
             try {
                 ImagenPerfil imagen = new ImagenPerfil();
-                
+
                 imagen.setMime(archivo.getContentType());
 
                 imagen.setContenido(archivo.getBytes());
 
-                imagen.setNombre(archivo.getName());                    
-                                
+                imagen.setNombre(archivo.getName());
+
                 return imagenPerfilRepository.save(imagen);
 
             } catch (Exception e) {
@@ -66,29 +66,37 @@ public class ImagenService {
         }
         return null;
     }
-    
-    public void guardarImagenesPropiedad(List<MultipartFile>imagenes, Propiedad propiedad){
+
+    public void guardarImagenesPropiedad(List<MultipartFile> imagenes, Propiedad propiedad) throws Exception {
         for (MultipartFile imagen : imagenes) {
-            if(imagen != null){
+            if (imagen != null) {
                 try {
                     ImagenPropiedad imagenPropiedad = new ImagenPropiedad();
-                    
+
                     imagenPropiedad.setMime(imagen.getContentType());
-                    
+
                     imagenPropiedad.setContenido(imagen.getBytes());
-                    
+
                     imagenPropiedad.setNombre(imagen.getName());
-                    
+
                     imagenPropiedad.setPropiedad(propiedad);
-                    
+
                     imagenPropiedad.setTipoImagenPropiedad(TipoImagenPropiedad.PRINCIPAL);
-                    
+
                     imagenPropiedadRepository.save(imagenPropiedad);
-                    
+
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
             }
         }
+    }
+
+    public List<ImagenPropiedad> findImagesByPropiedadId(String id) {
+        return imagenPropiedadRepository.findByPropiedad_id(id);
+    }
+
+    public ImagenPropiedad findById(String id) {
+       return imagenPropiedadRepository.findById(id).orElse(null);        
     }
 }
