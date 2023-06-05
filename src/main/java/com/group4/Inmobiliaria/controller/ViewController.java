@@ -53,23 +53,38 @@ public class ViewController {
         return "login";
     }
 
-    @GetMapping("/admin")
-    public String admin(Model model) {
-        List<Usuario> usuarios = usuarioService.getAllUsers();
-        
-        model.addAttribute("usuarios", usuarios);
-        
-        return "administrador";
-    }
-
     @GetMapping("/propiedad")
     public String propiedad() {
         return "propiedad";
     }
+
 
     @GetMapping("/reuniones")
     public String reuniones(Model model) {
 
         return "reuniones";
     }
+
+    @GetMapping("/admin")
+    public String admin(Model model){
+        List<Usuario> usuarios = usuarioService.getAllUsers();
+        model.addAttribute("usuarios", usuarios);
+        
+        List<Propiedad> propiedades = propiedadService.listarPropiedades();
+        model.addAttribute("propiedades", propiedades);
+        
+        return "profile/administrador";
+    }
+    @GetMapping("/vendedor")
+    public String vendedor(Model model){
+        
+        return "profile/vendedor";
+    }
+    @GetMapping("/inquilino")
+    public String inquilino(Model model){
+
+        return "profile/inquilino";
+    }
+
+
 }
