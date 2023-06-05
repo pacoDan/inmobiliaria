@@ -36,10 +36,16 @@ public class ViewController {
         return "index";
     }
 
-    @GetMapping("/nosotros")
+    @GetMapping("/contacto")
     public String contacto(Model model) {
 
         return "contacto";
+    }
+
+    @GetMapping("/nosotros")
+    public String nosotros(Model model) {
+
+        return "sobreNosotros";
     }
 
     @GetMapping("/login")
@@ -59,5 +65,11 @@ public class ViewController {
     @GetMapping("/propiedad")
     public String propiedad() {
         return "propiedad";
+    }
+
+    @GetMapping("/reuniones")
+    public String reuniones(Model model) {
+
+        return "reuniones";
     }
 }

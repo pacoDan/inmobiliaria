@@ -29,7 +29,6 @@ public class PropiedadController {
 
     @GetMapping("/carga")
     public String cargarPropiedad(Propiedad propiedad, Model model) {
-
         Usuario propietario = ((Usuario) Session.getUserSession());
 
         propiedad.setPropietario(propietario);
