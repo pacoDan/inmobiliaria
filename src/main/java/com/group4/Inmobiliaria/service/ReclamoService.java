@@ -45,11 +45,11 @@ public class ReclamoService {
     }
     
     public List<Reclamo>findByEmisorId(String id){
-        return reclamoRepository.findByCliente_id(id);
+        return reclamoRepository.findByEmisor_id(id);
     }
     
      public List<Reclamo>findByReceptorId(String id){
-        return reclamoRepository.findByEnte_id(id);
+        return reclamoRepository.findByReceptor_id(id);
     }
 
 }

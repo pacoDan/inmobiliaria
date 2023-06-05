@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ReclamoRepository extends JpaRepository<Reclamo, String> {
     
-    List<Reclamo>findByCliente_id(String id);
+    public List<Reclamo>findByEmisor_id(String id);
     
-    List<Reclamo>findByEnte_id(String id);
+    public List<Reclamo>findByReceptor_id(String id);
     
 }
