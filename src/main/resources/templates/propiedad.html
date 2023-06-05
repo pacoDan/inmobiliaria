@@ -27,11 +27,12 @@
       <img src="https://st3.idealista.com/news/archivos/styles/fullwidth_xl/public/2020-06/im-191825.jpg?VersionId=H30j04J4vZFBf8nX6Otwwe0l4Vjfo96b&itok=lgCc-eBK%22%3E" alt="Producto">
     </div>
     <div class="product-details">
-      <h1>Nombre del producto</h1>
-      <p class="price">$99.99</p>
-      <p class="description">Descripción del producto Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h1 th:text="${propiedad.descripcion}"></h1>
+      <p class="price" th:text="${propiedad.precioVenta}"></p>
+      <p class="price" th:text="${propiedad.precioAlquiler}"></p>
+      <p class="description" th:text="${propiedad.caracteristicas}"></p>
       <div class="actions">
-        <button class="btn btn-outline-primary">Comprar ahora</button>
+    <a th:href="@{/pago}">    <button  class="btn btn-outline-primary" >Comprar ahora</button> </a>
       </div>
     </div>
   </div>
