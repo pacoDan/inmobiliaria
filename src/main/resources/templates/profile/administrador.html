@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />    
+   
+    <link rel="stylesheet" th:href="@{/css/styleSeller.css}">
+    <!--<link rel="stylesheet" th:href="@{/css/styleProfile.css}">-->
+</head>
+<body>
+    <div class="wrapper">
+        <aside>  
+            <div class="contenedor__logo">
+                <div class="logo">
+                    <i class="fa-solid fa-house" style="color: #d6d8dc;"></i>
+                    <div class="logo__name">Mr House</div>
+                </div>
+            </div>
+            <nav id="nav__Vent"> 
+                <ul class="lista__navegacion">    
+                    <li>
+                        <!--<i class="fa-solid fa-magnifying-glass" style="color: #d6d8dc"></i>-->
+                        <input type="text" placeholder="Search...">
+                    </li>
+                    <li>
+                        <a href="#" onclick="mostrarContMenu('grafica')">
+                            <i class="fa-sharp fa-solid fa-chart-column" style="color: #d6d8dc;"></i>
+                            <span class="links_name">Grafica</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="mostrarContMenu('usuarios')">
+                            <i class="fa-solid fa-user" style="color: #d6d8dc;"></i>
+                            <span class="links_name">Usuarios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="mostrarContMenu('propiedades')">
+                            <i class="fa-solid fa-house" style="color: #d6d8dc;"></i>
+                            <span class="links_name">Propiedades</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="contenido__sesion"> 
+                    <a href="#" <!--onclick="mostrarOpcion()"-->
+                        <i class="fa-solid fa-right-to-bracket" id="log__out" style="color: #red;"></i>
+                        <span class="links_name">Cerra sesion</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <main> 
+            <div class="element" id="element__grafica">
+                <h2>Grafica</h2><br/>
+            </div>
+            <div class="element" id="element__usuarios">
+                <h2>Usuarios</h2><br/><!--
+                <select id="cantFilas" onchange="actualizarTabla()">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+                </select>-->
+                <table class="table table-striped" id="miTable">
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Nombre</td>
+                            <td>Email</td>
+                            <td>Acciones</td>
+                        </tr>
+
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr th:each="usuario : ${usuarios}">
+                            <td th:text="${usuario.id}"></td>
+                            <td th:text="${usuario.nombre}"></td>
+                            <td th:text="${usuario.email}"></td>
+                        </tr>
+                        <!--
+                        <tr th:each="usuario: ${usuarios}">
+                            <td th:text="${usuario.id}"></td>
+                            <td th:text="${usuario.nombre}"></td>
+                            <!--<td th:text="${usuario.Apellido}"></td>
+                            <td th:text="${usuario.email}"></td>
+                            <td>
+                                <a th:href="@{editar/{id}(id=${usuario.id})}" class="btn btn-editar">Editar</a>
+                                <a th:href="@{eliminar/{id}(id=${usuario.id})}" class="btn btn-eliminar">Eliminar</a>                    
+                            </td>
+
+                        </tr>-->
+                    </tbody>
+                </table>
+                <!--<div class="pagination" id="pagination"></div>
+                <button onclick="funcC()">hola</button>-->
+            </div>
+            <div class="element" id="element__propiedades">
+                <h2>Propiedades</h2><br/>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Pais</td>
+                            <td>Provincia</td>
+                            <td>Disponible</td>
+                            <td>Acciones</td>
+                        </tr>
+
+                    </thead>
+                    <!--th:if="${propiedades != null and !propiedades.empty}"-->
+                    <tbody>
+                        <tr th:each="propiedad : ${propiedades}">
+                            <td th:text="${propiedad.id}"></td>
+                            <td th:text="${propiedad.Pais}"></td>
+                            <td th:text="${propiedad.Provincia}"></td>
+                            <td th:text="${propiedad.Disponible}"></td>
+                            <td>
+                                <a th:href="@{editar/{id}(id=${propiedad.id})}" class="btn btn__editar">Editar</a>
+                                <!--<a th:href="@{eliminar/{id}(id=${propiedad.id})}" class="btn btn-eliminar">Eliminar</a>
+                                <a href="#attr-href">
+                                    Descripción de enlaces de la misma página
+                                </a>
+                                -->
+                                <form th:action="@{eliminar/{id}(id=${propiedad.id})}" method="post">
+                                    <button type="submit" <!--class="btn btn-eliminar" onclick="mostrarContMenu('propiedades')"-->>Eliminar</button>
+                                </form>
+
+                            </td>
+
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script th:src="@{/js/main.js}" type="text/javascript"></script>
+    
+    <!--<script th:src="@{/js/table.js}" type="text/javascript"></script><!--
+    <script th:inline="javascript">
+    var usuarios = /*[[${usuarios}]]*/ [];
+    });
+</script>
+    <script th:src="@{/js/table.js}" type="text/javascript"></script>
+    -->
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+</body>
+</html>

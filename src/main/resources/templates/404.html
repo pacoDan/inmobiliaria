@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERROR 404</title>
+    <link rel="stylesheet" th:href="@{/css/styleError.css}">
+</head>
+<body>
+    <div class="cont">
+        <h1 class="text__princ">404</h1>
+        <article class="sub-text__princ">¡Ups! página no encontrada...</article>
+        <div class="buttons">
+            <button><a th:href="@{/}"><p>Inicio</p></a></button>
+            <button class="btn"><p>Reportar problema</p></button>
+        </div>
+    </div>
+</body>
+</html>
