@@ -73,7 +73,7 @@ public class PropiedadController {
         Propiedad propiedad = propiedadService.encontrarById(id);
         return "propiedad";
     }*/
-    @GetMapping("/{id}")
+    @GetMapping("propiedad/{id}")
     public String mostrarDetallePropiedad(@PathVariable("id") String id, Model model) {
         Propiedad propiedad = propiedadService.encontrarById(id);
         model.addAttribute("propiedad", propiedad);
