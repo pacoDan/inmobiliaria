@@ -43,15 +43,22 @@
                                             <div class="mb-3">
                                                 <label for="tipoPropiedad" class="form-label">Tipo De Propiedad</label>
 
-                                                <input class="form-control" id="tipoPropiedad" aria-describedby="emailHelp" th:field="*{tipoPropiedad}" required>
+                                                 <select class="form-control" id="tipoPropiedad" aria-describedby="emailHelp" th:field="*{tipoPropiedad}" required>
+                                                     <option>Seleccione una opcion</option>
+                                                     <option value="CASA">Casa</option>
+                                                    <option value="DEPARTAMENTO">Departamento</option>
+                                                    <option value="MONOAMBIENTE">Monoambiente</option>
+                                                    <option value="OTRO">Otro</option>
+
+                                                </select>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="precioVenta" class="form-label">Precio Venta</label>
-                                                <input type="number" class="form-control" id="precioVenta" aria-describedby="emailHelp" th:field="*{precioVenta}" required>
+                                                <input type="number" min="1" class="form-control" id="precioVenta" aria-describedby="emailHelp" th:field="*{precioVenta}" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="precioAlquiler" class="form-label">Precio Alquiler</label>
-                                                <input type="number" class="form-control" id="precioAlquiler" aria-describedby="emailHelp" th:field="*{precioAlquiler}" required>
+                                                <input type="number" min="1" class="form-control" id="precioAlquiler" aria-describedby="emailHelp" th:field="*{precioAlquiler}" required>
                                             </div>
                                             
                                             
