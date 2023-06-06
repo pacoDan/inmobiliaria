@@ -29,7 +29,6 @@ public class PropiedadController {
 
     @GetMapping("/carga")
     public String cargarPropiedad(Propiedad propiedad, Model model) {
-
         Usuario propietario = ((Usuario) Session.getUserSession());
 
         propiedad.setPropietario(propietario);
@@ -78,7 +77,7 @@ public class PropiedadController {
     public String mostrarDetallePropiedad(@PathVariable("id") String id, Model model) {
         Propiedad propiedad = propiedadService.encontrarById(id);
         model.addAttribute("propiedad", propiedad);
-        return "propiedad";
+        return "propiedad"; 
     }
 
 
