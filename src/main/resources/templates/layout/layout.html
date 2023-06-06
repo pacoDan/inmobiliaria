@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/css/StyleIndex.css}">
-  <link rel="stylesheet" th:href="@{/css/Style.css}">
+    <link rel="stylesheet" th:href="@{/css/Style.css}">
 </head>
 <body>
 
@@ -22,7 +22,7 @@
       <li><a th:href="@{/}" class="nav-link px-2 link-secondary">Inicio</a></li>
       <li><a th:href="@{/propiedad/all}" class="nav-link px-2">Propiedades</a></li>
 
-      <li><a th:href="@{/nosotros}" class="nav-link px-2">Contacto</a></li>
+      <li><a th:href="@{/nosotros}" class="nav-link px-2">Nosotros</a></li>
     </ul>
 
     <div sec:authorize="!isAuthenticated()" class="col-md-3 text-end">
@@ -43,14 +43,12 @@
         </ul>
 
       </div>
-
-
-
-
-        </div>
+    </div>
   </header>
 
-
+    
+    
+    
 
   <footer th:fragment="footer" class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <p class="col-md-4 mb-0 text-body-secondary">© 2023 Company, Inc</p>

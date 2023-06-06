@@ -11,7 +11,7 @@
         <link rel="stylesheet" th:href="@{/css/StyleIndex.css}">
 
         <link rel="stylesheet" th:href="@{/css/styleSeller.css}">
-        <!--<link rel="stylesheet" th:href="@{/css/styleProfile.css}">-->
+        <link rel="stylesheet" th:href="@{/css/styleProfile.css}">
 
     </head>
 
@@ -22,20 +22,9 @@
         </div>
         <div class="wrapper">
             <aside>  
-                <nav id="nav__Vent"> 
-                    <ul class="lista__navegacion"> 
-                        <li>
-                            <a href="#" onclick="mostrarContMenu('misCitas')">
-                                <i class="fa-sharp fa-solid fa-chart-column" style="color: #d6d8dc;"></i>
-                                <span class="links_name">Mis citas</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" onclick="mostrarContMenu('favoritos')">
-                                <i class="fa-sharp fa-solid fa-chart-column" style="color: #d6d8dc;"></i>
-                                <span class="links_name">Favoritos</span>
-                            </a>
-                        </li>
+                <ul th:insert="layout/listaIzq :: ul"> 
+                </ul>
+                    <ul class="lista__navegacion">
                         <li>
                             <a href="#" onclick="mostrarContMenu('facturacion')">
                                 <i class="fa-sharp fa-solid fa-chart-column" style="color: #d6d8dc;"></i>
@@ -43,7 +32,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" onclick="mostrarContMenu('misReclamo')">
+                            <a href="#" onclick="mostrarContMenu('misReclamos')">
                                 <i class="fa-sharp fa-solid fa-chart-column" style="color: #d6d8dc;"></i>
                                 <span class="links_name">Mis reclamos</span>
                             </a>
@@ -55,7 +44,7 @@
                             </a>
                         </li>                      
                     </ul>
-                </nav>
+                
             </aside>
 
             <main>  <!-- class="list__elemet list__item--click" >-->
@@ -68,30 +57,34 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet massa vitae magna scelerisque luctus eu ac odio. In ac nunc in augue dignissim mattis. Vestibulum feugiat, purus eu euismod pharetra, erat enim imperdiet dolor, vitae consectetur leo diam in arcu. Nunc vel nisi diam. Vestibulum sagittis est vel turpis luctus, vitae porttitor ligula bibendum. Phasellus sit amet consectetur sem. Cras consectetur, nisi vitae sagittis pharetra, mauris orci pharetra elit, a auctor elit lorem ut tellus. Integer venenatis dictum condimentum. Ut fermentum diam vel convallis viverra. Sed sit amet nisi lacus. Phasellus gravida justo a risus pellentesque, quis aliquet lorem ornare. Mauris est sem, malesuada ut consequat ut, facilisis vitae neque. Morbi rhoncus quam non consectetur varius. In hac habitasse platea dictumst. Phasellus non nulla eleifend, gravida metus ultricies, eleifend augue. Fusce pulvinar mi at purus aliquam, vel efficitur mi hendrerit.</p>
                 </div>
                 <div class="element" id="element__facturacion">
-                    <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet massa vitae magna scelerisque luctus eu ac odio. In ac nunc in augue dignissim mattis. Vestibulum feugiat, purus eu euismod pharetra, erat enim imperdiet dolor, vitae consectetur leo diam in arcu. Nunc vel nisi diam. Vestibulum sagittis est vel turpis luctus, vitae porttitor ligula bibendum. Phasellus sit amet consectetur sem. Cras consectetur, nisi vitae sagittis pharetra, mauris orci pharetra elit, a auctor elit lorem ut tellus. Integer venenatis dictum condimentum. Ut fermentum diam vel convallis viverra. Sed sit amet nisi lacus. Phasellus gravida justo a risus pellentesque, quis aliquet lorem ornare. Mauris est sem, malesuada ut consequat ut, facilisis vitae neque. Morbi rhoncus quam non consectetur varius. In hac habitasse platea dictumst. Phasellus non nulla eleifend, gravida metus ultricies, eleifend augue. Fusce pulvinar mi at purus aliquam, vel efficitur mi hendrerit.</p>
+                    <p>Aun no tienes facturaciones disponibles.</p>
                 </div>
                 <div class="element" id="element__misReclamos">
-                    <p>Aun no tienes facturaciones disponibles.</p>
+                    <p>Agragr tabla con reclamos</p>
                 </div>
                 <div class="element" id="element__generarReclamo">
                     <!--Mformulario de reclamo-->
-                    <from id="from__formReclamo">
+                    
+                    <!--<form th:action="@{/guardar}" method="post" th:object="${reclamo}" id="from__formReclamo">--> 
+                    <form th:action="@{/guardar}" method="post" th:object="${reclamo}" id="from__formReclamo">
+ 
                         <div class="input__group">
                             <h2 id="h2__formReclamo">Formulario de reclamo</h2>
 
-                            <label for="motivo">Motivo</label>
-                            <select name="motivo" id="motivo">
-                                <option value="plomeria">Plomeria</option>
-                                <option value="filtraciones">Filtraciones</option>
-                                <option value="humedad">Humedad</option>
-                                <option value="seguridad">Seguridad</option>
-                                <option value="otro">Otro</option>
+                            <label for="tipoProcedimiento">Motivo</label>
+                            <!--<select name="tipoProcedimiento" id="tipoProcedimiento" th:field="{TipoProcedimiento}">
+                            <select name="motivo" id="motivo">-->
+                            <select name="tipoProcedimiento" th:field="${procedimiento.tipoProcedimiento}">
+                                <option value="PLOMERIA">Plomeria</option>
+                                <option value="FILTRACIONES">Filtraciones</option>
+                                <option value="HUMEDAD">Humedad</option>
+                                <option value="SEGURIDAD">Seguridad</option>
+                                <option value="OTRO">Otro</option>
                             </select>
 
                             <label for="reclamo">Reclamo</label>
-                            <textarea name="reclamo" id="reclamo" cols="30" rows="5" placeholder="Ingrese una descripcion de su reclamo..."></textarea>
-
+                            <textarea name="reclamo" id="reclamo" cols="30" rows="5" placeholder="Ingrese una descripcion de su reclamo..." th:field="*{descripcion}"></textarea>
+                            
                             <input class="btn__reclamo" type="submit" value="Enviar">
                         </div>
                     </from>

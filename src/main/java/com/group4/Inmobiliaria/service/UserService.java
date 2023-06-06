@@ -39,7 +39,7 @@ public class UserService implements UserDetailsService {
     UsuarioRepository usuarioRepository;
     
     @Autowired
-    ImagenPerfilService imagenPerfilService;
+    ImagenService imagenService;
     
     @Autowired
     AdminRepository adminRepository;
@@ -53,7 +53,7 @@ public class UserService implements UserDetailsService {
         
         cliente.setPassword(new BCryptPasswordEncoder().encode(cliente.getPassword()));        
         
-        ImagenPerfil imagen = imagenPerfilService.guardarImagenPerfil(cliente.getArchivoImagen());
+        ImagenPerfil imagen = imagenService.guardarImagenPerfil(cliente.getArchivoImagen());
         
         cliente.setImagenPerfil(imagen);
         
@@ -69,7 +69,7 @@ public class UserService implements UserDetailsService {
         
         ente.setPassword(new BCryptPasswordEncoder().encode(ente.getPassword()));
         
-        ImagenPerfil imagen = imagenPerfilService.guardarImagenPerfil(ente.getArchivoImagen());
+        ImagenPerfil imagen = imagenService.guardarImagenPerfil(ente.getArchivoImagen());
         
         ente.setImagenPerfil(imagen);
         

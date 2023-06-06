@@ -28,4 +28,3 @@ listElements.forEach(listElement => {
     var contenidoMostrado = document.getElementById('element__' + opcion);
     contenidoMostrado.style.display = 'block';
   }
-

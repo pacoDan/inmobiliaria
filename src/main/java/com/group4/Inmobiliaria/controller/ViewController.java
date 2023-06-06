@@ -30,33 +30,39 @@ public class ViewController {
         System.out.println(logged);
         
         if (logged != null && logged.getRol().toString().equals("ADMIN")) {
-            return "redirect:/administrador";
+            return "redirect:/admin";
         }
 
         return "index";
     }
 
-    @GetMapping("/nosotros")
+    @GetMapping("/contacto")
     public String contacto(Model model) {
 
-        return "nosotros";
+        return "contacto";
+    }
+
+    @GetMapping("/nosotros")
+    public String nosotros(Model model) {
+
+        return "sobreNosotros";
     }
 
     @GetMapping("/login")
     public String login() {
         return "login";
     }
-    /*
-    @GetMapping("/administrador")
-    public String administrador(Model model) {
-        List<Usuario> usuarios = usuarioService.getAllUsers();
-        
-        model.addAttribute("usuarios", usuarios);
-        
-        return "administrador";
+
+    @GetMapping("/propiedad")
+    public String propiedad() {
+        return "propiedad";
     }
-    */
-    @GetMapping("/administrador")
+    @GetMapping("/reuniones")
+    public String reuniones(Model model) {
+
+        return "reuniones";
+    }
+    @GetMapping("/admin")
     public String admin(Model model){
         List<Usuario> usuarios = usuarioService.getAllUsers();
         model.addAttribute("usuarios", usuarios);
@@ -76,4 +82,5 @@ public class ViewController {
 
         return "profile/inquilino";
     }
+
 }

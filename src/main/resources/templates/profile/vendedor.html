@@ -21,46 +21,128 @@
         </div>
         <div class="wrapper">
             <aside>  
-                <nav id="nav__Vent"> 
+                
+                    
                     <ul class="lista__navegacion">  
-
+                        
                         <li>
-                            <a href="#" onclick="mostrarContMenu('misCitas')">
+                            <a href="#" onclick="mostrarContMenu('misCalendario')">
                                 <i class="fa-sharp fa-solid fa-chart-column" style="color: #d6d8dc;"></i>
-                                <span class="links_name">Mis citas</span>
+                                <span class="links_name">Mis calendario</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="#" onclick="mostrarContMenu('misPropiedades')">
-                                <i class="fa-sharp fa-solid fa-chart-column" style="color: #d6d8dc;"></i>
-                                <span class="links_name">Mis propiedades</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" onclick="mostrarContMenu('misInquilinos')">
+                        <div th:if="${1 == 1}">
+                            <li>
+                                <a href="#" onclick="mostrarContMenu('misInquilinos')">
                                 <i class="fa-sharp fa-solid fa-chart-column" style="color: #d6d8dc;"></i>
                                 <span class="links_name">Mis inquilinos</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" onclick="mostrarContMenu('misDatos')">
-                                <i class="fa-sharp fa-solid fa-chart-column" style="color: #d6d8dc;"></i>
-                                <span class="links_name">Mis Datos</span>
-                            </a>
-                        </li>
+                                </a>
+                            </li>
+                        </div>
+                        <!--Fin prueba-->
+                        
                     </ul>
-                </nav>
+                    <ul th:insert="layout/listaIzq :: ul">       
+                    </ul>
+               
             </aside>
 
             <main>  <!-- class="list__elemet list__item--click" >-->
                 <div class="element" id="element__misCitas">
-                    <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet massa vitae magna scelerisque luctus eu ac odio. In ac nunc in augue dignissim mattis. Vestibulum feugiat, purus eu euismod pharetra, erat enim imperdiet dolor, vitae consectetur leo diam in arcu. Nunc vel nisi diam. Vestibulum sagittis est vel turpis luctus, vitae porttitor ligula bibendum. Phasellus sit amet consectetur sem. Cras consectetur, nisi vitae sagittis pharetra, mauris orci pharetra elit, a auctor elit lorem ut tellus. Integer venenatis dictum condimentum. Ut fermentum diam vel convallis viverra. Sed sit amet nisi lacus. Phasellus gravida justo a risus pellentesque, quis aliquet lorem ornare. Mauris est sem, malesuada ut consequat ut, facilisis vitae neque. Morbi rhoncus quam non consectetur varius. In hac habitasse platea dictumst. Phasellus non nulla eleifend, gravida metus ultricies, eleifend augue. Fusce pulvinar mi at purus aliquam, vel efficitur mi hendrerit.</p>
+                    <table class="table">
+                        <caption>Pedidos de citas</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table">
+                        <caption>Citas confirmadas</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="element" id="element__misPropiedades">
-                    <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet massa vitae magna scelerisque luctus eu ac odio. In ac nunc in augue dignissim mattis. Vestibulum feugiat, purus eu euismod pharetra, erat enim imperdiet dolor, vitae consectetur leo diam in arcu. Nunc vel nisi diam. Vestibulum sagittis est vel turpis luctus, vitae porttitor ligula bibendum. Phasellus sit amet consectetur sem. Cras consectetur, nisi vitae sagittis pharetra, mauris orci pharetra elit, a auctor elit lorem ut tellus. Integer venenatis dictum condimentum. Ut fermentum diam vel convallis viverra. Sed sit amet nisi lacus. Phasellus gravida justo a risus pellentesque, quis aliquet lorem ornare. Mauris est sem, malesuada ut consequat ut, facilisis vitae neque. Morbi rhoncus quam non consectetur varius. In hac habitasse platea dictumst. Phasellus non nulla eleifend, gravida metus ultricies, eleifend augue. Fusce pulvinar mi at purus aliquam, vel efficitur mi hendrerit.</p>
+                    <div class="container-anuncios">
+                        <div class="anuncio" th:each="propiedad : ${propiedades}">
+                            <img class="imagenAnuncio" th:src="${propiedad.imagenes}" alt="anuncio casa en el lago">
+                            <div class="contenido-anuncio">
+                                <h3 th:text="${propiedad.descripcion}"></h3>
+                                <p th:text="${propiedad.caracteristicas}"></p>
+                                <p class="precio" th:text="${propiedad.precioVenta}"></p>
+                                <p class="precio" th:text="${propiedad.precioAlquiler}"></p>
+                                <ul class="iconos-caracts">
+                                    <li>
+                                        <span class="material-symbols-outlined">bathtub </span>
+                                        <p>3</p>
+                                    </li>
+                                    <li>
+                                        <span class="material-symbols-outlined">directions_car </span>
+                                        <p>3</p>
+                                    </li>
+                                    <li>
+                                        <span class="material-symbols-outlined">bed</span>
+                                        <p>4</p>
+                                    </li>
+                                </ul>
+                                <button type="button" href="/" class="btn btn-outline-primary">Ver Propiedad</button>
+
+                                <!-- Estos botones solo deberian estar disponibles si la persona logeada es la propietaria -->
+                                <a th:if="${#authentication.name == propiedad.propietario.email}" type="button"  th:href="@{propiedad/editar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Editar"></a>
+                                <a th:if="${#authentication.name == propiedad.propietario.email}" type="button"  th:href="@{propiedad/eliminar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Eliminar"></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="element" id="element__misInquilinos">
                     <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
@@ -74,7 +156,7 @@
                     -->
                     <form>
                         <label for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre">
+                        <input type="text" id="nombre" name="nombre" readonly>
                         <!--<input type="text" id="nombre" name="nombre" required>-->
 
                         <label for="apellido">Apellido:</label>
@@ -84,9 +166,9 @@
                         <input type="text" id="email" name="email">
 
                         <label for="dni">DNI:</label>
-                        <input type="text" id="dni" name="dni">
+                        <input type="text" id="dni" name="dni" readonly>
 
-                        <input type="submit" value="Enviar">
+                        <input type="submit" value="Guardar cambios">
                     </form>
 
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet massa vitae magna scelerisque luctus eu ac odio. In ac nunc in augue dignissim mattis. Vestibulum feugiat, purus eu euismod pharetra, erat enim imperdiet dolor, vitae consectetur leo diam in arcu. Nunc vel nisi diam. Vestibulum sagittis est vel turpis luctus, vitae porttitor ligula bibendum. Phasellus sit amet consectetur sem. Cras consectetur, nisi vitae sagittis pharetra, mauris orci pharetra elit, a auctor elit lorem ut tellus. Integer venenatis dictum condimentum. Ut fermentum diam vel convallis viverra. Sed sit amet nisi lacus. Phasellus gravida justo a risus pellentesque, quis aliquet lorem ornare. Mauris est sem, malesuada ut consequat ut, facilisis vitae neque. Morbi rhoncus quam non consectetur varius. In hac habitasse platea dictumst. Phasellus non nulla eleifend, gravida metus ultricies, eleifend augue. Fusce pulvinar mi at purus aliquam, vel efficitur mi hendrerit.</p>

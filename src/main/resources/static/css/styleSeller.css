@@ -7,7 +7,7 @@
 }
 body{
     background:#f3ede7; 
-    overflow: hidden;
+    
 }
 
 .wrapper{ /*hace referencia al cont del menu izq y der*/
@@ -24,7 +24,7 @@ aside{
     background: #1e385b;
     padding: 6px 14px;
     align-items: center;
-    
+    /*overflow: hidden;*/
 }
 aside .contenedor__logo .logo{
     color: #fff;
@@ -46,7 +46,6 @@ aside .contenedor__logo .logo{
 }
 
  aside .lista__navegacion{
-    
     font-size:  20px;
     font-weight: 400;
 }

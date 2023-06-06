@@ -5,9 +5,6 @@ main{
     justify-content: center;
 }
 
-p{
-    margin-bottom: 2%;
-}
 
 .contenedorEleccion{
     display:flex;
