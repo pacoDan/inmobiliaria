@@ -50,7 +50,9 @@ input, textarea, select, select:focus{
     background-color: #1e385b;
     cursor:pointer;
 }
-
+ol, ul {
+    padding-left: 0rem;
+}
 
 /*Fin estilos para inquilino*/
 

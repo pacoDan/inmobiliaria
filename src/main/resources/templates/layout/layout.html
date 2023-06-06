@@ -40,8 +40,11 @@
                     <li class="opcionSubmenu"><button sec:authorize="hasRole('ROLE_ENTE')" type="button" class="btn btn-primary"><a th:href="@{/propiedad/carga}">Cargar Propiedad</a></button>
                     </li>
                     <li class="opcionSubmenu">
-                        <button type="button" class="btn btn-primary">
+                        <button sec:authorize="hasRole('ROLE_ENTE')" type="button" class="btn btn-primary">
                             <a th:href="@{/vendedor}">Mi perfil</a>
+                        </button>
+                        <button sec:authorize="hasRole('ROLE_CLIENTE')" type="button" class="btn btn-primary">
+                            <a th:href="@{/inquilino}">Mi perfil</a>
                         </button>
                     </li>  
                     <li class="opcionSubmenu"><button type="button" class="btn btn-primary"><a th:href="@{/logout}">Cerrar Sesion</a></button></li>
