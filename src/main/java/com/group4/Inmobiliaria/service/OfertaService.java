@@ -41,5 +41,12 @@ public class OfertaService {
     public List<Oferta> listarOfertas(){
         return ofertaRepository.findAll();
     }
-
+    
+    public List<Oferta>findByEmisorId(String id){
+        return ofertaRepository.findByEmisor_id(id);
+    }
+    
+    public List<Oferta>findByReceptorId(String id){
+        return ofertaRepository.findByReceptor_id(id);
+    }
 }
