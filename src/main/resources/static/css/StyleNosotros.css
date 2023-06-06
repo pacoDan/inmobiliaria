@@ -1,39 +1,62 @@
-.contenedorInfo{
-margin-top: 5%;
-    display: flex;
 
+main {
+  padding: 20px;
 }
 
-.info{
-    margin: auto;
-        width: 50%;
-
+.section {
+  margin-bottom: 40px;
 }
 
-.imagenNosotros{
-width: 100%;
-
-
+.container {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.contenedorFormulario{
-    display: flex;
-    margin: auto;
+.our-team .team-members {
+  display: flex;
+  justify-content: space-between;
+}
 
+.team-member {
+  flex-basis: calc(50% - 20px);
+  text-align: center;
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
 
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
 
-.formContacto{
-    width: 70%;
-    margin-left: 5%;
-    margin: auto;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    text-align: center;
-}
 
-textarea{
-    width: 100%;
-    height: 5em;
+
+
+
+  main {
+    padding: 10px;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  .our-team .team-members {
+    flex-wrap: wrap;
+  }
+
+  .team-member {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+  }
+
+  .team-member img {
+    width: 100px;
+    height: 100px;
+  }
 }
