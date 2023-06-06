@@ -29,7 +29,7 @@
     <h1 th:text="${usuario.nombre}"></h1>
     <h1 sec:authorize="hasRole('ROLE_CLIENTE')" th:text="${usuario.apellido}"></h1>
     <p th:text="${usuario.email}"></p>
-    <a class="btn btn-outline-primary" th:text="Editar"></a>
+    <a th:href="@{/modificarUsuario}" class="btn btn-outline-primary" th:text="Editar"></a>
   </div>
 </main>
 

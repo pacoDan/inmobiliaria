@@ -68,6 +68,18 @@ public class UserController {
         return "redirect:/";
     }
 
+    @PostMapping("/actualizar/cliente")
+    public String actualizarCliente(Cliente cliente) throws Exception {
+        userService.actualizarCliente(cliente);
+        return "redirect:/";
+    }
+
+    @PostMapping("/actualizar/ente")
+    public String actualizarEnte(Ente ente) throws Exception {
+        userService.actualizarEnte(ente);
+        return "redirect:/";
+    }
+
     @PostMapping("/newAdmin")
     public void newAdmin(@RequestBody Admin admin) {
         userService.registrarAdmin(admin);
@@ -91,6 +103,14 @@ public class UserController {
 
         return "perfil";
     }
+
+    @GetMapping("/modificarUsuario")
+    public String modificarUsuario(Model model){
+        Usuario usuario = Session.getUserSession();
+        model.addAttribute("usuario", usuario);
+        return "modificarUser";
+    }
+
 }
 
 

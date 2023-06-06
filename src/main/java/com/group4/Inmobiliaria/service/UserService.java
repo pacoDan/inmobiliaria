@@ -76,6 +76,47 @@ public class UserService implements UserDetailsService {
         enteRepository.save(ente);
         
     }
+
+    @Transactional
+    public void actualizarEnte(Ente ente) throws Exception{
+        Usuario usuario = Session.getUserSession();
+        if(!ente.getPassword().equals("")){
+            ente.setPassword(new BCryptPasswordEncoder().encode(ente.getPassword()));
+        }else {
+            ente.setPassword(usuario.getPassword());
+        }
+        if(!ente.getArchivoImagen().isEmpty()){
+            ImagenPerfil imagen = imagenService.guardarImagenPerfil(ente.getArchivoImagen());
+            ente.setImagenPerfil(imagen);
+        }else {
+            ente.setImagenPerfil(usuario.getImagenPerfil());
+        }
+        ente.setFechaRegistro(usuario.getFechaRegistro());
+        ente.setRol(usuario.getRol());
+        enteRepository.save(ente);
+        Session.setUserSession(ente);
+    }
+
+    @Transactional
+    public void actualizarCliente(Cliente cliente) throws Exception{
+        Usuario usuario = Session.getUserSession();
+        if(!cliente.getPassword().equals("")){
+            cliente.setPassword(new BCryptPasswordEncoder().encode(cliente.getPassword()));
+        }else {
+            cliente.setPassword(usuario.getPassword());
+        }
+        if(!cliente.getArchivoImagen().isEmpty()){
+            ImagenPerfil imagen = imagenService.guardarImagenPerfil(cliente.getArchivoImagen());
+            cliente.setImagenPerfil(imagen);
+        }else {
+            cliente.setImagenPerfil(usuario.getImagenPerfil());
+        }
+        cliente.setFechaRegistro(usuario.getFechaRegistro());
+        cliente.setRol(usuario.getRol());
+        clienteRepository.save(cliente);
+        Session.setUserSession(cliente);
+    }
+
     
     public void registrarAdmin(Admin admin) {
         admin.setFechaRegistro(new Date());
