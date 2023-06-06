@@ -46,6 +46,9 @@
 
 
                     <div class="contenido-anuncio" >
+
+
+
                         <div class="tituloTruncado"><h3 th:text="${propiedad.descripcion}"></h3>
                         </div>
                         <div class="descripcionTruncada"> <p th:text="${propiedad.caracteristicas}"></p></div>
@@ -67,7 +70,9 @@
                                 <p>4</p>
                             </li>
                         </ul>
-                        <a th:href="@{/propiedad}" > <button type="button" href="/" class="btn btn-outline-primary" > Ver Propiedad </button></a>
+                        <a th:href="@{propiedad/{id}(id=${propiedad.id})}">
+                            <button type="button" class="btn btn-outline-primary">Ver Propiedad</button>
+                        </a>
 
                         <!-- Estos botones solo deberian estar disponibles si la persona logeada es la propietaria -->
                         <a th:if="${#authentication.name == propiedad.propietario.email}" type="button"  th:href="@{propiedad/editar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Editar"></a>
