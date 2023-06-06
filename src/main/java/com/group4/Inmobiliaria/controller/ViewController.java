@@ -51,6 +51,7 @@ public class ViewController {
     public String propiedad() {
         return "propiedad";
     }
+    
     @GetMapping("/admin")
     public String admin(Model model){
         List<Usuario> usuarios = usuarioService.getAllUsers();

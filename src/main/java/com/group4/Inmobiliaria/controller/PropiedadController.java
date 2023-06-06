@@ -37,7 +37,7 @@ public class PropiedadController {
         model.addAttribute("propiedad", propiedad);
         return "carga";
     }
-
+    
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute Propiedad propiedad) throws Exception {
         
@@ -68,6 +68,18 @@ public class PropiedadController {
         List<Propiedad> propiedades = propiedadService.listarPropiedades();
         model.addAttribute("propiedades", propiedades);
         return "propiedades";
+    }/*
+    @GetMapping("/propiedad/{id}")
+    public String mostrarDetallePropiedad(@PathVariable("id") String id) {
+        Propiedad propiedad = propiedadService.encontrarById(id);
+        return "propiedad";
+    }*/
+    @GetMapping("/{id}")
+    public String mostrarDetallePropiedad(@PathVariable("id") String id, Model model) {
+        Propiedad propiedad = propiedadService.encontrarById(id);
+        model.addAttribute("propiedad", propiedad);
+        return "propiedad";
     }
+
 
 }

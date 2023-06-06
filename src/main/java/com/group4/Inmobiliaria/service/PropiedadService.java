@@ -43,5 +43,4 @@ public class PropiedadService {
     public List<Propiedad> listarPropiedades(){
         return propiedadRepository.findAll();
     }
-    
 }
