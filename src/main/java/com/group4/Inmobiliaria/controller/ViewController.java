@@ -83,6 +83,10 @@ public class ViewController {
         return "profile/inquilino";
     }
 
+    @GetMapping("/pago")
+    public String pago(Model model){
 
+        return "pago";
+    }
 
 }
