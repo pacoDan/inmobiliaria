@@ -11,6 +11,8 @@ package com.group4.Inmobiliaria.enums;
  */
 public enum TipoProcedimiento {
 
-    OFERTA
+    OFERTA,
+    RECLAMO,
+    CITA
     
 }

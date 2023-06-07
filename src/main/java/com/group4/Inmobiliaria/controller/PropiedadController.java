@@ -1,5 +1,6 @@
 package com.group4.Inmobiliaria.controller;
 
+import com.group4.Inmobiliaria.entidades.Ente;
 import com.group4.Inmobiliaria.entidades.Oferta;
 import com.group4.Inmobiliaria.entidades.Propiedad;
 import com.group4.Inmobiliaria.entidades.Usuario;
@@ -33,7 +34,7 @@ public class PropiedadController {
     public String cargarPropiedad(Propiedad propiedad, Model model) {
         Usuario propietario = ((Usuario) Session.getUserSession());
 
-        propiedad.setPropietario(propietario);
+        propiedad.setPropietario((Ente) propietario);
 
         model.addAttribute("propiedad", propiedad);
         return "carga";

@@ -2,9 +2,11 @@ package com.group4.Inmobiliaria.controller;
 
 import com.group4.Inmobiliaria.entidades.Cita;
 import com.group4.Inmobiliaria.entidades.Propiedad;
+import com.group4.Inmobiliaria.entidades.Reclamo;
 import com.group4.Inmobiliaria.entidades.Usuario;
 import com.group4.Inmobiliaria.service.CitaService;
 import com.group4.Inmobiliaria.service.PropiedadService;
+import com.group4.Inmobiliaria.service.ReclamoService;
 import com.group4.Inmobiliaria.service.UsuarioService;
 import com.group4.Inmobiliaria.utils.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class ViewController {
 
     @Autowired
     CitaService citaService;
+    
+    @Autowired
+    ReclamoService reclamoService;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -93,7 +98,13 @@ public class ViewController {
     }
     @GetMapping("/inquilino")
     public String inquilino(Model model){
-
+        List <Reclamo> reclamos = reclamoService.findByEmisorId(Session.getUserSession().getId());
+        
+        System.out.println(reclamos.get(0));
+        
+        Reclamo reclamo = new Reclamo();
+        model.addAttribute("reclamos", reclamos);
+        model.addAttribute("reclamo", reclamo);
         return "profile/inquilino";
     }
 
