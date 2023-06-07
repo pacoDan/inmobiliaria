@@ -1,10 +1,14 @@
 package com.group4.Inmobiliaria.controller;
 
+<<<<<<< Updated upstream
 import com.group4.Inmobiliaria.entidades.Cita;
+=======
+>>>>>>> Stashed changes
 import com.group4.Inmobiliaria.entidades.Oferta;
 import com.group4.Inmobiliaria.entidades.Propiedad;
 import com.group4.Inmobiliaria.entidades.Usuario;
 import com.group4.Inmobiliaria.service.ImagenService;
+import com.group4.Inmobiliaria.service.OfertaService;
 import com.group4.Inmobiliaria.service.PropiedadService;
 import com.group4.Inmobiliaria.utils.Image;
 import java.util.List;
@@ -28,8 +32,10 @@ public class PropiedadController {
     PropiedadService propiedadService;
 
     @Autowired
+    OfertaService ofertaService;
+    @Autowired
     ImagenService imagenService;
-
+    
     @GetMapping("/carga")
     public String cargarPropiedad(Propiedad propiedad, Model model) {
         Usuario propietario = ((Usuario) Session.getUserSession());
@@ -74,12 +80,20 @@ public class PropiedadController {
         List<Propiedad> propiedades = propiedadService.listarPropiedades();
         model.addAttribute("propiedades", propiedades);
         return "propiedades";
-    }/*
-    @GetMapping("/propiedad/{id}")
-    public String mostrarDetallePropiedad(@PathVariable("id") String id) {
-        Propiedad propiedad = propiedadService.encontrarById(id);
-        return "propiedad";
+    }
+    /*
+    @PostMapping("/guardarOferta")
+    public String guardarOferta(@ModelAttribute Oferta oferta) {          
+        ofertaService.guardar(oferta);       
+        return "\"propiedad/{id}\"";
+    }
+    @GetMapping("/mostrarFormularioOferta")
+    public String mostrarFormularioOferta(Model model) {
+        Oferta oferta = new Oferta();
+        model.addAttribute("oferta", oferta);
+        return "nombre_del_fragmento_html";
     }*/
+    
     @GetMapping("propiedad/{id}")
     public String mostrarDetallePropiedad(@PathVariable("id") String id, Model model) {
         Propiedad propiedad = propiedadService.encontrarById(id);
@@ -91,6 +105,20 @@ public class PropiedadController {
         model.addAttribute("usuario", usuario);
         model.addAttribute("cita", cita);
         return "propiedad";
+    }
+
+       
+        Usuario usuario = Session.getUserSession();
+        model.addAttribute("usuario", usuario);
+                
+        Oferta oferta = new Oferta();
+        model.addAttribute("oferta", oferta);
+        return "propiedad"; 
+    }
+    @PostMapping("/guardarOferta")
+    public String guardarOferta(@ModelAttribute("oferta") Oferta oferta) {
+        ofertaService.guardar(oferta);
+        return "";
     }
 
 }

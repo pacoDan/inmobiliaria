@@ -1,3 +1,73 @@
+/*
+// Función para abrir el popup y mostrar un alert
+function openPopup() {
+    alert("¡Se abrió el popup!");
+    // Aquí puedes agregar la lógica adicional para abrir el popup si es necesario
+    // ...
+}*/
+
+// Obtener el elemento del popup
+var popup = document.querySelector('.oferta__popup');
+
+// Obtener el botón de ofertar
+var btnOfertar = document.querySelector('.btn__Oferta');
+
+// Función para abrir el popup
+function openPopup() {
+    popup.style.display = 'block';
+}
+
+// Función para cerrar el popup
+function closePopup() {
+    popup.style.display = 'none';
+}
+
+// Agregar el evento de clic al botón de ofertar
+btnOfertar.addEventListener('click', openPopup);
+
+// Agregar el evento de clic al botón de enviar dentro del popup (opcional)
+var btnEnviar = popup.querySelector('button');
+btnEnviar.addEventListener('click', function(event) {
+    event.preventDefault();
+    // Lógica para enviar la oferta (puedes agregar tu propia lógica aquí)
+    // ...
+    // Cerrar el popup después de enviar la oferta
+    closePopup();
+});
+
+// Agregar el evento de clic al área exterior del popup para cerrarlo (opcional)
+popup.addEventListener('click', function(event) {
+    if (event.target === popup) {
+        closePopup();
+    }
+});
+
+
+/*
+// Obtener el elemento del popup
+var popup = document.getElementById('popup');
+
+// Función para abrir el popup
+function openPopup() {
+    oferta__popup.style.display = 'block';
+}
+
+// Función para cerrar el popup
+function closePopup() {
+    popup.style.display = 'none';
+}
+
+// Agregar el evento de clic al botón de cerrar el popup
+popup.addEventListener('click', function(event) {
+    if (event.target === popup) {
+        closePopup();
+    }
+});
+
+
+
+
+/*
 var buttons = document.getElementsByClassName("myButton");
 var popups = document.getElementsByClassName("myPopup");
 
@@ -55,3 +125,4 @@ elementosFechaTurno.forEach(function(elemento) {
   elemento.min = fechaMinimaFormato;
   elemento.onchange = verificarFecha;
 });
+*/

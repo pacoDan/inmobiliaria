@@ -62,11 +62,11 @@ public class ViewController {
     public String login() {
         return "login";
     }
-
+    /*
     @GetMapping("/propiedad")
     public String propiedad() {
         return "propiedad";
-    }
+    }*/
     @GetMapping("/reuniones")
     public String reuniones(Model model) {
 
