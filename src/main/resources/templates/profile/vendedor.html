@@ -113,37 +113,47 @@
                     </table>
                 </div>
                 <div class="element" id="element__misPropiedades">
-                    <div class="container-anuncios">
-                        <div class="anuncio" th:each="propiedad : ${propiedades}">
-                            <img class="imagenAnuncio" th:src="${propiedad.imagenes}" alt="anuncio casa en el lago">
-                            <div class="contenido-anuncio">
-                                <h3 th:text="${propiedad.descripcion}"></h3>
-                                <p th:text="${propiedad.caracteristicas}"></p>
-                                <p class="precio" th:text="${propiedad.precioVenta}"></p>
-                                <p class="precio" th:text="${propiedad.precioAlquiler}"></p>
-                                <ul class="iconos-caracts">
-                                    <li>
-                                        <span class="material-symbols-outlined">bathtub </span>
-                                        <p>3</p>
-                                    </li>
-                                    <li>
-                                        <span class="material-symbols-outlined">directions_car </span>
-                                        <p>3</p>
-                                    </li>
-                                    <li>
-                                        <span class="material-symbols-outlined">bed</span>
-                                        <p>4</p>
-                                    </li>
-                                </ul>
-                                <button type="button" href="/" class="btn btn-outline-primary">Ver Propiedad</button>
 
-                                <!-- Estos botones solo deberian estar disponibles si la persona logeada es la propietaria -->
-                                <a th:if="${#authentication.name == propiedad.propietario.email}" type="button"  th:href="@{propiedad/editar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Editar"></a>
-                                <a th:if="${#authentication.name == propiedad.propietario.email}" type="button"  th:href="@{propiedad/eliminar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Eliminar"></a>
+                    <div class="container-anuncios"  th:each="propiedad : ${propiedades}">
+                        <div class="anuncio" th:if="${#authentication.name == propiedad.propietario.email}">
+
+                                    <div class="contenido-anuncio" >
+
+
+
+                                        <div class="tituloTruncado"><h3 th:text="${propiedad.descripcion}"></h3>
+                                        </div>
+                                        <div class="descripcionTruncada"> <p th:text="${propiedad.caracteristicas}"></p></div>
+
+
+                                        <p class="precio" th:text="${propiedad.precioVenta}"></p>
+                                        <p class="precio" th:text="${propiedad.precioAlquiler}"></p>
+                                        <ul class="iconos-caracts">
+                                            <li>
+                                                <span class="material-symbols-outlined">bathtub </span>
+                                                <p>3</p>
+                                            </li>
+                                            <li>
+                                                <span class="material-symbols-outlined">directions_car </span>
+                                                <p>3</p>
+                                            </li>
+                                            <li>
+                                                <span class="material-symbols-outlined">bed</span>
+                                                <p>4</p>
+                                            </li>
+                                        </ul>
+                                        <a th:href="@{propiedad/{id}(id=${propiedad.id})}">
+                                            <button type="button" class="btn btn-outline-primary">Ver Propiedad</button>
+                                        </a>
+
+                                        <!-- Estos botones solo deberian estar disponibles si la persona logeada es la propietaria -->
+                                        <a th:if="${#authentication.name == propiedad.propietario.email}" type="button"  th:href="@{propiedad/editar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Editar"></a>
+                                        <a th:if="${#authentication.name == propiedad.propietario.email}" type="button"  th:href="@{propiedad/eliminar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Eliminar"></a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
                 </div>
+
                 <div class="element" id="element__misInquilinos">
                     <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet massa vitae magna scelerisque luctus eu ac odio. In ac nunc in augue dignissim mattis. Vestibulum feugiat, purus eu euismod pharetra, erat enim imperdiet dolor, vitae consectetur leo diam in arcu. Nunc vel nisi diam. Vestibulum sagittis est vel turpis luctus, vitae porttitor ligula bibendum. Phasellus sit amet consectetur sem. Cras consectetur, nisi vitae sagittis pharetra, mauris orci pharetra elit, a auctor elit lorem ut tellus. Integer venenatis dictum condimentum. Ut fermentum diam vel convallis viverra. Sed sit amet nisi lacus. Phasellus gravida justo a risus pellentesque, quis aliquet lorem ornare. Mauris est sem, malesuada ut consequat ut, facilisis vitae neque. Morbi rhoncus quam non consectetur varius. In hac habitasse platea dictumst. Phasellus non nulla eleifend, gravida metus ultricies, eleifend augue. Fusce pulvinar mi at purus aliquam, vel efficitur mi hendrerit.</p>

@@ -79,6 +79,12 @@ public class ViewController {
     }
     @GetMapping("/vendedor")
     public String vendedor(Model model){
+        List<Propiedad> propiedades = propiedadService.listarPropiedades();
+        model.addAttribute("propiedades", propiedades);
+
+        Usuario logged = Session.getUserSession();
+
+
         Usuario usuario = Session.getUserSession();
         List<Cita> citas = citaService.findByReceptorId(usuario.getId());
         model.addAttribute("usuario", usuario);
