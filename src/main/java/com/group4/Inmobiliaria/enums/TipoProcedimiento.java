@@ -13,6 +13,7 @@ public enum TipoProcedimiento {
 
     OFERTA,
     RECLAMO,
-    CITA
+    CITA,
+    PAGO
     
 }

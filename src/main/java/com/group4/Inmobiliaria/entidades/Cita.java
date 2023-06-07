@@ -26,8 +26,7 @@ public class Cita extends Procedimiento implements Serializable {
 
     @Basic(optional = false)
     @Column(name = "Fecha_cita")
-    @Temporal(TemporalType.DATE)
-    private Date diaCita;
+    private String diaCita;
 
     @Basic(optional = false)
     @Column(name = "Hora_Cita")
