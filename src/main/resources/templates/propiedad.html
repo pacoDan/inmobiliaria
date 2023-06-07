@@ -34,7 +34,6 @@
             <div sec:authorize="isAuthenticated() and hasRole('ROLE_CLIENTE')" class="actions" th:if="${#strings.equals(usuario.tipoCliente, 'COMPRADOR')}">
                 <a th:href="@{/pago}">    <button  class="btn btn-outline-primary" >Comprar ahora</button> </a>
             </div>
-<<<<<<< Updated upstream
             <br>
 
             <div sec:authorize="isAuthenticated() and hasRole('ROLE_CLIENTE')" >
@@ -70,7 +69,7 @@
                 </form>
             </div>
 
-=======
+
             <div class="actions" sec:authorize="isAuthenticated()">
                 <a href="#" onclick="openPopup()"> 
                     <button  class="btn__Oferta">Ofertar</button> 

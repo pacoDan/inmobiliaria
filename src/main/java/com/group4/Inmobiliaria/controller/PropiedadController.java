@@ -81,19 +81,7 @@ public class PropiedadController {
         model.addAttribute("propiedades", propiedades);
         return "propiedades";
     }
-    /*
-    @PostMapping("/guardarOferta")
-    public String guardarOferta(@ModelAttribute Oferta oferta) {          
-        ofertaService.guardar(oferta);       
-        return "\"propiedad/{id}\"";
-    }
-    @GetMapping("/mostrarFormularioOferta")
-    public String mostrarFormularioOferta(Model model) {
-        Oferta oferta = new Oferta();
-        model.addAttribute("oferta", oferta);
-        return "nombre_del_fragmento_html";
-    }*/
-    
+       
     @GetMapping("propiedad/{id}")
     public String mostrarDetallePropiedad(@PathVariable("id") String id, Model model) {
         Propiedad propiedad = propiedadService.encontrarById(id);
@@ -106,19 +94,9 @@ public class PropiedadController {
         model.addAttribute("cita", cita);
         return "propiedad";
     }
-
-       
-        Usuario usuario = Session.getUserSession();
-        model.addAttribute("usuario", usuario);
-                
-        Oferta oferta = new Oferta();
-        model.addAttribute("oferta", oferta);
-        return "propiedad"; 
-    }
     @PostMapping("/guardarOferta")
     public String guardarOferta(@ModelAttribute("oferta") Oferta oferta) {
         ofertaService.guardar(oferta);
         return "";
     }
-
 }
