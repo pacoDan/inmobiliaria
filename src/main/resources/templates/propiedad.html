@@ -24,16 +24,32 @@
         <div class="product-image">
             <img src="https://st3.idealista.com/news/archivos/styles/fullwidth_xl/public/2020-06/im-191825.jpg?VersionId=H30j04J4vZFBf8nX6Otwwe0l4Vjfo96b&itok=lgCc-eBK%22%3E" alt="Producto">
         </div>
+
         <div class="product-details">
             <h1 th:text="${propiedad.descripcion}"></h1>
             <p class="price" th:text="${propiedad.precioVenta}"></p>
             <p class="price" th:text="${propiedad.precioAlquiler}"></p>
             <p class="description" th:text="${propiedad.caracteristicas}"></p>
-            <div class="actions">
+            <div sec:authorize="isAuthenticated() and hasRole('ROLE_CLIENTE')" class="actions" th:if="${#strings.equals(usuario.tipoCliente, 'COMPRADOR')}">
                 <a th:href="@{/pago}">    <button  class="btn btn-outline-primary" >Comprar ahora</button> </a>
             </div>
+            <br>
+
+            <div sec:authorize="isAuthenticated() and hasRole('ROLE_CLIENTE')" >
+                <form th:if="${#strings.equals(usuario.tipoCliente, 'COMPRADOR')}" method="post" th:action="@{/crearOferta}" th:object="${oferta}">
+                    <input type="hidden" name="idPropiedad" th:value="${propiedad.id}">
+                    <div class="form-group">
+                        <label for="cantidad">Monto:</label>
+                        <br>
+                        <input type="number" id="cantidad" name="cantidad" th:field="*{monto}" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Ofertar</button>
+                </form>
+            </div>
+
         </div>
     </div>
+
 </main>
 
 <footer th:replace="layout/layout :: footer"></footer>

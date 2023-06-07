@@ -10,5 +10,7 @@ package com.group4.Inmobiliaria.enums;
  * @author PC - Escritorio
  */
 public enum TipoProcedimiento {
+
+    OFERTA
     
 }

@@ -1,5 +1,6 @@
 package com.group4.Inmobiliaria.controller;
 
+import com.group4.Inmobiliaria.entidades.Oferta;
 import com.group4.Inmobiliaria.entidades.Propiedad;
 import com.group4.Inmobiliaria.entidades.Usuario;
 import com.group4.Inmobiliaria.service.ImagenService;
@@ -76,7 +77,11 @@ public class PropiedadController {
     @GetMapping("propiedad/{id}")
     public String mostrarDetallePropiedad(@PathVariable("id") String id, Model model) {
         Propiedad propiedad = propiedadService.encontrarById(id);
+        Usuario usuario = Session.getUserSession();
+        Oferta oferta = new Oferta();
         model.addAttribute("propiedad", propiedad);
+        model.addAttribute("oferta", oferta);
+        model.addAttribute("usuario", usuario);
         return "propiedad"; 
     }
 

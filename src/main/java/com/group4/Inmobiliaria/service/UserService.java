@@ -143,5 +143,10 @@ public class UserService implements UserDetailsService {
         }
         return null;
     }
+
+    @Transactional
+    public Ente obtenerEnteById(String id){
+        return enteRepository.findById(id).orElse(null);
+    }
     
 }
