@@ -25,12 +25,7 @@
                     
                     <ul class="lista__navegacion">  
                         
-                        <li>
-                            <a href="#" onclick="mostrarContMenu('misCalendario')">
-                                <i class="fa-sharp fa-solid fa-chart-column" style="color: #d6d8dc;"></i>
-                                <span class="links_name">Mis calendario</span>
-                            </a>
-                        </li>
+
                         <div th:if="${1 == 1}">
                             <li>
                                 <a href="#" onclick="mostrarContMenu('misOfertas')">
@@ -54,6 +49,7 @@
 
                         <thead>
                             <tr>
+                                <th scope="col">Emisor</th>
                                 <th scope="col">Estado</th>
                                 <th scope="col">Dia</th>
                                 <th scope="col">Turno</th>
@@ -62,6 +58,7 @@
                         <tbody>
                             <div th:each="cita : ${citas}">
                             <tr>
+                                <td th:text="${cita.emisor.nombre}"></td>
                                 <td th:text="${cita.estado}"></td>
                                 <td th:text="${cita.diaCita}"></td>
                                 <td th:text="${cita.horaCita}"></td>
@@ -118,6 +115,7 @@
 
                         <thead>
                         <tr>
+                            <th scope="col">Emisor</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Monto</th>
                         </tr>
@@ -125,6 +123,7 @@
                         <tbody>
                         <div th:each="oferta : ${ofertas}">
                             <tr>
+                                <td th:text="${oferta.emisor.nombre}"></td>
                                 <td th:text="${oferta.estado}"></td>
                                 <td th:text="${oferta.monto}"></td>
                             </tr>
@@ -132,31 +131,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="element" id="element__misDatos">
-                    <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO--
 
-    Nombre, apellido, dni(ese no), correoelect, contraseña,
-
-                    -->
-                    <form>
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" readonly>
-                        <!--<input type="text" id="nombre" name="nombre" required>-->
-
-                        <label for="apellido">Apellido:</label>
-                        <input type="text" id="apellido" name="apellido">
-
-                        <label for="mail">E-mail:</label>
-                        <input type="text" id="email" name="email">
-
-                        <label for="dni">DNI:</label>
-                        <input type="text" id="dni" name="dni" readonly>
-
-                        <input type="submit" value="Guardar cambios">
-                    </form>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet massa vitae magna scelerisque luctus eu ac odio. In ac nunc in augue dignissim mattis. Vestibulum feugiat, purus eu euismod pharetra, erat enim imperdiet dolor, vitae consectetur leo diam in arcu. Nunc vel nisi diam. Vestibulum sagittis est vel turpis luctus, vitae porttitor ligula bibendum. Phasellus sit amet consectetur sem. Cras consectetur, nisi vitae sagittis pharetra, mauris orci pharetra elit, a auctor elit lorem ut tellus. Integer venenatis dictum condimentum. Ut fermentum diam vel convallis viverra. Sed sit amet nisi lacus. Phasellus gravida justo a risus pellentesque, quis aliquet lorem ornare. Mauris est sem, malesuada ut consequat ut, facilisis vitae neque. Morbi rhoncus quam non consectetur varius. In hac habitasse platea dictumst. Phasellus non nulla eleifend, gravida metus ultricies, eleifend augue. Fusce pulvinar mi at purus aliquam, vel efficitur mi hendrerit.</p>
-                </div>               
             </main>
         </div>
 
