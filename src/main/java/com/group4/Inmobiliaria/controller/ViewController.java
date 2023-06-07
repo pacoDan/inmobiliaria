@@ -2,9 +2,11 @@ package com.group4.Inmobiliaria.controller;
 
 import com.group4.Inmobiliaria.entidades.Cita;
 import com.group4.Inmobiliaria.entidades.Propiedad;
+import com.group4.Inmobiliaria.entidades.Oferta;
 import com.group4.Inmobiliaria.entidades.Usuario;
 import com.group4.Inmobiliaria.service.CitaService;
 import com.group4.Inmobiliaria.service.PropiedadService;
+import com.group4.Inmobiliaria.service.OfertaService;
 import com.group4.Inmobiliaria.service.UsuarioService;
 import com.group4.Inmobiliaria.utils.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class ViewController {
 
     @Autowired
     CitaService citaService;
+
+    @Autowired
+    OfertaService ofertaService;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -86,9 +91,14 @@ public class ViewController {
 
 
         Usuario usuario = Session.getUserSession();
-        List<Cita> citas = citaService.findByReceptorId(usuario.getId());
         model.addAttribute("usuario", usuario);
+
+        List<Cita> citas = citaService.findByReceptorId(usuario.getId());
         model.addAttribute("citas", citas);
+
+        List<Oferta> ofertas = ofertaService.findByReceptorId(usuario.getId());
+        model.addAttribute("ofertas", ofertas);
+
         return "profile/vendedor";
     }
     @GetMapping("/inquilino")
