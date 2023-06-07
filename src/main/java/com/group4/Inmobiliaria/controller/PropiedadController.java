@@ -1,9 +1,7 @@
 package com.group4.Inmobiliaria.controller;
 
-<<<<<<< Updated upstream
+
 import com.group4.Inmobiliaria.entidades.Cita;
-=======
->>>>>>> Stashed changes
 import com.group4.Inmobiliaria.entidades.Oferta;
 import com.group4.Inmobiliaria.entidades.Propiedad;
 import com.group4.Inmobiliaria.entidades.Usuario;
@@ -94,9 +92,5 @@ public class PropiedadController {
         model.addAttribute("cita", cita);
         return "propiedad";
     }
-    @PostMapping("/guardarOferta")
-    public String guardarOferta(@ModelAttribute("oferta") Oferta oferta) {
-        ofertaService.guardar(oferta);
-        return "";
-    }
+
 }

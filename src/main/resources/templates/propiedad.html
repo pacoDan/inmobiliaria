@@ -37,8 +37,10 @@
             <br>
 
             <div sec:authorize="isAuthenticated() and hasRole('ROLE_CLIENTE')" >
-                <h4>Ofertar por la Propiedad</h4>
-                <form th:if="${#strings.equals(usuario.tipoCliente, 'COMPRADOR')}" method="post" th:action="@{/crearOferta}" th:object="${oferta}">
+                <input type="checkbox" id="mostrarDiv1" />
+                <label for="mostrarDiv1"> <h4 class="tocable">Ofertar por la Propiedad</h4></label>
+
+                <form id="divOculto1" th:if="${#strings.equals(usuario.tipoCliente, 'COMPRADOR')}" method="post" th:action="@{/crearOferta}" th:object="${oferta}">
                     <input type="hidden" name="idPropiedad" th:value="${propiedad.id}">
                     <div class="form-group">
                         <label for="cantidad">Monto:</label>
@@ -50,8 +52,9 @@
             </div>
 
             <div sec:authorize="isAuthenticated() and hasRole('ROLE_CLIENTE')">
-                <form method="post" th:action="@{/crearCita}" th:object="${cita}">
-                    <h4>Solicitar Cita</h4>
+                <input type="checkbox" id="mostrarDiv2" />
+                <label for="mostrarDiv2">  <h4 class="tocable">Solicitar Cita</h4> </label>
+                <form id="divOculto2" method="post" th:action="@{/crearCita}" th:object="${cita}">
                     <label class="form-label">Dia de la cita:</label>
                     <input type="hidden" name="idPropiedad" th:value="${propiedad.id}">
                     <div  id="calendar"> <input type="date" name="fecha" th:field="*{diaCita}" required/> </div>
@@ -69,37 +72,6 @@
                 </form>
             </div>
 
-
-            <div class="actions" sec:authorize="isAuthenticated()">
-                <a href="#" onclick="openPopup()"> 
-                    <button  class="btn__Oferta">Ofertar</button> 
-                </a>
-            </div>
-            
-            <div class="oferta__popup">
-                <form th:action="@{/guardarOferta}" method="post" th:object="${oferta}" enctype="multipart/form-data">
-                    <p>Formulario de oferta</p>
-                    <input type="hidden" name="id" th:field="*{id}">
-                    <!--<input type="hidden" name="idpropiedad" th:field="*{propiedad.id}">
-                    <input type="hidden" name="id_propietario" th:field="*{propietario}">-->
-                    <input type="hidden" value="PENDIENTE" name="estado" th:field="*{estado}">
-                    <button class="close__button" onclick="closePopup()">x</button>
-                    <div class="form-group">
-                        <label for="monto">Monto:</label>
-                        <input type="number" id="monto" name="monto" step="0.01" th:field="*{monto}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="descripcion">Descripción:</label>
-                        <textarea id="descripcion" name="descripcion"th:field="*{descripcion}" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <a th:href="@{{id}(id=${propiedad.id})}">
-                            <button type="button" class="btn">Enviar</button>
-                        </a>              
-                    </div>
-                </from>
-            </div>
->>>>>>> Stashed changes
         </div>
     </div>
 
