@@ -11,5 +11,6 @@ package com.group4.Inmobiliaria.enums;
  */
 public enum EstadoCita {
     ACEPTADA,
-    RECHAZADA
+    RECHAZADA,
+    PENDIENTE
 }

@@ -1,5 +1,6 @@
 package com.group4.Inmobiliaria.controller;
 
+import com.group4.Inmobiliaria.entidades.Cita;
 import com.group4.Inmobiliaria.entidades.Oferta;
 import com.group4.Inmobiliaria.entidades.Propiedad;
 import com.group4.Inmobiliaria.entidades.Usuario;
@@ -84,9 +85,11 @@ public class PropiedadController {
         Propiedad propiedad = propiedadService.encontrarById(id);
         Usuario usuario = Session.getUserSession();
         Oferta oferta = new Oferta();
+        Cita cita = new Cita();
         model.addAttribute("propiedad", propiedad);
         model.addAttribute("oferta", oferta);
         model.addAttribute("usuario", usuario);
+        model.addAttribute("cita", cita);
         return "propiedad";
     }
 

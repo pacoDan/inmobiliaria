@@ -36,6 +36,7 @@
             <br>
 
             <div sec:authorize="isAuthenticated() and hasRole('ROLE_CLIENTE')" >
+                <h4>Ofertar por la Propiedad</h4>
                 <form th:if="${#strings.equals(usuario.tipoCliente, 'COMPRADOR')}" method="post" th:action="@{/crearOferta}" th:object="${oferta}">
                     <input type="hidden" name="idPropiedad" th:value="${propiedad.id}">
                     <div class="form-group">
@@ -46,7 +47,26 @@
                     <button type="submit" class="btn btn-success">Ofertar</button>
                 </form>
             </div>
-            <div  id="calendar"> <input type="date" /> </div>
+
+            <div sec:authorize="isAuthenticated() and hasRole('ROLE_CLIENTE')">
+                <form method="post" th:action="@{/crearCita}" th:object="${cita}">
+                    <h4>Solicitar Cita</h4>
+                    <label class="form-label">Dia de la cita:</label>
+                    <input type="hidden" name="idPropiedad" th:value="${propiedad.id}">
+                    <div  id="calendar"> <input type="date" name="fecha" th:field="*{diaCita}" required/> </div>
+                    <div class="mb-3">
+                        <label for="tipoPropiedad" class="form-label">Horario de la Cita</label>
+
+                        <select class="form-control" id="tipoPropiedad" aria-describedby="emailHelp" th:field="*{horaCita}" required>
+                            <option value="MANANA">Mañana</option>
+                            <option value="TARDE">Tarde</option>
+                            <option value="NOCHE">Noche</option>
+
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success">Solicitar Cita</button>
+                </form>
+            </div>
 
         </div>
     </div>
