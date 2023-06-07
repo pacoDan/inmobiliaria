@@ -1,7 +1,9 @@
 package com.group4.Inmobiliaria.controller;
 
+import com.group4.Inmobiliaria.entidades.Cita;
 import com.group4.Inmobiliaria.entidades.Propiedad;
 import com.group4.Inmobiliaria.entidades.Usuario;
+import com.group4.Inmobiliaria.service.CitaService;
 import com.group4.Inmobiliaria.service.PropiedadService;
 import com.group4.Inmobiliaria.service.UsuarioService;
 import com.group4.Inmobiliaria.utils.Session;
@@ -19,6 +21,9 @@ public class ViewController {
     
     @Autowired
     UsuarioService usuarioService;
+
+    @Autowired
+    CitaService citaService;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -74,7 +79,10 @@ public class ViewController {
     }
     @GetMapping("/vendedor")
     public String vendedor(Model model){
-        
+        Usuario usuario = Session.getUserSession();
+        List<Cita> citas = citaService.findByReceptorId(usuario.getId());
+        model.addAttribute("usuario", usuario);
+        model.addAttribute("citas", citas);
         return "profile/vendedor";
     }
     @GetMapping("/inquilino")
