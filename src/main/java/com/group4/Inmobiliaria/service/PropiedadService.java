@@ -59,13 +59,7 @@ public class PropiedadService {
         }
         if (propiedad.getCiudad() == null) {
             throw new MiExcepcion("El nombre de la ciudad no puede ser nula.");
-        }
-        if(propiedad.getImagenesFiles() == null){
-            throw new MiExcepcion("La imagen de la propiedad no puede ser nula.");
-        }
-        if(propiedad.getImagenesFiles().isEmpty()){
-            throw new MiExcepcion("La imagen de la propiedad no puede ser vacia.");
-        }
+        }     
         if(propiedad.getTipoPropiedad() == null){
             throw new MiExcepcion("El tipo de propiedad no puede ser nulo.");
         }

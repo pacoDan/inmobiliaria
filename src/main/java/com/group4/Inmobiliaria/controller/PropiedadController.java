@@ -5,6 +5,7 @@ import com.group4.Inmobiliaria.entidades.Propiedad;
 import com.group4.Inmobiliaria.entidades.Usuario;
 import com.group4.Inmobiliaria.service.ImagenService;
 import com.group4.Inmobiliaria.service.PropiedadService;
+import com.group4.Inmobiliaria.utils.Image;
 import java.util.List;
 
 import com.group4.Inmobiliaria.utils.Session;
@@ -24,7 +25,7 @@ public class PropiedadController {
 
     @Autowired
     PropiedadService propiedadService;
-    
+
     @Autowired
     ImagenService imagenService;
 
@@ -37,23 +38,27 @@ public class PropiedadController {
         model.addAttribute("propiedad", propiedad);
         return "carga";
     }
-    
+
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute Propiedad propiedad) throws Exception {
-        
+
         List<MultipartFile> imagenesFiles = propiedad.getImagenesFiles();
-        
+
         Propiedad propiedadSaved = propiedadService.guardar(propiedad);
-        
-        imagenService.guardarImagenesPropiedad(imagenesFiles, propiedadSaved);
-        
+
+        if(imagenesFiles != null) imagenService.guardarImagenesPropiedad(imagenesFiles, propiedadSaved);
+
         return "redirect:/";
     }
 
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable("id") String id, Model model) {
         Propiedad propiedad = propiedadService.encontrarById(id);
+
+        List<String> imagenes = Image.getBase64Images(imagenService.findImagesByPropiedadId(id));
+
         model.addAttribute("propiedad", propiedad);
+        model.addAttribute("imagenes", imagenes);
         return "carga";
     }
 
@@ -82,8 +87,7 @@ public class PropiedadController {
         model.addAttribute("propiedad", propiedad);
         model.addAttribute("oferta", oferta);
         model.addAttribute("usuario", usuario);
-        return "propiedad"; 
+        return "propiedad";
     }
-
 
 }
