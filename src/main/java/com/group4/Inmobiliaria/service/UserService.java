@@ -49,7 +49,7 @@ public class UserService implements UserDetailsService {
         
         cliente.setRol(Rol.CLIENTE);
         
-        cliente.setFechaRegistro(new Date());
+        cliente.setFechaRegistro(new Date());        
         
         cliente.setPassword(new BCryptPasswordEncoder().encode(cliente.getPassword()));        
         

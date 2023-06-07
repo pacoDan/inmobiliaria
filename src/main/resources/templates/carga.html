@@ -61,14 +61,21 @@
                                             </div>
                                             
                                             
-                                            <div class="mb-3" th:each="index : ${#numbers.sequence(1, 4)}">
+                                            <div class="mb-3" th:if="${#lists.isEmpty(imagenes)}" th:each="index,iterStat : ${#numbers.sequence(1, 4)}">
                                                 <label for="'imagenesFiles' + ${index}" class="form-label">Imagen [[${index}]]</label>
                                                 <input type="file" class="form-control imagenInput" name="imagenesFiles" th:name="'imagenesFiles[' + ${index} + ']'" id="'imagen' + ${index}" onchange="mostrarVistaPrevia(event)" aria-describedby="emailHelp" required>
                                                 <img class="vistaPrevia" src="#" alt="Vista previa">
                                             </div>
+                                            
+                                            <div th:unless="${#lists.isEmpty(imagenes)}" th:each="index,iterStat : ${imagenes}">
+                                                <p class="form-label" th:if="${iterStat.index == 0}">Imagen Principal</p>      
+                                                <p class="form-label" th:if="${iterStat.index != 0}">Imagen Secundaria</p>   
+                                                <img th:src="'data:image/jpeg;base64,' + ${index}" alt="Imagen">
+                                                <p class="btn btn-primary"> Editar: <input type="file"></input></p>
+                                            </div>
                                            
 
-                                            <button type="submit" class="btn btn-primary">Cargar</button>
+                                            <button type="submit" class="btn btn-primary">Cargar Propiedad</button>
                                             </form>
 
 

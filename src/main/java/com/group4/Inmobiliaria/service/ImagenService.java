@@ -68,20 +68,24 @@ public class ImagenService {
     }
 
     public void guardarImagenesPropiedad(List<MultipartFile> imagenes, Propiedad propiedad) throws Exception {
-        for (MultipartFile imagen : imagenes) {
-            if (imagen != null) {
+        for (int i = 0; i < imagenes.size(); i++) {
+            if (imagenes.get(i) != null) {
                 try {
                     ImagenPropiedad imagenPropiedad = new ImagenPropiedad();
 
-                    imagenPropiedad.setMime(imagen.getContentType());
+                    imagenPropiedad.setMime(imagenes.get(i).getContentType());
 
-                    imagenPropiedad.setContenido(imagen.getBytes());
+                    imagenPropiedad.setContenido(imagenes.get(i).getBytes());
 
-                    imagenPropiedad.setNombre(imagen.getName());
+                    imagenPropiedad.setNombre(imagenes.get(i).getName());
 
                     imagenPropiedad.setPropiedad(propiedad);
 
-                    imagenPropiedad.setTipoImagenPropiedad(TipoImagenPropiedad.PRINCIPAL);
+                    if (i == 1) {
+                        imagenPropiedad.setTipoImagenPropiedad(TipoImagenPropiedad.PRINCIPAL);
+                    } else {
+                        imagenPropiedad.setTipoImagenPropiedad(TipoImagenPropiedad.SECUNDARIA);
+                    }
 
                     imagenPropiedadRepository.save(imagenPropiedad);
 
@@ -97,6 +101,8 @@ public class ImagenService {
     }
 
     public ImagenPropiedad findById(String id) {
-       return imagenPropiedadRepository.findById(id).orElse(null);        
+        return imagenPropiedadRepository.findById(id).orElse(null);
     }
+    
+    
 }
