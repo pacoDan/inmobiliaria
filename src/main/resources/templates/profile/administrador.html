@@ -69,6 +69,7 @@
                         <tr>
                             <td>ID</td>
                             <td>Nombre</td>
+                            <td>Rol</<td>
                             <td>Email</td>
                             <td>Acciones</td>
                         </tr>
@@ -78,6 +79,20 @@
                         <tr th:each="usuario : ${usuarios}">
                             <td th:text="${usuario.id}"></td>
                             <td th:text="${usuario.nombre}"></td>
+                            <!--<td th:text="${usuario.rol}"></td>-->
+                            <td>
+                                <span id="rol" onclick="showPopup()" th:text="${usuario.rol}"></span>
+                                <div id="popup" class="popup" style="display: none;">
+                                    <ul>
+                                        <li onclick="changeRol('ENTE')">Ente</li>
+                                        <li onclick="changeRol('INQUILINO')">Inquilino</li>
+                                        <li onclick="changeRol('ADMIN')">Admin</li>
+                                        <!-- Agrega más opciones según sea necesario -->
+                                    </ul>
+                                </div>
+                            </td>
+
+
                             <td th:text="${usuario.email}"></td>
                             <td>
                                 <a th:href="@{/modificarUsuarioA/{id}(id=${usuario.id})}" class="btn btn__editar">Editar</a>
