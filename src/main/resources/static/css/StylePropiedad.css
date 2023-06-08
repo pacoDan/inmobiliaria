@@ -4,6 +4,11 @@
   margin: 10% auto;
 }
 
+.tocable{
+cursor: pointer;
+    width: 79%;
+    }
+
 .product-image {
   flex: 0 0 50%;
   margin-right: 20px;
@@ -51,4 +56,32 @@
 
 .product-details .actions button:hover {
   background-color: #006699;
+}
+
+#mostrarDiv1 {
+  display: none;
+  cursor: pointer;
+}
+
+#divOculto1 {
+  display: none;
+}
+
+#mostrarDiv1:checked ~ #divOculto1 {
+  display: block;
+  cursor: pointer;
+}
+
+#mostrarDiv2 {
+  display: none;
+  cursor: pointer;
+}
+
+#divOculto2 {
+  display: none;
+}
+
+#mostrarDiv2:checked ~ #divOculto2 {
+  display: block;
+  cursor: pointer;
 }

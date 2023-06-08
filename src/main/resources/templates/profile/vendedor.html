@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es"  xmlns="http://www.w3.org/2000/svg" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,6 +35,15 @@
                                 </a>
                             </li>
                         </div>
+
+                        <div th:if="${1 == 1}">
+                            <li>
+                                <a href="#" onclick="mostrarContMenu('misReclamos')">
+                                    <i class="fa-sharp fa-solid fa-chart-column" style="color: #d6d8dc;"></i>
+                                    <span class="links_name">Mis Reclamos</span>
+                                </a>
+                            </li>
+                        </div>
                         <!--Fin prueba-->
                         
                     </ul>
@@ -53,6 +63,7 @@
                                 <th scope="col">Estado</th>
                                 <th scope="col">Dia</th>
                                 <th scope="col">Turno</th>
+                                <th scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,6 +73,16 @@
                                 <td th:text="${cita.estado}"></td>
                                 <td th:text="${cita.diaCita}"></td>
                                 <td th:text="${cita.horaCita}"></td>
+                                <td>
+                                    <form method="post" th:action="@{/aceptarCita}">
+                                        <input type="hidden" name="citaId" th:value="${cita.id}" />
+                                        <button type="submit" class="btn btn-success" th:text="Aceptar"></button>
+                                    </form>
+                                    <form method="post" th:action="@{/rechazarCita}">
+                                        <input type="hidden" name="citaId" th:value="${cita.id}" />
+                                        <button type="submit" class="btn btn-danger" th:text="Rechazar"></button>
+                                    </form>
+                                </td>
                             </tr>
                         </div>
                         </tbody>
@@ -118,6 +139,40 @@
                             <th scope="col">Emisor</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Monto</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <div th:each="oferta : ${ofertas}">
+                            <tr>
+                                <td th:text="${oferta.emisor.nombre}"></td>
+                                <td th:text="${oferta.estado}"></td>
+                                <td th:text="${oferta.monto}"></td>
+                                <td>
+                                    <form method="post" th:action="@{/aceptarOferta}">
+                                        <input type="hidden" name="ofertaId" th:value="${oferta.id}" />
+                                        <button type="submit" class="btn btn-success" th:text="Aceptar"></button>
+                                    </form>
+                                    <form method="post" th:action="@{/rechazarOferta}">
+                                        <input type="hidden" name="ofertaId" th:value="${oferta.id}" />
+                                        <button type="submit" class="btn btn-danger" th:text="Rechazar"></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </div>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="element" id="element__misReclamos">
+                    <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
+                    <table class="table">
+
+                        <thead>
+                        <tr>
+                            <th scope="col">Texto</th>
+                            <th scope="col">De</th>
+                            <th scope="col">Ejemplo</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -131,7 +186,6 @@
                         </tbody>
                     </table>
                 </div>
-
             </main>
         </div>
 

@@ -7,8 +7,8 @@ import com.group4.Inmobiliaria.service.ReclamoService;
 import com.group4.Inmobiliaria.entidades.Oferta;
 import com.group4.Inmobiliaria.entidades.Usuario;
 import com.group4.Inmobiliaria.service.CitaService;
-import com.group4.Inmobiliaria.service.PropiedadService;
 import com.group4.Inmobiliaria.service.OfertaService;
+import com.group4.Inmobiliaria.service.PropiedadService;
 import com.group4.Inmobiliaria.service.UsuarioService;
 import com.group4.Inmobiliaria.utils.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +37,10 @@ public class ViewController {
 
     @GetMapping("/")
     public String index(Model model) {
+
+
+
+
         List<Propiedad> propiedades = propiedadService.listarPropiedades();
         model.addAttribute("propiedades", propiedades);
 
@@ -106,14 +110,23 @@ public class ViewController {
         List<Oferta> ofertas = ofertaService.findByReceptorId(usuario.getId());
         model.addAttribute("ofertas", ofertas);
 
+
         return "profile/vendedor";
     }
 
     @GetMapping("/inquilino")
-    public String inquilino(Model model) {
-        List<Reclamo> reclamos = reclamoService.findByEmisorId(Session.getUserSession().getId());
 
-        //System.out.println(reclamos.get(0));
+    public String inquilino(Model model){
+
+        Usuario usuario = Session.getUserSession();
+
+        List <Reclamo> reclamos = reclamoService.findByEmisorId(Session.getUserSession().getId());
+
+        List<Cita> citas = citaService.findByEmisorId(usuario.getId());
+        model.addAttribute("citas", citas);
+
+        List<Oferta> ofertas = ofertaService.findByEmisorId(usuario.getId());
+        model.addAttribute("ofertas", ofertas);
 
         Reclamo reclamo = new Reclamo();
         model.addAttribute("reclamos", reclamos);

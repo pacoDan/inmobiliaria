@@ -1,6 +1,7 @@
 package com.group4.Inmobiliaria.controller;
 
 import com.group4.Inmobiliaria.entidades.Ente;
+
 import com.group4.Inmobiliaria.entidades.Cita;
 import com.group4.Inmobiliaria.entidades.Oferta;
 import com.group4.Inmobiliaria.entidades.Propiedad;
@@ -93,9 +94,5 @@ public class PropiedadController {
         model.addAttribute("cita", cita);
         return "propiedad";
     }
-    @PostMapping("/guardarOferta")
-    public String guardarOferta(@ModelAttribute("oferta") Oferta oferta) {
-        ofertaService.guardar(oferta);
-        return "";
-    }
+
 }

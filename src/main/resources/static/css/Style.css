@@ -55,7 +55,17 @@ color:#FFFFFF;
     border: 2px solid  #2C517F;
 }
 
+.btn-danger {
+    color: #fff;
+    background-color:#85202A ;
+    border-color:#85202A ;
+}
 
+.btn-danger:hover {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
 
 .divLogo p{
     color: rgb(253, 253, 253);
