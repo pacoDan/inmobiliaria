@@ -28,4 +28,8 @@ public class Reclamo extends Procedimiento implements Serializable {
     @Enumerated(EnumType.STRING)
     private EstadoReclamo estadoReclamo;
 
+    @Basic(optional = false)
+    @Column(name = "Descripcion")
+    private String descripcion;
+
 }

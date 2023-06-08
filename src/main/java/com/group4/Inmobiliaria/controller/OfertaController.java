@@ -45,8 +45,7 @@ public class OfertaController {
         oferta.setEstado(EstadoOferta.PENDIENTE);
         oferta.setTipoProcedimiento(TipoProcedimiento.OFERTA);
         oferta.setFechaEmision(new Date());
-        oferta.setHoraEmision(new Date());
-        oferta.setDescripcion("");
+        oferta.setHoraEmision(new Date());   
         oferta.setEmisor((Cliente) usuario);
         oferta.setReceptor(receptor);
         oferta.setPropiedad(propiedad);
