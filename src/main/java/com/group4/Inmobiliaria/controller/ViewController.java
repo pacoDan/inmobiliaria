@@ -109,10 +109,17 @@ public class ViewController {
     }
     @GetMapping("/inquilino")
     public String inquilino(Model model){
+
+        Usuario usuario = Session.getUserSession();
+
         List <Reclamo> reclamos = reclamoService.findByEmisorId(Session.getUserSession().getId());
-        
-        System.out.println(reclamos.get(0));
-        
+
+        List<Cita> citas = citaService.findByEmisorId(usuario.getId());
+        model.addAttribute("citas", citas);
+
+        List<Oferta> ofertas = ofertaService.findByEmisorId(usuario.getId());
+        model.addAttribute("ofertas", ofertas);
+
         Reclamo reclamo = new Reclamo();
         model.addAttribute("reclamos", reclamos);
         model.addAttribute("reclamo", reclamo);
