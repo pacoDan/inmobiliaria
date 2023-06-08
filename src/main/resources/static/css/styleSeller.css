@@ -118,3 +118,6 @@ aside .contenido__sesion a{
 main{
     padding: 22px;    
 }
+ol, ul {
+    padding-left: 0rem;
+}

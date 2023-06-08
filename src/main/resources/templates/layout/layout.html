@@ -41,10 +41,10 @@
                     </li>
                     <li class="opcionSubmenu">
                         <button sec:authorize="hasRole('ROLE_ENTE')" type="button" class="btn btn-primary">
-                            <a th:href="@{/vendedor}">Mi perfil</a>
+                            <a th:href="@{/vendedor}">Gestion</a>
                         </button>
                         <button sec:authorize="hasRole('ROLE_CLIENTE')" type="button" class="btn btn-primary">
-                            <a th:href="@{/inquilino}">Mi perfil</a>
+                            <a th:href="@{/inquilino}">Gestion</a>
                         </button>
                     </li>  
                     <li class="opcionSubmenu"><button type="button" class="btn btn-primary"><a th:href="@{/logout}">Cerrar Sesion</a></button></li>
