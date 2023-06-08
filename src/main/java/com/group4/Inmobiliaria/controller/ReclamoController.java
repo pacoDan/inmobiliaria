@@ -12,6 +12,7 @@ import com.group4.Inmobiliaria.utils.Session;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -45,6 +46,22 @@ public class ReclamoController {
         reclamoService.guardar(reclamo);
         
         return "redirect:/inquilino";
+    }
+    
+    @PostMapping("/estado/proceso/{id}")
+    public String estadoProceso(@PathVariable(value = "id")String id){
+         Reclamo reclamo = reclamoService.encontrarById(id);
+         reclamo.setEstadoReclamo(EstadoReclamo.PROCESO);
+         reclamoService.guardar(reclamo);
+         return "redirect:/vendedor";
+    }
+    
+     @PostMapping("/estado/resuelto/{id}")
+    public String estadoResuelto(@PathVariable(value = "id")String id){
+         Reclamo reclamo = reclamoService.encontrarById(id);
+         reclamo.setEstadoReclamo(EstadoReclamo.RESUELTO);
+         reclamoService.guardar(reclamo);
+         return "redirect:/vendedor";
     }
 
 }

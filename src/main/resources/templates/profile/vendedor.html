@@ -59,8 +59,7 @@
 
                         <thead>
                             <tr>
-                                <th scope="col">Emisor</th>
-                                <th scope="col">Estado</th>
+                                <th scope="col">Emisor</th>                               
                                 <th scope="col">Dia</th>
                                 <th scope="col">Turno</th>
                                 <th scope="col">Acciones</th>
@@ -69,8 +68,7 @@
                         <tbody>
                             <div th:each="cita : ${citas}">
                             <tr>
-                                <td th:text="${cita.emisor.nombre}"></td>
-                                <td th:text="${cita.estado}"></td>
+                                <td th:text="${cita.emisor.email}"></td>                                
                                 <td th:text="${cita.diaCita}"></td>
                                 <td th:text="${cita.horaCita}"></td>
                                 <td>
@@ -166,25 +164,38 @@
 
                 <div class="element" id="element__misReclamos">
                     <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
-                    <table class="table">
-
+                    <table class="table">                        
                         <thead>
-                        <tr>
-                            <th scope="col">Texto</th>
-                            <th scope="col">De</th>
-                            <th scope="col">Ejemplo</th>
-                        </tr>
+                            <tr>
+                                <th scope="col">Fecha_Emision</th>
+                                <th scope="col">Hora_Emision</th>
+                                <th scope="col">Emisor</th>
+                                <th scope="col">Propiedad</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Estado</th>   
+                                <th scope="col">Gestion</th>   
+                            </tr>
                         </thead>
                         <tbody>
-                        <div th:each="oferta : ${ofertas}">
-                            <tr>
-                                <td th:text="${oferta.emisor.nombre}"></td>
-                                <td th:text="${oferta.estado}"></td>
-                                <td th:text="${oferta.monto}"></td>
-                            </tr>
-                        </div>
+                            <tr th:each="index : ${reclamos}">
+                                <td th:text="${index.fechaEmision}"></td>
+                                <td th:text="${index.horaEmision}"></td>
+                                <td th:text="${index.emisor.email}"></td>
+                                <td th:text="${index.propiedad.descripcion}"></td>
+                                <td th:text="${index.descripcion}"></td>
+                                <td th:text="${index.estadoReclamo}"></td> 
+                                <td>
+                                    <form method="post" th:action="@{/reclamo/estado/proceso/__${index.id}__}">                                    
+                                        <button type="submit" class="btn btn-success" th:text="PROCESO"></button>
+                                    </form>
+                                    <form method="post" th:action="@{/reclamo/estado/resuelto/__${index.id}__}">                                    
+                                        <button type="submit" class="btn btn-success" th:text="RESUELTO"></button>
+                                    </form>
+                                </td>
+                                
+                            </tr>                           
                         </tbody>
-                    </table>
+                    </table>                 
                 </div>
             </main>
         </div>

@@ -16,8 +16,7 @@ public class ReclamoService {
     ReclamoRepository reclamoRepository;
 
     @Transactional
-    public void guardar(Reclamo reclamo){
-        reclamo.setEstadoReclamo(EstadoReclamo.PENDIENTE);
+    public void guardar(Reclamo reclamo){        
         reclamoRepository.save(reclamo);
     }
 

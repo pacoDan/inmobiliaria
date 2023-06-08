@@ -98,8 +98,9 @@ public class ViewController {
     public String vendedor(Model model) {
         List<Propiedad> propiedades = propiedadService.listarPropiedades();
         model.addAttribute("propiedades", propiedades);
-
-        Usuario logged = Session.getUserSession();
+        
+        List<Reclamo> reclamos = reclamoService.findByReceptorId(Session.getUserSession().getId());                
+        model.addAttribute("reclamos", reclamos);       
 
         Usuario usuario = Session.getUserSession();
         model.addAttribute("usuario", usuario);
