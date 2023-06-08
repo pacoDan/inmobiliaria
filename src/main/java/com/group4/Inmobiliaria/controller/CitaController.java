@@ -45,4 +45,20 @@ public class CitaController {
         return "redirect:/";
     }
 
+    @PostMapping("/aceptarCita")
+    public String aceptarCita(@RequestParam("citaId") String citaId){
+        Cita cita = citaService.encontrarById(citaId);
+        cita.setEstado(EstadoCita.ACEPTADA);
+        citaService.guardar(cita);
+        return "redirect:/vendedor";
+    }
+
+    @PostMapping("/rechazarCita")
+    public String rechazarCita(@RequestParam("citaId") String citaId){
+        Cita cita = citaService.encontrarById(citaId);
+        cita.setEstado(EstadoCita.RECHAZADA);
+        citaService.guardar(cita);
+        return "redirect:/vendedor";
+    }
+
 }

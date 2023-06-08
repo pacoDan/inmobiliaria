@@ -1,9 +1,6 @@
 package com.group4.Inmobiliaria.controller;
 
-<<<<<<< Updated upstream
 import com.group4.Inmobiliaria.entidades.Cita;
-=======
->>>>>>> Stashed changes
 import com.group4.Inmobiliaria.entidades.Oferta;
 import com.group4.Inmobiliaria.entidades.Propiedad;
 import com.group4.Inmobiliaria.entidades.Usuario;

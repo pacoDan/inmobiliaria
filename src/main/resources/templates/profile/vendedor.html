@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es"  xmlns="http://www.w3.org/2000/svg" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,6 +54,7 @@
                                 <th scope="col">Estado</th>
                                 <th scope="col">Dia</th>
                                 <th scope="col">Turno</th>
+                                <th scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,6 +64,16 @@
                                 <td th:text="${cita.estado}"></td>
                                 <td th:text="${cita.diaCita}"></td>
                                 <td th:text="${cita.horaCita}"></td>
+                                <td>
+                                    <form method="post" th:action="@{/aceptarCita}">
+                                        <input type="hidden" name="citaId" th:value="${cita.id}" />
+                                        <button type="submit" class="btn btn-success" th:text="Aceptar"></button>
+                                    </form>
+                                    <form method="post" th:action="@{/rechazarCita}">
+                                        <input type="hidden" name="citaId" th:value="${cita.id}" />
+                                        <button type="submit" class="btn btn-danger" th:text="Rechazar"></button>
+                                    </form>
+                                </td>
                             </tr>
                         </div>
                         </tbody>
