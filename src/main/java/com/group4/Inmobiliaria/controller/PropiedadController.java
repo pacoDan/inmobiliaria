@@ -6,6 +6,7 @@ import com.group4.Inmobiliaria.entidades.Cita;
 import com.group4.Inmobiliaria.entidades.Oferta;
 import com.group4.Inmobiliaria.entidades.Propiedad;
 import com.group4.Inmobiliaria.entidades.Usuario;
+import com.group4.Inmobiliaria.excepciones.MiExcepcion;
 import com.group4.Inmobiliaria.service.ImagenService;
 import com.group4.Inmobiliaria.service.OfertaService;
 import com.group4.Inmobiliaria.service.PropiedadService;
@@ -51,6 +52,8 @@ public class PropiedadController {
 
         List<MultipartFile> imagenesFiles = propiedad.getImagenesFiles();
 
+        propiedad.setDisponible(true);
+
         Propiedad propiedadSaved = propiedadService.guardar(propiedad);
 
         if(imagenesFiles != null) imagenService.guardarImagenesPropiedad(imagenesFiles, propiedadSaved);
@@ -70,9 +73,11 @@ public class PropiedadController {
     }
 
     @GetMapping("/eliminar/{id}")
-    public String eliminar(@PathVariable("id") String id) {
-        propiedadService.eliminarById(id);
-        return "redirect:/";
+    public String eliminar(@PathVariable("id") String id) throws MiExcepcion {
+        Propiedad propiedad = propiedadService.encontrarById(id);
+        propiedad.setDisponible(false);
+        propiedadService.guardar(propiedad);
+        return "redirect:/vendedor";
     }
 
     @GetMapping("/all")
