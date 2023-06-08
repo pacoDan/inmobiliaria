@@ -28,8 +28,9 @@
 
         <div class="product-details">
             <h1 th:text="${propiedad.descripcion}"></h1>
-            <p class="price" th:text="${propiedad.precioVenta}"></p>
-            <p class="price" th:text="${propiedad.precioAlquiler}"></p>
+            <div class="precio"> <p th:text=" 'Precio Venta: ' + ${propiedad.precioVenta}"></p>
+                <p  th:text=" 'Precio Alquiler: ' + ${propiedad.precioAlquiler}"></p>
+            </div>
             <p class="description" th:text="${propiedad.caracteristicas}"></p>
             <div sec:authorize="isAuthenticated() and hasRole('ROLE_CLIENTE')" class="actions" th:if="${#strings.equals(usuario.tipoCliente, 'COMPRADOR')}">
                 <a th:href="@{/pago}">    <button  class="btn btn-outline-primary" >Comprar ahora</button> </a>

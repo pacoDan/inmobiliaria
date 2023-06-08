@@ -26,9 +26,10 @@
                         <p th:text="${propiedad.caracteristicas}"></p>
                         
                         <img th:src="@{'/imagen/' + ${propiedad.imagenes[0].id}}" alt="Imagen">
-                        
-                        <p class="precio" th:text="${propiedad.precioVenta}"></p>
-                        <p class="precio" th:text="${propiedad.precioAlquiler}"></p>
+
+                        <div class="precio"> <p th:text=" 'Precio Venta: ' + ${propiedad.precioVenta}"></p>
+                            <p  th:text=" 'Precio Alquiler: ' + ${propiedad.precioAlquiler}"></p>
+                        </div>
                         <ul class="iconos-caracts">
                             <li>
                                 <span class="material-symbols-outlined">bathtub </span>

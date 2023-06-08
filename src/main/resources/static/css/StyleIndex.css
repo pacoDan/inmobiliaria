@@ -35,6 +35,7 @@ display: -webkit-box;
            height: auto;
            min-height: 14em;
                max-height: 14em;
+                   border-radius: 10%;
 
 }
 
@@ -48,6 +49,10 @@ display: -webkit-box;
     margin: 3% auto 3% auto;
 }
 
+.precio{
+    font-weight: 700;
+    margin: 3% auto 3% auto;
+}
 
 .iconos-caracts{
     list-style: none;
@@ -191,6 +196,7 @@ display: -webkit-box;
         max-width: 100%;
         min-width: 100%;
         height: auto;
+            border-radius: 10%;
     }
 .tituloTruncado h3{
 width:23em;
