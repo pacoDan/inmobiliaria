@@ -35,6 +35,15 @@
                                 </a>
                             </li>
                         </div>
+
+                        <div th:if="${1 == 1}">
+                            <li>
+                                <a href="#" onclick="mostrarContMenu('misReclamos')">
+                                    <i class="fa-sharp fa-solid fa-chart-column" style="color: #d6d8dc;"></i>
+                                    <span class="links_name">Mis Reclamos</span>
+                                </a>
+                            </li>
+                        </div>
                         <!--Fin prueba-->
                         
                     </ul>
@@ -144,6 +153,28 @@
                     </table>
                 </div>
 
+                <div class="element" id="element__misReclamos">
+                    <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
+                    <table class="table">
+
+                        <thead>
+                        <tr>
+                            <th scope="col">Texto</th>
+                            <th scope="col">De</th>
+                            <th scope="col">Ejemplo</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <div th:each="oferta : ${ofertas}">
+                            <tr>
+                                <td th:text="${oferta.emisor.nombre}"></td>
+                                <td th:text="${oferta.estado}"></td>
+                                <td th:text="${oferta.monto}"></td>
+                            </tr>
+                        </div>
+                        </tbody>
+                    </table>
+                </div>
             </main>
         </div>
 

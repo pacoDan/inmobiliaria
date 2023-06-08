@@ -38,6 +38,10 @@ public class ViewController {
 
     @GetMapping("/")
     public String index(Model model) {
+
+
+
+
         List<Propiedad> propiedades = propiedadService.listarPropiedades();
         model.addAttribute("propiedades", propiedades);        
         
@@ -104,6 +108,7 @@ public class ViewController {
 
         List<Oferta> ofertas = ofertaService.findByReceptorId(usuario.getId());
         model.addAttribute("ofertas", ofertas);
+
 
         return "profile/vendedor";
     }
