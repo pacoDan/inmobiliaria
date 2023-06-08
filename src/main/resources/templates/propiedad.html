@@ -32,16 +32,17 @@
                 <p  th:text=" 'Precio Alquiler: ' + ${propiedad.precioAlquiler}"></p>
             </div>
             <p class="description" th:text="${propiedad.caracteristicas}"></p>
-            <div sec:authorize="isAuthenticated() and hasRole('ROLE_CLIENTE')" class="actions" th:if="${#strings.equals(usuario.tipoCliente, 'COMPRADOR')}">
-                <a th:href="@{/pago}">    <button  class="btn btn-outline-primary" >Comprar ahora</button> </a>
-            </div>
-            <br>
 
             <div sec:authorize="isAuthenticated() and hasRole('ROLE_CLIENTE')" >
+                <div th:if="${#strings.equals(usuario.tipoCliente, 'COMPRADOR')}">
                 <input type="checkbox" id="mostrarDiv1" />
-                <label for="mostrarDiv1"> <h4 class="tocable">Ofertar por la Propiedad</h4></label>
+                    <div  class="Contenedortocable">
+                    <span class="material-symbols-outlined">
+chevron_right
+</span> <label for="mostrarDiv1"> <h4 class="tocable">Ofertar por la Propiedad</h4></label>
+                    </div>
 
-                <form id="divOculto1" th:if="${#strings.equals(usuario.tipoCliente, 'COMPRADOR')}" method="post" th:action="@{/crearOferta}" th:object="${oferta}">
+                <form id="divOculto1"  method="post" th:action="@{/crearOferta}" th:object="${oferta}">
                     <input type="hidden" name="idPropiedad" th:value="${propiedad.id}">
                     <div class="form-group">
                         <label for="cantidad">Monto:</label>
@@ -50,11 +51,18 @@
                     </div>
                     <button type="submit" class="btn btn-success">Ofertar</button>
                 </form>
+                </div>
             </div>
+
+<br>
 
             <div sec:authorize="isAuthenticated() and hasRole('ROLE_CLIENTE')">
                 <input type="checkbox" id="mostrarDiv2" />
-                <label for="mostrarDiv2">  <h4 class="tocable">Solicitar Cita</h4> </label>
+                <div  class="Contenedortocable">
+                <span class="material-symbols-outlined">
+chevron_right
+</span> <label for="mostrarDiv2">  <h4 class="tocable">Solicitar Cita</h4> </label>
+                </div>
                 <form id="divOculto2" method="post" th:action="@{/crearCita}" th:object="${cita}">
                     <label class="form-label">Dia de la cita:</label>
                     <input type="hidden" name="idPropiedad" th:value="${propiedad.id}">
@@ -72,6 +80,26 @@
                     <button type="submit" class="btn btn-success">Solicitar Cita</button>
                 </form>
             </div>
+            <br>
+            <br>
+            <div sec:authorize="isAuthenticated() and hasRole('ROLE_CLIENTE')" >
+                <div th:if="${#strings.equals(usuario.tipoCliente, 'INQUILINO')}">
+                    <form  method="post" th:action="@{/solicitarAlquiler}" th:object="${alquiler}">
+                        <input type="hidden" name="idPropiedad" th:value="${propiedad.id}">
+                        <button type="submit" class="btn btn-success">Alquilar</button>
+                    </form>
+                </div>
+            </div>
+
+            <div sec:authorize="isAuthenticated() and hasRole('ROLE_CLIENTE')" >
+                <div th:if="${#strings.equals(usuario.tipoCliente, 'COMPRADOR')}">
+                    <form  method="post" th:action="@{/solicitarCompra}" th:object="${alquiler}">
+                        <input type="hidden" name="idPropiedad" th:value="${propiedad.id}">
+                        <button type="submit" class="btn btn-success">Comprar</button>
+                    </form>
+                </div>
+            </div>
+
 
         </div>
     </div>

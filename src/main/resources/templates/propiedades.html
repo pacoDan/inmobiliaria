@@ -19,12 +19,18 @@
             <h2 class="fw-300 centrar-texto">Casas y Departamentos en venta</h2>
 
             <div class="container-anuncios">
+
                 <div class="anuncio" th:each="propiedad : ${propiedades}">
 
-                    <div class="contenido-anuncio">
-                        <h3 th:text="${propiedad.descripcion}"></h3>
-                        <p th:text="${propiedad.caracteristicas}"></p>
-                        
+
+                    <div class="contenido-anuncio" >
+
+
+
+                        <div class="tituloTruncado"><h3 th:text="${propiedad.descripcion}"></h3>
+                        </div>
+                        <div class="descripcionTruncada"> <p th:text="${propiedad.caracteristicas}"></p></div>
+
                         <img th:src="@{'/imagen/' + ${propiedad.imagenes[0].id}}" alt="Imagen">
 
                         <div class="precio"> <p th:text=" 'Precio Venta: ' + ${propiedad.precioVenta}"></p>
@@ -33,20 +39,20 @@
                         <ul class="iconos-caracts">
                             <li>
                                 <span class="material-symbols-outlined">bathtub </span>
-                                <p>3</p>
+                                <p></p>
                             </li>
                             <li>
                                 <span class="material-symbols-outlined">directions_car </span>
-                                <p>3</p>
+                                <p></p>
                             </li>
                             <li>
                                 <span class="material-symbols-outlined">bed</span>
-                                <p>4</p>
+                                <p></p>
                             </li>
                         </ul>
-                        <a th:href="@{/propiedad/{id}(id=${propiedad.id})}">
+                        <a th:href="@{propiedad/{id}(id=${propiedad.id})}">
                             <button type="button" class="btn btn-outline-primary">Ver Propiedad</button>
-                        </a>                                                
+                        </a>
                     </div>
                 </div>
             </div>

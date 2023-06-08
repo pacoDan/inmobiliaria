@@ -7,7 +7,12 @@
 .tocable{
 cursor: pointer;
     width: 79%;
+    display:flex;
     }
+
+    .Contenedortocable{
+        display:flex;
+        }
 
 .product-image {
   flex: 0 0 50%;
