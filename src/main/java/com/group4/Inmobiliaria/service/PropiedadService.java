@@ -21,7 +21,11 @@ public class PropiedadService {
         guardar(nuevaPropiedad);
 //        propiedadRepository.save(nuevaPropiedad);
     }
-
+    
+    public Propiedad findByInquilinoId(String id){
+        return propiedadRepository.findByInquilino_id(id);
+    }
+    
 
     @Transactional
     public Propiedad guardar(Propiedad propiedad) throws MiExcepcion {

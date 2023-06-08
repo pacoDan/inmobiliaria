@@ -65,12 +65,12 @@ public class Propiedad implements Serializable {
     @JoinColumn(name = "Id_Propietario", referencedColumnName = "Id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JsonIgnore
-    private Usuario propietario;
+    private Ente propietario;
 
     @JoinColumn(name = "Id_Inquilino", referencedColumnName = "Id", nullable = true)
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JsonIgnore
-    private Usuario inquilino;
+    private Cliente inquilino;
 
     @Basic(optional = false)
     @Column(name = "Precio_venta")

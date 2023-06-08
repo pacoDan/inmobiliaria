@@ -16,4 +16,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PropiedadRepository extends JpaRepository<Propiedad,String> {
     
+    public Propiedad findByInquilino_id(String id);
+    
 }
