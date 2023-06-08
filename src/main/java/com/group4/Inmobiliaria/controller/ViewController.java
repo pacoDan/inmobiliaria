@@ -126,9 +126,14 @@ public class ViewController {
         List<Oferta> ofertas = ofertaService.findByEmisorId(usuario.getId());
         model.addAttribute("ofertas", ofertas);
 
+        List<Propiedad> propiedades = propiedadService.findAlldWithImages();
+        model.addAttribute("propiedades", propiedades);
+
         Reclamo reclamo = new Reclamo();
         model.addAttribute("reclamos", reclamos);
         model.addAttribute("reclamo", reclamo);
+        System.out.println(usuario.getNombre());
+
         return "profile/inquilino";
     }
 

@@ -67,6 +67,12 @@ color:#FFFFFF;
     border-color: #dc3545;
 }
 
+.btn-success {
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+}
+
 .divLogo p{
     color: rgb(253, 253, 253);
     text-decoration: dashed;
