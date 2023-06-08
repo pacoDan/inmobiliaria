@@ -36,7 +36,6 @@ public class CitaController {
         cita.setTipoProcedimiento(TipoProcedimiento.CITA);
         cita.setFechaEmision(new Date());
         cita.setHoraEmision(new Date());
-        cita.setDescripcion("");
         cita.setEmisor((Cliente) usuario);
         cita.setReceptor(receptor);
         cita.setPropiedad(propiedad);

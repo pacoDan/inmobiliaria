@@ -44,4 +44,8 @@ public class Pago extends Procedimiento implements Serializable {
     @Enumerated(EnumType.STRING)
     private EstadoPago estadopago;
 
+    @Basic(optional = false)
+    @Column(name = "Descripcion")
+    private String descripcion;
+
 }

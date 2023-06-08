@@ -93,12 +93,23 @@ chevron_right
 
             <div sec:authorize="isAuthenticated() and hasRole('ROLE_CLIENTE')" >
                 <div th:if="${#strings.equals(usuario.tipoCliente, 'COMPRADOR')}">
-                    <form  method="post" th:action="@{/solicitarCompra}" th:object="${alquiler}">
-                        <input type="hidden" name="idPropiedad" th:value="${propiedad.id}">
-                        <button type="submit" class="btn btn-success">Comprar</button>
+                    <form  method="post" th:action="@{/solicitud/guardad/compra}" th:object="${solicitud}">
+                        <input type="hidden" name="idPropiedad" th:value="${propiedad.id}">                        
+                        <input type="hidden" name="receptor" th:value="${propiedad.propietario}">
+                        <button type="submit" class="btn btn-success">Solicitar Compra</button>
                     </form>
                 </div>
             </div>
+                
+             <div sec:authorize="isAuthenticated() and hasRole('ROLE_CLIENTE')" >
+                <div th:if="${#strings.equals(usuario.tipoCliente, 'COMPRADOR')}">
+                    <form  method="post" th:action="@{/solicitud/guardar/alquiler}" th:object="${solicitud}">
+                        <input type="hidden" name="idPropiedad" th:value="${propiedad}">                        
+                        <input type="hidden" name="receptor" th:value="${propiedad.propietario}">
+                        <button type="submit" class="btn btn-success">Solicitar Alquiler</button>
+                    </form>
+                </div>
+            </div>   
 
 
         </div>
