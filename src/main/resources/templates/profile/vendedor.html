@@ -44,6 +44,16 @@
                                 </a>
                             </li>
                         </div>
+                        
+                        <div th:if="${1 == 1}">
+                            <li>
+                                <a href="#" onclick="mostrarContMenu('solicitudCompra')">
+                                    <i class="fa-sharp fa-solid fa-chart-column" style="color: #d6d8dc;"></i>
+                                    <span class="links_name">Solicitudes Compra</span>
+                                </a>
+                            </li>
+                        </div>
+                        
                         <!--Fin prueba-->
                         
                     </ul>
@@ -53,15 +63,18 @@
             </aside>
 
             <main>  <!-- class="list__elemet list__item--click" >-->
-                <div class="element" id="element__misCitas">
+                
+                <div class="element" id="element__solicitudCompra">
 
                     <table class="table">
 
                         <thead>
                             <tr>
                                 <th scope="col">Emisor</th>                               
-                                <th scope="col">Dia</th>
-                                <th scope="col">Turno</th>
+                                <th scope="col">Fecha_Emision</th>
+                                <th scope="col">Hora_Emision</th>
+                                <th scope="col">Propiedad</th>
+                                <th scope="col">Estado</th>
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
@@ -71,6 +84,7 @@
                                 <td th:text="${cita.emisor.email}"></td>                                
                                 <td th:text="${cita.diaCita}"></td>
                                 <td th:text="${cita.horaCita}"></td>
+                                <td th:text="${cita.estado}"></td>
                                 <td>
                                     <form method="post" th:action="@{/aceptarCita}">
                                         <input type="hidden" name="citaId" th:value="${cita.id}" />
@@ -86,6 +100,43 @@
                         </tbody>
                     </table>
                 </div>
+                
+                <div class="element" id="element__misCitas">
+
+                    <table class="table">
+
+                        <thead>
+                            <tr>
+                                <th scope="col">Emisor</th>                               
+                                <th scope="col">Dia</th>
+                                <th scope="col">Turno</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <div th:each="cita : ${citas}">
+                            <tr>
+                                <td th:text="${cita.emisor.email}"></td>                                
+                                <td th:text="${cita.diaCita}"></td>
+                                <td th:text="${cita.horaCita}"></td>
+                                <td th:text="${cita.estado}"></td>
+                                <td>
+                                    <form method="post" th:action="@{/aceptarCita}">
+                                        <input type="hidden" name="citaId" th:value="${cita.id}" />
+                                        <button type="submit" class="btn btn-success" th:text="Aceptar"></button>
+                                    </form>
+                                    <form method="post" th:action="@{/rechazarCita}">
+                                        <input type="hidden" name="citaId" th:value="${cita.id}" />
+                                        <button type="submit" class="btn btn-danger" th:text="Rechazar"></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </div>
+                        </tbody>
+                    </table>
+                </div>
+                
                 <div class="element" id="element__misPropiedades">
 
                     <div class="container-anuncios"  th:each="propiedad : ${propiedades}">
@@ -129,8 +180,7 @@
                             </div>
                 </div>
 
-                <div class="element" id="element__misOfertas">
-                    <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
+                <div class="element" id="element__misOfertas">                   
                     <table class="table">
 
                         <thead>
