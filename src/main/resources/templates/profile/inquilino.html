@@ -43,12 +43,46 @@
                                 <i class="fa-sharp fa-solid fa-chart-column" style="color: #d6d8dc;"></i>
                                 <span class="links_name">Generar reclamo</span>
                             </a>
-                        </li>                      
+                        </li>               
+                          <li>
+                            <a href="#" onclick="mostrarContMenu('solicitudes')">
+                                <i class="fa-sharp fa-solid fa-chart-column" style="color: #d6d8dc;"></i>
+                                <span class="links_name">Solicitudes</span>
+                            </a>
+                        </li>               
                     </ul>
                 
             </aside>
 
             <main>  <!-- class="list__elemet list__item--click" >-->
+                
+                 <div class="element" id="element__solicitudes">
+
+                    <table class="table">
+
+                        <thead>
+                            <tr>                                                         
+                                <th scope="col">Fecha_Emision</th>
+                                <th scope="col">Hora_Emision</th>
+                                <th scope="col">Propiedad</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Tipo</th>                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <div th:each="solicitud : ${solicitudes}">
+                            <tr>                                                             
+                                <td th:text="${solicitud.fechaEmision}"></td>
+                                <td th:text="${solicitud.horaEmision}"></td>
+                                <td th:text="${solicitud.propiedad.descripcion}"></td>
+                                <td th:text="${solicitud.estadoSolicitud}"></td>
+                                <td th:text="${solicitud.tipoSolicitud}"></td>                                
+                            </tr>
+                        </div>
+                        </tbody>
+                    </table>
+                </div>
+                
                 <div class="element" id="element__misCitas">
 
                     <table class="table">

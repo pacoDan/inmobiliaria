@@ -49,7 +49,7 @@
                             <li>
                                 <a href="#" onclick="mostrarContMenu('solicitudCompra')">
                                     <i class="fa-sharp fa-solid fa-chart-column" style="color: #d6d8dc;"></i>
-                                    <span class="links_name">Solicitudes Compra</span>
+                                    <span class="links_name">Solicitudes Recibidas</span>
                                 </a>
                             </li>
                         </div>
@@ -75,26 +75,20 @@
                                 <th scope="col">Hora_Emision</th>
                                 <th scope="col">Propiedad</th>
                                 <th scope="col">Estado</th>
+                                <th scope="col">Tipo</th>
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <div th:each="cita : ${citas}">
+                            <div th:each="solicitud : ${solicitudes}">
                             <tr>
-                                <td th:text="${cita.emisor.email}"></td>                                
-                                <td th:text="${cita.diaCita}"></td>
-                                <td th:text="${cita.horaCita}"></td>
-                                <td th:text="${cita.estado}"></td>
-                                <td>
-                                    <form method="post" th:action="@{/aceptarCita}">
-                                        <input type="hidden" name="citaId" th:value="${cita.id}" />
-                                        <button type="submit" class="btn btn-success" th:text="Aceptar"></button>
-                                    </form>
-                                    <form method="post" th:action="@{/rechazarCita}">
-                                        <input type="hidden" name="citaId" th:value="${cita.id}" />
-                                        <button type="submit" class="btn btn-danger" th:text="Rechazar"></button>
-                                    </form>
-                                </td>
+                                <td th:text="${solicitud.emisor.email}"></td>                                
+                                <td th:text="${solicitud.fechaEmision}"></td>
+                                <td th:text="${solicitud.horaEmision}"></td>
+                                <td th:text="${solicitud.propiedad.descripcion}"></td>
+                                <td th:text="${solicitud.estadoSolicitud}"></td>
+                                <td th:text="${solicitud.tipoSolicitud}"></td>
+                                
                             </tr>
                         </div>
                         </tbody>

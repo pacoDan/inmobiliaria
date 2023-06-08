@@ -5,10 +5,12 @@ import com.group4.Inmobiliaria.entidades.Propiedad;
 import com.group4.Inmobiliaria.entidades.Reclamo;
 import com.group4.Inmobiliaria.service.ReclamoService;
 import com.group4.Inmobiliaria.entidades.Oferta;
+import com.group4.Inmobiliaria.entidades.Solicitud;
 import com.group4.Inmobiliaria.entidades.Usuario;
 import com.group4.Inmobiliaria.service.CitaService;
 import com.group4.Inmobiliaria.service.OfertaService;
 import com.group4.Inmobiliaria.service.PropiedadService;
+import com.group4.Inmobiliaria.service.SolicitudService;
 import com.group4.Inmobiliaria.service.UsuarioService;
 import com.group4.Inmobiliaria.utils.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,9 @@ public class ViewController {
 
     @Autowired
     OfertaService ofertaService;
+    
+    @Autowired
+    SolicitudService solicitudService;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -107,7 +112,9 @@ public class ViewController {
 
         List<Oferta> ofertas = ofertaService.findByReceptorId(usuario.getId());
         model.addAttribute("ofertas", ofertas);
-
+        
+        List<Solicitud> solicitudes = solicitudService.findByReceptorId(Session.getUserSession().getId());
+        model.addAttribute("solicitudes", solicitudes);
 
         return "profile/vendedor";
     }
@@ -125,6 +132,9 @@ public class ViewController {
 
         List<Oferta> ofertas = ofertaService.findByEmisorId(usuario.getId());
         model.addAttribute("ofertas", ofertas);
+        
+        List<Solicitud> solicitudes = solicitudService.findByEmisorId(Session.getUserSession().getId());
+        model.addAttribute("solicitudes", solicitudes);
 
         List<Propiedad> propiedades = propiedadService.findAlldWithImages();
         model.addAttribute("propiedades", propiedades);
