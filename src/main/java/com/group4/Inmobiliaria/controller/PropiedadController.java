@@ -81,6 +81,14 @@ public class PropiedadController {
         return "redirect:/vendedor";
     }
 
+    @GetMapping("/publicar/{id}")
+    public String publicar(@PathVariable("id") String id) throws MiExcepcion {
+        Propiedad propiedad = propiedadService.encontrarById(id);
+        propiedad.setDisponible(true);
+        propiedadService.guardar(propiedad);
+        return "redirect:/vendedor";
+    }
+
     @GetMapping("/all")
     public String listar(Model model) {
         List<Propiedad> propiedades = propiedadService.findAlldWithImages();
@@ -91,7 +99,14 @@ public class PropiedadController {
        
     @GetMapping("/{id}")
     public String mostrarDetallePropiedad(@PathVariable("id") String id, Model model) {
-        Propiedad propiedad = propiedadService.encontrarById(id);
+
+
+        List<Propiedad> propiedades = propiedadService.findAlldWithImages();
+
+        propiedades = propiedades.stream().filter(prop -> prop.getId().equals(id)).collect(Collectors.toList());
+
+        Propiedad propiedad = propiedades.get(0);
+
         Usuario usuario = Session.getUserSession();
         Oferta oferta = new Oferta();
         Cita cita = new Cita();

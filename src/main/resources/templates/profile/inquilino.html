@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es"  xmlns="http://www.w3.org/2000/svg" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -112,6 +113,47 @@
                     <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet massa vitae magna scelerisque luctus eu ac odio. In ac nunc in augue dignissim mattis. Vestibulum feugiat, purus eu euismod pharetra, erat enim imperdiet dolor, vitae consectetur leo diam in arcu. Nunc vel nisi diam. Vestibulum sagittis est vel turpis luctus, vitae porttitor ligula bibendum. Phasellus sit amet consectetur sem. Cras consectetur, nisi vitae sagittis pharetra, mauris orci pharetra elit, a auctor elit lorem ut tellus. Integer venenatis dictum condimentum. Ut fermentum diam vel convallis viverra. Sed sit amet nisi lacus. Phasellus gravida justo a risus pellentesque, quis aliquet lorem ornare. Mauris est sem, malesuada ut consequat ut, facilisis vitae neque. Morbi rhoncus quam non consectetur varius. In hac habitasse platea dictumst. Phasellus non nulla eleifend, gravida metus ultricies, eleifend augue. Fusce pulvinar mi at purus aliquam, vel efficitur mi hendrerit.</p>
                 </div>
+
+                <div class="element" id="element__misPropiedades">
+
+                    <div class="container-anuncios"  th:each="propiedad : ${propiedades}">
+                        <div class="anuncio" th:if="${propiedad.inquilino != null and #authentication.name == propiedad.inquilino.email}">
+
+                            <div class="contenido-anuncio" >
+
+
+
+                                <div class="tituloTruncado"><h3 th:text="${propiedad.descripcion}"></h3>
+                                </div>
+                                <div class="descripcionTruncada"> <p th:text="${propiedad.caracteristicas}"></p></div>
+
+                                <img th:src="@{'/imagen/' + ${propiedad.imagenes[0].id}}" alt="Imagen">
+
+                                <p class="precio" th:text="${propiedad.precioVenta}"></p>
+                                <p class="precio" th:text="${propiedad.precioAlquiler}"></p>
+                                <ul class="iconos-caracts">
+                                    <li>
+                                        <span class="material-symbols-outlined">bathtub </span>
+                                        <p></p>
+                                    </li>
+                                    <li>
+                                        <span class="material-symbols-outlined">directions_car </span>
+                                        <p></p>
+                                    </li>
+                                    <li>
+                                        <span class="material-symbols-outlined">bed</span>
+                                        <p></p>
+                                    </li>
+                                </ul>
+                                <a th:href="@{propiedad/{id}(id=${propiedad.id})}">
+                                    <button type="button" class="btn btn-outline-primary">Ver Propiedad</button>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="element" id="element__facturacion">
                     <p>Aun no tienes facturaciones disponibles.</p>
                 </div>

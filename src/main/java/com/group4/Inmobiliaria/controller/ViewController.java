@@ -74,11 +74,6 @@ public class ViewController {
         return "login";
     }
 
-    /*
-    @GetMapping("/propiedad")
-    public String propiedad() {
-        return "propiedad";
-    }*/
     @GetMapping("/reuniones")
     public String reuniones(Model model) {
 
@@ -136,9 +131,14 @@ public class ViewController {
         List<Solicitud> solicitudes = solicitudService.findByEmisorId(Session.getUserSession().getId());
         model.addAttribute("solicitudes", solicitudes);
 
+        List<Propiedad> propiedades = propiedadService.findAlldWithImages();
+        model.addAttribute("propiedades", propiedades);
+
         Reclamo reclamo = new Reclamo();
         model.addAttribute("reclamos", reclamos);
         model.addAttribute("reclamo", reclamo);
+        System.out.println(usuario.getNombre());
+
         return "profile/inquilino";
     }
 

@@ -173,15 +173,15 @@
                                         <ul class="iconos-caracts">
                                             <li>
                                                 <span class="material-symbols-outlined">bathtub </span>
-                                                <p>3</p>
+                                                <p></p>
                                             </li>
                                             <li>
                                                 <span class="material-symbols-outlined">directions_car </span>
-                                                <p>3</p>
+                                                <p></p>
                                             </li>
                                             <li>
                                                 <span class="material-symbols-outlined">bed</span>
-                                                <p>4</p>
+                                                <p></p>
                                             </li>
                                         </ul>
                                         <a th:href="@{propiedad/{id}(id=${propiedad.id})}">
@@ -190,7 +190,8 @@
 
                                         <!-- Estos botones solo deberian estar disponibles si la persona logeada es la propietaria -->
                                         <a th:if="${#authentication.name == propiedad.propietario.email}" type="button"  th:href="@{propiedad/editar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Editar"></a>
-                                        <a th:if="${#authentication.name == propiedad.propietario.email}" type="button"  th:href="@{propiedad/eliminar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Eliminar"></a>
+                                        <a th:if="${#authentication.name == propiedad.propietario.email}" type="button"  th:href="@{propiedad/eliminar/} + ${propiedad.id}" class="btn btn-danger" th:text="Eliminar"></a>
+                                        <a th:if="${#authentication.name == propiedad.propietario.email}" type="button"  th:href="@{propiedad/publicar/} + ${propiedad.id}" class="btn btn-success" th:text="Publicar"></a>
                                     </div>
                                 </div>
                             </div>

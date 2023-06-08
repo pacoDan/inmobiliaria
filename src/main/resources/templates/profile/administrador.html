@@ -79,23 +79,13 @@
                             <td th:text="${usuario.id}"></td>
                             <td th:text="${usuario.nombre}"></td>
                             <td th:text="${usuario.email}"></td>
-                        </tr>
-                        <!--
-                        <tr th:each="usuario: ${usuarios}">
-                            <td th:text="${usuario.id}"></td>
-                            <td th:text="${usuario.nombre}"></td>
-                            <!--<td th:text="${usuario.Apellido}"></td>
-                            <td th:text="${usuario.email}"></td>
                             <td>
-                                <a th:href="@{editar/{id}(id=${usuario.id})}" class="btn btn-editar">Editar</a>
-                                <a th:href="@{eliminar/{id}(id=${usuario.id})}" class="btn btn-eliminar">Eliminar</a>                    
+                                <a th:href="@{/modificarUsuarioA/{id}(id=${usuario.id})}" class="btn btn__editar">Editar</a>
+                                <a th:href="@{/usuario/eliminar/{id}(id=${usuario.id})}" class="btn btn__editar">Editar</a>
                             </td>
-
-                        </tr>-->
+                        </tr>
                     </tbody>
                 </table>
-                <!--<div class="pagination" id="pagination"></div>
-                <button onclick="funcC()">hola</button>-->
             </div>
             <div class="element" id="element__propiedades">
                 <h2>Propiedades</h2><br/>
@@ -118,16 +108,8 @@
                             <td th:text="${propiedad.Provincia}"></td>
                             <td th:text="${propiedad.Disponible}"></td>
                             <td>
-                                <a th:href="@{editar/{id}(id=${propiedad.id})}" class="btn btn__editar">Editar</a>
-                                <!--<a th:href="@{eliminar/{id}(id=${propiedad.id})}" class="btn btn-eliminar">Eliminar</a>
-                                <a href="#attr-href">
-                                    Descripción de enlaces de la misma página
-                                </a>
-                                -->
-                                <form th:action="@{eliminar/{id}(id=${propiedad.id})}" method="post">
-                                    <button type="submit" <!--class="btn btn-eliminar" onclick="mostrarContMenu('propiedades')"-->>Eliminar</button>
-                                </form>
-
+                                <a th:href="@{/propiedad/editar/{id}(id=${propiedad.id})}" class="btn btn__editar">Editar</a>
+                                <a th:href="@{/propiedad/eliminar/{id}(id=${propiedad.id})}" class="btn btn__editar">Editar</a>
                             </td>
 
                         </tr>
