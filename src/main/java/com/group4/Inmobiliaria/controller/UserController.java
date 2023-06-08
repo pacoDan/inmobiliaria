@@ -120,6 +120,12 @@ public class UserController {
         model.addAttribute("usuario", usuario);
         return "modificarUser";
     }
+    @GetMapping("/eliminarUsuarioA/{id}")
+    public void eliminarUsuarioA(@PathVariable("id") String id, Model model){
+        usuarioService.deleteUserById(id);
+        //return "modificarUser";
+    }
+    
 }
 
 

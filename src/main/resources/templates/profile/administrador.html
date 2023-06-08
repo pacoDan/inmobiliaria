@@ -81,7 +81,7 @@
                             <td th:text="${usuario.email}"></td>
                             <td>
                                 <a th:href="@{/modificarUsuarioA/{id}(id=${usuario.id})}" class="btn btn__editar">Editar</a>
-                                <a th:href="@{/usuario/eliminar/{id}(id=${usuario.id})}" class="btn btn__editar">Editar</a>
+                                <a th:href="@{/eliminarUsuarioA/{id}(id=${usuario.id})}" class="btn btn__editar">Eliminar</a>
                             </td>
                         </tr>
                     </tbody>

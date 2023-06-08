@@ -18,4 +18,7 @@ public class UsuarioService {
     public Usuario findUserById(String id) {
         return usuarioRepository.findByID(id);
     }
+    public void deleteUserById(String id) {
+        usuarioRepository.deleteByID(id);
+    }
 }
