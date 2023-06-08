@@ -12,6 +12,7 @@ import com.group4.Inmobiliaria.service.OfertaService;
 import com.group4.Inmobiliaria.service.PropiedadService;
 import com.group4.Inmobiliaria.utils.Image;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.group4.Inmobiliaria.utils.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,6 +84,7 @@ public class PropiedadController {
     @GetMapping("/all")
     public String listar(Model model) {
         List<Propiedad> propiedades = propiedadService.findAlldWithImages();
+        propiedades = propiedades.stream().filter(prop -> prop.isDisponible()).collect(Collectors.toList());
         model.addAttribute("propiedades", propiedades);
         return "propiedades";
     }
