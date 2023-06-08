@@ -1,6 +1,7 @@
 package com.group4.Inmobiliaria.controller;
 
 import com.group4.Inmobiliaria.entidades.*;
+import com.group4.Inmobiliaria.enums.EstadoCita;
 import com.group4.Inmobiliaria.enums.EstadoOferta;
 import com.group4.Inmobiliaria.enums.TipoProcedimiento;
 import com.group4.Inmobiliaria.service.OfertaService;
@@ -51,6 +52,22 @@ public class OfertaController {
         oferta.setPropiedad(propiedad);
         ofertaService.guardar(oferta);
         return "redirect:/";
+    }
+
+    @PostMapping("/aceptarOferta")
+    public String aceptarOferta(@RequestParam("ofertaId") String ofertaId){
+        Oferta oferta = ofertaService.encontrarById(ofertaId);
+        oferta.setEstado(EstadoOferta.ACEPTADA);
+        ofertaService.guardar(oferta);
+        return "redirect:/vendedor";
+    }
+
+    @PostMapping("/rechazarOferta")
+    public String rechazarOferta(@RequestParam("ofertaId") String ofertaId){
+        Oferta oferta = ofertaService.encontrarById(ofertaId);
+        oferta.setEstado(EstadoOferta.RECHAZADA);
+        ofertaService.guardar(oferta);
+        return "redirect:/vendedor";
     }
 
 }

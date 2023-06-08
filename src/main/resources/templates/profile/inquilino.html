@@ -49,8 +49,30 @@
 
             <main>  <!-- class="list__elemet list__item--click" >-->
                 <div class="element" id="element__misCitas">
-                    <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet massa vitae magna scelerisque luctus eu ac odio. In ac nunc in augue dignissim mattis. Vestibulum feugiat, purus eu euismod pharetra, erat enim imperdiet dolor, vitae consectetur leo diam in arcu. Nunc vel nisi diam. Vestibulum sagittis est vel turpis luctus, vitae porttitor ligula bibendum. Phasellus sit amet consectetur sem. Cras consectetur, nisi vitae sagittis pharetra, mauris orci pharetra elit, a auctor elit lorem ut tellus. Integer venenatis dictum condimentum. Ut fermentum diam vel convallis viverra. Sed sit amet nisi lacus. Phasellus gravida justo a risus pellentesque, quis aliquet lorem ornare. Mauris est sem, malesuada ut consequat ut, facilisis vitae neque. Morbi rhoncus quam non consectetur varius. In hac habitasse platea dictumst. Phasellus non nulla eleifend, gravida metus ultricies, eleifend augue. Fusce pulvinar mi at purus aliquam, vel efficitur mi hendrerit.</p>
+
+                    <table class="table">
+
+                        <thead>
+                        <tr>
+                            <th scope="col">Dueño</th>
+                            <th scope="col">Propiedad</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Dia</th>
+                            <th scope="col">Turno</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <div th:each="cita : ${citas}">
+                            <tr>
+                                <td th:text="${cita.receptor.nombre}"></td>
+                                <td th:text="${cita.propiedad.descripcion}"></td>
+                                <td th:text="${cita.estado}"></td>
+                                <td th:text="${cita.diaCita}"></td>
+                                <td th:text="${cita.horaCita}"></td>
+                            </tr>
+                        </div>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="element" id="element__favoritos">
                     <!--MOSTRAR CITAS QUE EL USUARO YA CONFIRMO-->

@@ -139,6 +139,7 @@
                             <th scope="col">Emisor</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Monto</th>
+                            <th scope="col">Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -147,6 +148,16 @@
                                 <td th:text="${oferta.emisor.nombre}"></td>
                                 <td th:text="${oferta.estado}"></td>
                                 <td th:text="${oferta.monto}"></td>
+                                <td>
+                                    <form method="post" th:action="@{/aceptarOferta}">
+                                        <input type="hidden" name="ofertaId" th:value="${oferta.id}" />
+                                        <button type="submit" class="btn btn-success" th:text="Aceptar"></button>
+                                    </form>
+                                    <form method="post" th:action="@{/rechazarOferta}">
+                                        <input type="hidden" name="ofertaId" th:value="${oferta.id}" />
+                                        <button type="submit" class="btn btn-danger" th:text="Rechazar"></button>
+                                    </form>
+                                </td>
                             </tr>
                         </div>
                         </tbody>
