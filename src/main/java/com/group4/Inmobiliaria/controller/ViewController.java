@@ -74,11 +74,6 @@ public class ViewController {
         return "login";
     }
 
-    /*
-    @GetMapping("/propiedad")
-    public String propiedad() {
-        return "propiedad";
-    }*/
     @GetMapping("/reuniones")
     public String reuniones(Model model) {
 

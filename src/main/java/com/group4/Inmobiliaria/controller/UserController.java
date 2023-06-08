@@ -7,6 +7,7 @@ import com.group4.Inmobiliaria.entidades.Usuario;
 import com.group4.Inmobiliaria.enums.TipoCliente;
 import com.group4.Inmobiliaria.enums.TipoEnte;
 import com.group4.Inmobiliaria.service.UserService;
+import com.group4.Inmobiliaria.service.UsuarioService;
 import com.group4.Inmobiliaria.utils.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,12 +17,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Base64;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class UserController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    UsuarioService usuarioService;
 
     @GetMapping("/registro")
     public String registro() {
@@ -110,7 +114,12 @@ public class UserController {
         model.addAttribute("usuario", usuario);
         return "modificarUser";
     }
-
+    @GetMapping("/modificarUsuarioA/{id}")
+    public String modificarUsuarioA(@PathVariable("id") String id, Model model){
+        Usuario usuario = usuarioService.findUserById(id);
+        model.addAttribute("usuario", usuario);
+        return "modificarUser";
+    }
 }
 
 
