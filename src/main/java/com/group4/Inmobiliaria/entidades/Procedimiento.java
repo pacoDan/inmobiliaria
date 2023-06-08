@@ -64,5 +64,5 @@ public abstract class Procedimiento implements Serializable {
 
     @JoinColumn(name = "Id_Propiedad", referencedColumnName = "Id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Propiedad Propiedad;
+    private Propiedad propiedad;
 }

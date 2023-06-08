@@ -1,5 +1,7 @@
 package com.group4.Inmobiliaria.controller;
 
+import com.group4.Inmobiliaria.entidades.Ente;
+
 import com.group4.Inmobiliaria.entidades.Cita;
 import com.group4.Inmobiliaria.entidades.Oferta;
 import com.group4.Inmobiliaria.entidades.Propiedad;
@@ -30,6 +32,7 @@ public class PropiedadController {
 
     @Autowired
     OfertaService ofertaService;
+    
     @Autowired
     ImagenService imagenService;
     
@@ -37,7 +40,7 @@ public class PropiedadController {
     public String cargarPropiedad(Propiedad propiedad, Model model) {
         Usuario propietario = ((Usuario) Session.getUserSession());
 
-        propiedad.setPropietario(propietario);
+        propiedad.setPropietario((Ente) propietario);
 
         model.addAttribute("propiedad", propiedad);
         return "carga";
@@ -91,9 +94,5 @@ public class PropiedadController {
         model.addAttribute("cita", cita);
         return "propiedad";
     }
-    @PostMapping("/guardarOferta")
-    public String guardarOferta(@ModelAttribute("oferta") Oferta oferta) {
-        ofertaService.guardar(oferta);
-        return "";
-    }
+
 }

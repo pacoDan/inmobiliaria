@@ -60,34 +60,40 @@
                     <p>Aun no tienes facturaciones disponibles.</p>
                 </div>
                 <div class="element" id="element__misReclamos">
-                    <p>Agregar tabla con reclamos</p>
+                   <table class="table">                        
+                        <thead>
+                            <tr>
+                                <th scope="col">Fecha_Emision</th>
+                                <th scope="col">Hora_Emision</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Estado</th>                                                                             
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="index : ${reclamos}">
+                                <td th:text="${index.fechaEmision}"></td>
+                                <td th:text="${index.horaEmision}"></td>
+                                <td th:text="${index.descripcion}"></td>
+                                <td th:text="${index.estadoReclamo}"></td>                                                          
+                            </tr>                           
+                        </tbody>
+                    </table>                    
                 </div>
                 <div class="element" id="element__generarReclamo">
-                    <!--Mformulario de reclamo-->
                     
-                    <!--<form th:action="@{/guardar}" method="post" th:object="${reclamo}" id="from__formReclamo">--> 
-                    <form th:action="@{/guardar}" method="post" th:object="${reclamo}" id="from__formReclamo">
+                    <form th:action="@{reclamo/guardar}" method="post" th:object="${reclamo}" id="from__formReclamo">
  
                         <div class="input__group">
                             <h2 id="h2__formReclamo">Formulario de reclamo</h2>
-                            <!--
-                                                        <label for="tipoProcedimiento">Motivo</label>
-                                                        <select name="tipoProcedimiento" id="tipoProcedimiento" th:field="{TipoProcedimiento}">
-                                                        <select name="motivo" id="motivo">-->
-                            <!-- <select name="tipoProcedimiento" th:field="${procedimiento.tipoProcedimiento}">
-                                 <option value="PLOMERIA">Plomeria</option>
-                                 <option value="FILTRACIONES">Filtraciones</option>
-                                 <option value="HUMEDAD">Humedad</option>
-                                 <option value="SEGURIDAD">Seguridad</option>
-                                 <option value="OTRO">Otro</option>
-                             </select>
+                            
+                                                        
 
                             <label for="reclamo">Reclamo</label>
                             <textarea name="reclamo" id="reclamo" cols="30" rows="5" placeholder="Ingrese una descripcion de su reclamo..." th:field="*{descripcion}"></textarea>
                             
-                            <input class="btn__reclamo" type="submit" value="Enviar">-->
+                            <input class="btn__reclamo" type="submit" value="Enviar">
                         </div>
-                    </from>
+                    </form>
                 </div>               
             </main>
         </div>
