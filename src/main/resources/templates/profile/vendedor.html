@@ -88,6 +88,28 @@
                                 <td th:text="${solicitud.propiedad.descripcion}"></td>
                                 <td th:text="${solicitud.estadoSolicitud}"></td>
                                 <td th:text="${solicitud.tipoSolicitud}"></td>
+                                 
+                                <td th:if="${#strings.equals(solicitud.tipoSolicitud, 'COMPRA')}">
+                                    <form method="post" th:action="@{/solicitud/aceptarCompra}">
+                                        <input type="hidden" name="solicitudId" th:value="${solicitud.id}" />
+                                        <button type="submit" class="btn btn-success" th:text="Aceptar"></button>
+                                    </form>
+                                    <form method="post" th:action="@{/solicitud/rechazarCompra}">
+                                        <input type="hidden" name="solicitudId" th:value="${solicitud.id}" />
+                                        <button type="submit" class="btn btn-danger" th:text="Rechazar"></button>
+                                    </form>                                                                         
+                                </td>
+                                
+                                <td th:if="${#strings.equals(solicitud.tipoSolicitud, 'ALQUILER')}">
+                                    <form method="post" th:action="@{/solicitud/aceptarAlquiler}">
+                                        <input type="hidden" name="solicitudId" th:value="${solicitud.id}" />
+                                        <button type="submit" class="btn btn-danger" th:text="Aceptar"></button>
+                                    </form>
+                                      <form method="post" th:action="@{/solicitud/rechazarAlquiler}">
+                                        <input type="hidden" name="solicitudId" th:value="${solicitud.id}" />
+                                        <button type="submit" class="btn btn-danger" th:text="Rechazar"></button>
+                                    </form>
+                                </td>
                                 
                             </tr>
                         </div>
@@ -105,7 +127,7 @@
                                 <th scope="col">Dia</th>
                                 <th scope="col">Turno</th>
                                 <th scope="col">Estado</th>
-                                <th scope="col">Acciones</th>
+                                <th scope="col">Acciones</th>                                
                             </tr>
                         </thead>
                         <tbody>

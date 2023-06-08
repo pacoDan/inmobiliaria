@@ -16,6 +16,10 @@ public class SolicitudService {
         solicitudRepository.save(solicitud);
     }
     
+    public Solicitud findById(String id){
+        return solicitudRepository.findById(id).orElse(null);
+    }
+    
     public List<Solicitud>findByEmisorId(String id){
         return solicitudRepository.findByEmisor_id(id);
     }

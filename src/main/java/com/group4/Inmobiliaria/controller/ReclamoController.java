@@ -36,7 +36,7 @@ public class ReclamoController {
         reclamo.setHoraEmision(new Date());
         
         reclamo.setEmisor(cliente);
-        reclamo.setReceptor(propiedad.getPropietario());
+        reclamo.setReceptor((Ente) propiedad.getPropietario());
         
         reclamo.setPropiedad(propiedad);
         reclamo.setEstadoReclamo(EstadoReclamo.PENDIENTE);
