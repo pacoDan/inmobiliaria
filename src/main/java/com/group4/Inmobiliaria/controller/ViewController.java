@@ -38,15 +38,12 @@ public class ViewController {
     @GetMapping("/")
     public String index(Model model) {
 
-
-
-
-        List<Propiedad> propiedades = propiedadService.listarPropiedades();
+        List<Propiedad> propiedades = propiedadService.findAlldWithImages();
         model.addAttribute("propiedades", propiedades);
 
         Usuario logged = Session.getUserSession();
 
-        System.out.println(logged);
+        System.out.println(logged);                       
 
         if (logged != null && logged.getRol().toString().equals("ADMIN")) {
             return "redirect:/admin";
@@ -96,7 +93,7 @@ public class ViewController {
 
     @GetMapping("/vendedor")
     public String vendedor(Model model) {
-        List<Propiedad> propiedades = propiedadService.listarPropiedades();
+        List<Propiedad> propiedades = propiedadService.findAlldWithImages();
         model.addAttribute("propiedades", propiedades);
         
         List<Reclamo> reclamos = reclamoService.findByReceptorId(Session.getUserSession().getId());                

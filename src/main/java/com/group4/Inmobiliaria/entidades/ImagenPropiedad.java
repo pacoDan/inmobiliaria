@@ -29,5 +29,7 @@ public class ImagenPropiedad extends Imagen implements Serializable {
     @Column(name = "Tipo_Imagen")
     @Enumerated(EnumType.STRING)
     private TipoImagenPropiedad tipoImagenPropiedad;
+    
+    
 
 }

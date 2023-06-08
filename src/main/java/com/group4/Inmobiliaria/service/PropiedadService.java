@@ -26,6 +26,11 @@ public class PropiedadService {
         return propiedadRepository.findByInquilino_id(id);
     }
     
+    @Transactional
+    public List<Propiedad> findAlldWithImages(){
+        return propiedadRepository.findAllWithImages();
+    }
+    
 
     @Transactional
     public Propiedad guardar(Propiedad propiedad) throws MiExcepcion {

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Image {
 
-    private static String bytesToBase64(byte[] bytes) {
+    public static String bytesToBase64(byte[] bytes) {
         return Base64.getEncoder().encodeToString(bytes);
     }
 

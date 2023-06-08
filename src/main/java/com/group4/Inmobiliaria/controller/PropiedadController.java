@@ -77,12 +77,12 @@ public class PropiedadController {
 
     @GetMapping("/all")
     public String listar(Model model) {
-        List<Propiedad> propiedades = propiedadService.listarPropiedades();
+        List<Propiedad> propiedades = propiedadService.findAlldWithImages();
         model.addAttribute("propiedades", propiedades);
         return "propiedades";
     }
        
-    @GetMapping("propiedad/{id}")
+    @GetMapping("/{id}")
     public String mostrarDetallePropiedad(@PathVariable("id") String id, Model model) {
         Propiedad propiedad = propiedadService.encontrarById(id);
         Usuario usuario = Session.getUserSession();

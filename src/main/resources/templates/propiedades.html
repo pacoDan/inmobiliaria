@@ -24,6 +24,9 @@
                     <div class="contenido-anuncio">
                         <h3 th:text="${propiedad.descripcion}"></h3>
                         <p th:text="${propiedad.caracteristicas}"></p>
+                        
+                        <img th:src="@{'/imagen/' + ${propiedad.imagenes[0].id}}" alt="Imagen">
+                        
                         <p class="precio" th:text="${propiedad.precioVenta}"></p>
                         <p class="precio" th:text="${propiedad.precioAlquiler}"></p>
                         <ul class="iconos-caracts">
@@ -40,13 +43,9 @@
                                 <p>4</p>
                             </li>
                         </ul>
-                        <a th:href="@{propiedad/{id}(id=${propiedad.id})}">
+                        <a th:href="@{/propiedad/{id}(id=${propiedad.id})}">
                             <button type="button" class="btn btn-outline-primary">Ver Propiedad</button>
-                        </a>
-                        
-                        <!-- Estos botones solo deberian estar disponibles si la persona logeada es la propietaria -->
-                        <a th:if="${#authentication.name == propiedad.propietario.email}" type="button"  th:href="@{propiedad/editar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Editar"></a>
-                        <a th:if="${#authentication.name == propiedad.propietario.email}" type="button"  th:href="@{propiedad/eliminar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Eliminar"></a>
+                        </a>                                                
                     </div>
                 </div>
             </div>

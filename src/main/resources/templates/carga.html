@@ -48,8 +48,6 @@
                                 <option value="DEPARTAMENTO">Departamento</option>
                                 <option value="MONOAMBIENTE">Monoambiente</option>
                                 <option value="OTRO">Otro</option>
-
-<<<<<<< Updated upstream
                                                 </select>
                                             </div>
                                             <div class="mb-3">
@@ -78,28 +76,8 @@
 
                                             <button type="submit" class="btn btn-primary">Cargar Propiedad</button>
                                             </form>
-=======
                             </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="precioVenta" class="form-label">Precio Venta</label>
-                            <input type="number" min="1" class="form-control" id="precioVenta" aria-describedby="emailHelp" th:field="*{precioVenta}" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="precioAlquiler" class="form-label">Precio Alquiler</label>
-                            <input type="number" min="1" class="form-control" id="precioAlquiler" aria-describedby="emailHelp" th:field="*{precioAlquiler}" required>
-                        </div>
-
->>>>>>> Stashed changes
-
-                        <div class="mb-3" th:each="index : ${#numbers.sequence(1, 4)}">
-                            <label for="'imagenesFiles' + ${index}" class="form-label">Imagen [[${index}]]</label>
-                            <input type="file" class="form-control imagenInput" name="imagenesFiles" th:name="'imagenesFiles[' + ${index} + ']'" id="'imagen' + ${index}" onchange="mostrarVistaPrevia(event)" aria-describedby="emailHelp" required>
-                            <img class="vistaPrevia" src="#" alt="Vista previa">
-                        </div>
-
-
-                        <button type="submit" class="btn btn-primary">Cargar</button>
+                        </div>                                                
             </form>
         </div>
         <footer th:replace="layout/layout :: footer"></footer>

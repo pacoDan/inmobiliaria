@@ -6,7 +6,10 @@
 package com.group4.Inmobiliaria.repository;
 
 import com.group4.Inmobiliaria.entidades.Propiedad;
+import java.util.List;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -17,5 +20,9 @@ import org.springframework.stereotype.Repository;
 public interface PropiedadRepository extends JpaRepository<Propiedad,String> {
     
     public Propiedad findByInquilino_id(String id);
+    
+    @EntityGraph(attributePaths = "imagenes")
+    @Query("SELECT DISTINCT p FROM Propiedad p LEFT JOIN FETCH p.imagenes")
+    public List<Propiedad> findAllWithImages();
     
 }

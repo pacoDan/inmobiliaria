@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import lombok.AllArgsConstructor;
@@ -83,6 +84,9 @@ public class Propiedad implements Serializable {
     @Basic(optional = false)
     @Column(name = "Disponible")
     private boolean disponible;
+    
+    @OneToMany(mappedBy = "propiedad", fetch = FetchType.EAGER)
+    private List<ImagenPropiedad> imagenes;
 
     @Transient
     private List<MultipartFile> imagenesFiles;
