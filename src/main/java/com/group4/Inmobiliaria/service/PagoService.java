@@ -41,5 +41,13 @@ public class PagoService {
     public List<Pago> listarPagos(){
         return pagoRepository.findAll();
     }
+    
+    public List<Pago> findbyEmisorId(String id){
+        return pagoRepository.findByEmisor_id(id);
+    }
+    
+    public List<Pago> findbyReceptorId(String id){
+        return pagoRepository.findByReceptor_id(id);
+    }
 
 }

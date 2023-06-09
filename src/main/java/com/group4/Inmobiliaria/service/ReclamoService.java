@@ -1,6 +1,7 @@
 package com.group4.Inmobiliaria.service;
 
 import com.group4.Inmobiliaria.entidades.Reclamo;
+import com.group4.Inmobiliaria.enums.EstadoReclamo;
 import com.group4.Inmobiliaria.repository.ReclamoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class ReclamoService {
     ReclamoRepository reclamoRepository;
 
     @Transactional
-    public void guardar(Reclamo reclamo){
+    public void guardar(Reclamo reclamo){        
         reclamoRepository.save(reclamo);
     }
 
@@ -40,6 +41,14 @@ public class ReclamoService {
     @Transactional(readOnly = true)
     public List<Reclamo> listarReclamos(){
         return reclamoRepository.findAll();
+    }
+    
+    public List<Reclamo>findByEmisorId(String id){
+        return reclamoRepository.findByEmisor_id(id);
+    }
+    
+     public List<Reclamo>findByReceptorId(String id){
+        return reclamoRepository.findByReceptor_id(id);
     }
 
 }

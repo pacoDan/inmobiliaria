@@ -50,19 +50,17 @@ public abstract class Procedimiento implements Serializable {
     @Enumerated(EnumType.STRING)
     private TipoProcedimiento tipoProcedimiento;
 
-    @Basic(optional = false)
-    @Column(name = "Descripcion")
-    private String descripcion;   
+     
 
     @JoinColumn(name = "Id_Emisor", referencedColumnName = "Id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Cliente Emisor;
+    private Cliente emisor;
 
     @JoinColumn(name = "Id_Receptor", referencedColumnName = "Id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Ente Receptor;
+    private Ente receptor;
 
     @JoinColumn(name = "Id_Propiedad", referencedColumnName = "Id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Propiedad Propiedad;
+    private Propiedad propiedad;
 }

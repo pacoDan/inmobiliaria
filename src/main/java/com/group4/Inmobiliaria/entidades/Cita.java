@@ -2,12 +2,10 @@ package com.group4.Inmobiliaria.entidades;
 
 import com.group4.Inmobiliaria.enums.EstadoCita;
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+import java.util.Date;
+import javax.persistence.*;
+
+import com.group4.Inmobiliaria.enums.HoraCita;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,5 +23,14 @@ public class Cita extends Procedimiento implements Serializable {
     @Column(name = "Estado_Cita")
     @Enumerated(EnumType.STRING)
     private EstadoCita estado;
+
+    @Basic(optional = false)
+    @Column(name = "Fecha_cita")
+    private String diaCita;
+
+    @Basic(optional = false)
+    @Column(name = "Hora_Cita")
+    @Enumerated(EnumType.STRING)
+    private HoraCita horaCita;
 
 }

@@ -15,17 +15,17 @@ public class CitaService {
     CitaRepository citaRepository;
 
     @Transactional
-    public void guardar(Cita cita){
+    public void guardar(Cita cita) {
         citaRepository.save(cita);
     }
 
     @Transactional
-    public void eliminar(Cita cita){
+    public void eliminar(Cita cita) {
         citaRepository.delete(cita);
     }
 
     @Transactional
-    public void eliminarById(String id){
+    public void eliminarById(String id) {
         Cita cita = citaRepository.findById(id).orElse(null);
         if (cita != null) {
             citaRepository.delete(cita);
@@ -33,12 +33,20 @@ public class CitaService {
     }
 
     @Transactional(readOnly = true)
-    public Cita encontrarById(String id){
+    public Cita encontrarById(String id) {
         return citaRepository.findById(id).orElse(null);
     }
 
     @Transactional(readOnly = true)
-    public List<Cita> listarCitas(){
+    public List<Cita> listarCitas() {
         return citaRepository.findAll();
+    }
+
+    public List<Cita> findByEmisorId(String id) {
+        return citaRepository.findByEmisor_id(id);
+    }
+
+    public List<Cita> findByReceptorId(String id) {
+        return citaRepository.findByReceptor_id(id);
     }
 }

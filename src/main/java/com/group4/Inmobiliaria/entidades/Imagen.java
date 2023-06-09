@@ -1,5 +1,6 @@
 package com.group4.Inmobiliaria.entidades;
 
+import com.group4.Inmobiliaria.utils.Image;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -41,6 +42,6 @@ public abstract class Imagen implements Serializable {
     @Column(name = "Contenido")
     @Lob
     @ToString.Exclude
-    private byte[] contenido;
+    private byte[] contenido;     
 
 }

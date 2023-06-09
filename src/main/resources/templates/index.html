@@ -41,39 +41,47 @@
             <h2 class="fw-300 centrar-texto">Casas y Departamentos en venta</h2>
             
             <div class="container-anuncios">
-                <div class="anuncio" th:each="propiedad : ${propiedades}" th:limit="3">
-                    <img class="imagenAnuncio" th:src="${propiedad.imagenes}" alt="anuncio casa en el lago">
-                    <div class="contenido-anuncio">
-                        <h3 th:text="${propiedad.descripcion}"></h3>
-                        <p th:text="${propiedad.caracteristicas}"></p>
-                        <p class="precio" th:text="${propiedad.precioVenta}"></p>
-                        <p class="precio" th:text="${propiedad.precioAlquiler}"></p>
+
+                <div class="anuncio" th:each="propiedad, iterStat : ${propiedades}" th:if="${iterStat.index} &lt; 3">
+
+
+                    <div class="contenido-anuncio" >
+
+
+
+                        <div class="tituloTruncado"><h3 th:text="${propiedad.descripcion}"></h3>
+                        </div>
+                        <div class="descripcionTruncada"> <p th:text="${propiedad.caracteristicas}"></p></div>
+                        
+                       <img th:src="@{'/imagen/' + ${propiedad.imagenes[0].id}}" alt="Imagen">
+
+                       <div class="precio"> <p th:text=" 'Precio Venta: ' + ${propiedad.precioVenta}"></p>
+                        <p  th:text=" 'Precio Alquiler: ' + ${propiedad.precioAlquiler}"></p>
+                       </div>
                         <ul class="iconos-caracts">
                             <li>
                                 <span class="material-symbols-outlined">bathtub </span>
-                                <p>3</p>
+                                <p></p>
                             </li>
                             <li>
                                 <span class="material-symbols-outlined">directions_car </span>
-                                <p>3</p>
+                                <p></p>
                             </li>
                             <li>
                                 <span class="material-symbols-outlined">bed</span>
-                                <p>4</p>
+                                <p></p>
                             </li>
                         </ul>
-                        <button type="button" href="/" class="btn btn-outline-primary">Ver Propiedad</button>
-
-                        <!-- Estos botones solo deberian estar disponibles si la persona logeada es la propietaria -->
-                        <a th:if="${#authentication.name == propiedad.propietario.email}" type="button"  th:href="@{propiedad/editar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Editar"></a>
-                        <a th:if="${#authentication.name == propiedad.propietario.email}" type="button"  th:href="@{propiedad/eliminar/} + ${propiedad.id}" class="btn btn-outline-primary" th:text="Eliminar"></a>
+                        <a th:href="@{propiedad/{id}(id=${propiedad.id})}">
+                            <button type="button" class="btn btn-outline-primary">Ver Propiedad</button>
+                        </a>                       
                     </div>
                 </div>
             </div>
 
 
             <div class="ver-todas">
-                <a th:href="@{/propiedad/all}"><button type="button" class="botonVerTodo btn btn-outline-primary ">Ver Todas</button>
+                <a th:href = "@{/propiedad/all}"><button type="button" class="botonVerTodo btn btn-outline-primary ">Ver Todas</button>
                 </a>
                 </div>
         </div>

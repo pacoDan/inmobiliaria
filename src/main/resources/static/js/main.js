@@ -28,3 +28,16 @@ listElements.forEach(listElement => {
     var contenidoMostrado = document.getElementById('element__' + opcion);
     contenidoMostrado.style.display = 'block';
   }
+
+function showPopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "block";
+}
+
+function changeRol(rol) {
+    var rolElement = document.getElementById("rol");
+    rolElement.textContent = rol;
+    var popup = document.getElementById("popup");
+    popup.style.display = "none";
+}
+

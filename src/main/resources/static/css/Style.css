@@ -5,7 +5,6 @@
 }
 
 
-
 header{
     padding: 5%;
   background-color: #1E385B;  
@@ -56,7 +55,23 @@ color:#FFFFFF;
     border: 2px solid  #2C517F;
 }
 
+.btn-danger {
+    color: #fff;
+    background-color:#85202A ;
+    border-color:#85202A ;
+}
 
+.btn-danger:hover {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+}
 
 .divLogo p{
     color: rgb(253, 253, 253);

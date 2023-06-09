@@ -39,7 +39,7 @@ public class UserService implements UserDetailsService {
     UsuarioRepository usuarioRepository;
     
     @Autowired
-    ImagenPerfilService imagenPerfilService;
+    ImagenService imagenService;
     
     @Autowired
     AdminRepository adminRepository;
@@ -49,11 +49,11 @@ public class UserService implements UserDetailsService {
         
         cliente.setRol(Rol.CLIENTE);
         
-        cliente.setFechaRegistro(new Date());
+        cliente.setFechaRegistro(new Date());        
         
         cliente.setPassword(new BCryptPasswordEncoder().encode(cliente.getPassword()));        
         
-        ImagenPerfil imagen = imagenPerfilService.guardarImagenPerfil(cliente.getArchivoImagen());
+        ImagenPerfil imagen = imagenService.guardarImagenPerfil(cliente.getArchivoImagen());
         
         cliente.setImagenPerfil(imagen);
         
@@ -69,13 +69,54 @@ public class UserService implements UserDetailsService {
         
         ente.setPassword(new BCryptPasswordEncoder().encode(ente.getPassword()));
         
-        ImagenPerfil imagen = imagenPerfilService.guardarImagenPerfil(ente.getArchivoImagen());
+        ImagenPerfil imagen = imagenService.guardarImagenPerfil(ente.getArchivoImagen());
         
         ente.setImagenPerfil(imagen);
         
         enteRepository.save(ente);
         
     }
+
+    @Transactional
+    public void actualizarEnte(Ente ente) throws Exception{
+        Usuario usuario = Session.getUserSession();
+        if(!ente.getPassword().equals("")){
+            ente.setPassword(new BCryptPasswordEncoder().encode(ente.getPassword()));
+        }else {
+            ente.setPassword(usuario.getPassword());
+        }
+        if(!ente.getArchivoImagen().isEmpty()){
+            ImagenPerfil imagen = imagenService.guardarImagenPerfil(ente.getArchivoImagen());
+            ente.setImagenPerfil(imagen);
+        }else {
+            ente.setImagenPerfil(usuario.getImagenPerfil());
+        }
+        ente.setFechaRegistro(usuario.getFechaRegistro());
+        ente.setRol(usuario.getRol());
+        enteRepository.save(ente);
+        Session.setUserSession(ente);
+    }
+
+    @Transactional
+    public void actualizarCliente(Cliente cliente) throws Exception{
+        Usuario usuario = Session.getUserSession();
+        if(!cliente.getPassword().equals("")){
+            cliente.setPassword(new BCryptPasswordEncoder().encode(cliente.getPassword()));
+        }else {
+            cliente.setPassword(usuario.getPassword());
+        }
+        if(!cliente.getArchivoImagen().isEmpty()){
+            ImagenPerfil imagen = imagenService.guardarImagenPerfil(cliente.getArchivoImagen());
+            cliente.setImagenPerfil(imagen);
+        }else {
+            cliente.setImagenPerfil(usuario.getImagenPerfil());
+        }
+        cliente.setFechaRegistro(usuario.getFechaRegistro());
+        cliente.setRol(usuario.getRol());
+        clienteRepository.save(cliente);
+        Session.setUserSession(cliente);
+    }
+
     
     public void registrarAdmin(Admin admin) {
         admin.setFechaRegistro(new Date());
@@ -101,6 +142,11 @@ public class UserService implements UserDetailsService {
             return newSecurityUser(usuario);
         }
         return null;
+    }
+
+    @Transactional
+    public Ente obtenerEnteById(String id){
+        return enteRepository.findById(id).orElse(null);
     }
     
 }

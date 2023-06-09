@@ -7,8 +7,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" th:href="@{/css/Style.css}">
   <link rel="stylesheet" th:href="@{/css/StyleRegister.css}">
-
-
 </head>
 
 <body>
@@ -21,7 +19,7 @@
             <span class="material-symbols-outlined logo"> real_estate_agent </span>  
       </div></a>
         <h2>Registrar</h2>
-        <form th:action="@{/guardar/ente}" method="post" th:object="${ente}">
+        <form th:action="@{/guardar/ente}" method="post" th:object="${ente}" enctype="multipart/form-data">
           <input type="hidden" name="id" th:field="*{id}">
           <input type="hidden" name="tipoEnte" th:field="*{tipoEnte}">
 
@@ -40,9 +38,8 @@
           <div class="mb-3">
             <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="Telefono" aria-describedby="emailHelp" th:field="*{telefono}" required>
           </div>
-
           <div class="mb-3">
-            <input  class="form-control" name="imagenPerfil" id="imagenPerfil" placeholder="imagen de perfil" aria-describedby="emailHelp" th:field="*{imagenPerfil}" required>
+            <input type="file" class="form-control" name="archivoImagen" id="archivoImagen" placeholder="Seleccionar archivo" aria-describedby="emailHelp" th:field="*{archivoImagen}" required>
           </div>
 
           <button type="submit" class="btn btn-primary">Registrarse</button>
