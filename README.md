@@ -1,5 +1,5 @@
 # Mr House
-## Sprint 3 de 4 hasta el momento (75% de avance aprox)
+## Sprint 4 de 4 hasta el momento (MVP Terminado)
 
 [![N|Egg](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
 
